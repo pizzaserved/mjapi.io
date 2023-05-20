@@ -93,7 +93,7 @@
         button.style.display = "none"
 
         // Fetch
-        fetch("https://api.mjapi.io/adduser?" + qparams, {
+        fetch("http://api.mjapi.io/adduser?" + qparams, {
             method: "get"
           })
           .then(res => res.json())
@@ -125,9 +125,9 @@
         <div>
           <h4>Examples</h4>
           <ul>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
           </ul>
         </div>
         <div>
@@ -199,7 +199,7 @@
                 button.style.display = "none"
 
                 // Fetch
-                fetch("https://api.mjapi.io/addjob?" + qparams, {
+                fetch("http://api.mjapi.io/addjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -298,7 +298,7 @@
 
 
                 // Fetch
-                fetch("https://api.mjapi.io/getjob?" + qparams, {
+                fetch("http://api.mjapi.io/getjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())

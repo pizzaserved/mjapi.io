@@ -43,6 +43,12 @@
 <body style="font-family: Comic Sans MS">
   <h1>Welcome to our modern, responsive, award-wining, photo-realistic, hdr 8k, 80mm, trending website!</h1>
 
+  <div style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
+    <input id="register_button" type="button" value="Load HTTP website" onclick="on_load_http()">
+    <p>required to submit forms on this page, otherwise no buttons work</p>
+    <p>(fix incoming)</p>
+  </div>
+
   <br/>
   <h2>How it works</h2>
   <div>
@@ -93,7 +99,7 @@
         button.style.display = "none"
 
         // Fetch
-        fetch("https://api.mjapi.io/adduser?" + qparams, {
+        fetch("http://api.mjapi.io/adduser?" + qparams, {
             method: "get"
           })
           .then(res => res.json())
@@ -125,9 +131,9 @@
         <div>
           <h4>Examples</h4>
           <ul>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
-            <li>https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
+            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
           </ul>
         </div>
         <div>
@@ -199,7 +205,7 @@
                 button.style.display = "none"
 
                 // Fetch
-                fetch("https://api.mjapi.io/addjob?" + qparams, {
+                fetch("http://api.mjapi.io/addjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -229,7 +235,7 @@
       <div style="margin-left: 50px;">
         <div>
           <h4>Example</h4>
-          https://api.mjapi.io/getjob?job_id=5614325613212231231
+          http://api.mjapi.io/getjob?job_id=5614325613212231231
         </div>
         <div>
           <h4>Params</h4>
@@ -298,7 +304,7 @@
 
 
                 // Fetch
-                fetch("https://api.mjapi.io/getjob?" + qparams, {
+                fetch("http://api.mjapi.io/getjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -419,6 +425,14 @@
     }
   }
   register_collapsibles()
+</script>
+
+<script>
+  function on_load_http() {
+    if (location.protocol !== 'http:') {
+      location.replace(`http:${location.href.substring(location.protocol.length)}`);
+    }
+  }
 </script>
 
 </html>

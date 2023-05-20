@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza with Midjourney API!</title>
+  <!--TODO SEO-->
+  <!-- IE -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <!-- other browsers -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link type="text/css" rel="stylesheet" href="style.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="MidJourney API access, plain and simple, no BS">
+  <meta name="keywords" content="midjourney, midjourney api, api, simple midjourney api">
+  <meta name="revisit-after" content="7 days">
+
+  <!--Open Graph tags-->
+  <meta property="og:url" content="http://mjapi.io">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MidJourney API">
+  <meta property="og:description" content="MidJourney API access, plain and simple, no BS">
+  <!--meta property="og:image" content="index_files/whenneededtodo.png" -->
+
+  <!--Open external links in new tabs-->
+  <base target="_blank">
+</head>
+
+<!-- Google tag (gtag.js) (Google Analytics) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8PE9QGTNX2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-8PE9QGTNX2');
+</script>
+
+<body style="font-family: Comic Sans MS">
+  <h1>Welcome to our modern, responsive, award-wining, photo-realistic, hdr 8k, 80mm, trending website!</h1>
+
+  <br/>
+  <h2>How it works</h2>
+  <div>
+    <ul>
+      <li>You <a href="https://discord.com/register">create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons.</li>
+      <li><a href="https://linuxhint.com/get-discord-token/">Find</a> your discord user token.</li>
+      <li>Get an official Midjourney <a href="https://docs.midjourney.com/docs/plans">subscription</a> with the newly created discord account.</li>
+      <li>Register here for FREE and get your API Key via email. You get 1 day of free usage.</li>
+      <li>You're ready to go! Check the API Usage section.</li>
+      <li>Once your sub expires, make an ETH payment to our address, specifying your user id as extra data.</li>
+      <li>You'll get a confirmation email. Your API Key doesn't change.</li>
+      <li>If you want all your data to be deleted from our database, shoot us an email with the message 'delete'.</li>
+    </ul>
+  </div>
+
+  <br/>
+  <h2>REGISTER NOW!</h2>
+  <div>
+    <div>
+      <!--Keeping values on submit: https://stackoverflow.com/a/7169288 -- update: doesn't work well-->
+      <form id="form_register_user" style="float: left; width: 50vw;" target="iframe_dummy">
+        <pre>
+    &emsp;&emsp;&emsp;&emsp;&emsp;username <input type="text" name="input_user" id="input_user" required style="width: 30vw;"><br/>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;email <input type="email" name="input_email" id="input_email" required style="width: 30vw;"><br/>
+    discord_token <input type="text" name="input_discord_token" id="input_discord_token" required style="width: 30vw;"><br/>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id="register_button" type="button" value="Go!" onclick="on_register_user()">
+                </pre>
+      </form>
+      <pre id="input_register_user_response" class="json_code json_code_real_response"></pre>
+    </div>
+    <script>
+      function on_register_user() {
+        if (!validate_required_fields_manually("form_register_user"))
+          return;
+
+        // Get form data
+        var data = new FormData(document.getElementById("form_register_user"));
+        const qparams = new URLSearchParams({
+          user: data.get("input_user"),
+          email: data.get("input_email"),
+          discord_token: data.get("input_discord_token")
+        })
+        var div_response = document.getElementById("input_register_user_response");
+
+        // Hide button to avoid double action
+        var button = document.getElementById("register_button")
+        button_display_prev_value = button.style.display
+        button.style.display = "none"
+
+        // Fetch
+        fetch("/adduser?" + qparams, {
+            method: "get"
+          })
+          .then(res => res.json())
+          .then(json_data => {
+            button.style.display = button_display_prev_value
+            json_data_str = JSON.stringify(json_data, null, 2)
+            console.info("Response received: " + json_data_str);
+            div_response.textContent = json_data_str
+          })
+          .catch(err => {
+            button.style.display = button_display_prev_value
+            div_response.textContent = "Error:\n" + err
+            console.error("Error received: " + err);
+          });
+
+        // Prevent HTML submit
+        return false;
+      }
+    </script>
+  </div>
+
+  <br/><br/>
+  <h2>API usage</h2>
+  <button type="button" class="collapsible">Expand</button>
+  <div class="collapsible_content">
+    <div>
+      <h3>addjob</h3>
+      <div style="margin-left: 50px;">
+        <div>
+          <h4>Examples</h4>
+          <ul>
+            <li>https://mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
+            <li>https://mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
+            <li>https://mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Params</h4>
+          <ul>
+            <li><b>key</b> (required): your API Key</li>
+            <li><b>prompt</b> (required if <b>type</b> is not specified, 'oneshot_upscaled' or 'variations_only'): your prompt, but with any special characters encoded to form a proper URL (for ex., use <i>%20</i> for spaces). You're likely already using
+              a library, so escaping the URL is already be handled for you</li>
+            <li><b>type</b> (optional):
+              <ul>
+                <li><b>oneshot_upscaled</b> (default, if <b>pick</b> not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with variations
+                  and such.</li>
+                <li><b>pick</b> (default, if <b>pick</b> given): Choose to create more versions of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4)</li>
+                <li><b>variations_only</b> (<span style="color: #BB0000;">not yet available, message us if you need it</span>): Just generates the 4 variations, returning them as a single image, on which you can later follow-up with another <b>addjob</b>                  request having <b>type</b> = 'pick_variation' or 'pick_upscale'</li>
+                <li><b>pick_variation</b> (<span style="color: #BB0000;">not yet available, message us if you need it</span>): Pick a variation from a previous job created with <b>type</b> = 'variations_only'
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div><b>Response</b>
+          <pre class="json_code">
+{
+    "status": "success",
+    "message": "Prompt added!",
+    "data": {
+        "id": [
+            5614325613212231231
+        ],
+        "user_id": 4123172867356,
+        "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
+        "progress": -1,
+        "last_update": 1683876767
+    }
+}
+                    </pre>
+        </div>
+        <div>
+          <h4>Try it!</h4>
+          <div>
+            <div>
+              <!--Keeping values on submit: https://stackoverflow.com/a/7169288 -- update: doesn't work well-->
+              <form id="form_add_job" style="float: left; width: 50vw;" target="iframe_dummy">
+                <pre>
+&emsp;&emsp;&emsp;&emsp;&emsp;key <input type="text" name="input_key" id="input_key" required style="width: 60%;"><br/>
+&emsp;&emsp;prompt <input type="text" name="input_prompt" id="input_prompt" required style="width: 80%;"><br/>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id="addjob_button" type="button" value="Go!" onclick="on_addjob()">
+                                </pre>
+              </form>
+              <pre id="input_addjob_response" class="json_code json_code_real_response"></pre>
+              <p>Don't forget to note down the job id to retrieve progress below!</p>
+            </div>
+            <script>
+              function on_addjob() {
+                if (!validate_required_fields_manually("form_add_job"))
+                  return;
+
+                // Get form data
+                var data = new FormData(document.getElementById("form_add_job"));
+                const qparams = new URLSearchParams({
+                  key: data.get("input_key"),
+                  prompt: data.get("input_prompt")
+                })
+                var div_response = document.getElementById("input_addjob_response");
+
+                // Hide button to avoid double action
+                var button = document.getElementById("addjob_button")
+                button_display_prev_value = button.style.display
+                button.style.display = "none"
+
+                // Fetch
+                fetch("/addjob?" + qparams, {
+                    method: "get"
+                  })
+                  .then(res => res.json())
+                  .then(json_data => {
+                    button.style.display = button_display_prev_value
+                    json_data_str = JSON.stringify(json_data, null, 2)
+                    console.info("Response received: " + json_data_str);
+                    div_response.textContent = json_data_str
+                  })
+                  .catch(err => {
+                    button.style.display = button_display_prev_value
+                    div_response.textContent = "Error:\n" + err
+                    console.error("Error received: " + err);
+                  });
+
+                // Prevent HTML submit
+                return false;
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>getjob</h3>
+      <div style="margin-left: 50px;">
+        <div>
+          <h4>Example</h4>
+          http://mjapi.io/getjob?job_id=5614325613212231231
+        </div>
+        <div>
+          <h4>Params</h4>
+          <ul>
+            <li><b>job_id</b>: the job ID you've got from <b>addjob</b></li>
+          </ul>
+        </div>
+        <div><b>Response</b>
+          <pre class="json_code">
+{
+    "status": "success",
+    "message": "Yummy!",
+    "data": {
+        "id": 5614325613212231231,
+        "user_id": 4123172867356,
+        "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
+        "progress": 55,
+        "last_update": 1683876767,
+        "result_url": null
+    }
+}
+                    </pre>
+
+          <div>
+            <h4>Params</h4>
+            <ul>
+              <li><b>progress</b>: -1 = pending; 0-99 = in progress; 100 = done</li>
+              <li><b>result_url</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4>Try it!</h4>
+          <div>
+            <div>
+              <!--Keeping values on submit: https://stackoverflow.com/a/7169288 -- update: doesn't work well-->
+              <form id="form_getjob" style="float: left; width: 50vw;" target="iframe_dummy">
+                <pre>
+&emsp;&emsp;&emsp;&emsp;&emsp;job_id <input type="text" name="input_job_id" id="input_job_id" required style="width: 60%;"><br/>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id="getjob_button" type="button" value="Go!" onclick="on_getjob()">
+                                </pre>
+              </form>
+              <pre id="input_getjob_response" class="json_code json_code_real_response"></pre>
+              <img id="img_getjob_preview" style="display: none; float: right; margin:20px; margin-right:5px; height: auto; width: 50%;" />
+            </div>
+            <script>
+              function on_getjob() {
+                if (!validate_required_fields_manually("form_getjob"))
+                  return;
+
+                // Get form data
+                var data = new FormData(document.getElementById("form_getjob"));
+                const qparams = new URLSearchParams({
+                  job_id: data.get("input_job_id")
+                })
+                var div_response = document.getElementById("input_getjob_response");
+
+                // Hide button to avoid double action
+                var button = document.getElementById("addjob_button")
+                button_display_prev_value = button.style.display
+                button.style.display = "none"
+
+                img_preview = document.getElementById("img_getjob_preview")
+                img_preview.style.display = "none"
+
+
+                // Fetch
+                fetch("/getjob?" + qparams, {
+                    method: "get"
+                  })
+                  .then(res => res.json())
+                  .then(json_data => {
+                    json_data_str = JSON.stringify(json_data, null, 2)
+                    div_response.textContent = json_data_str
+                    console.info("Response received: " + json_data_str);
+                    button.style.display = button_display_prev_value
+                    try {
+                      inner_data = json_data['data']
+                      url = inner_data['result_url']
+                      if (url != null && url != '') {
+                        img_preview.style.display = "block"
+                        img_preview.alt = "Preview loading..."
+                        img_preview.src = url
+                      }
+                    } catch (ex) {
+                      console.info("Couldn't read result: " + ex);
+                    }
+                  })
+                  .catch(err => {
+                    button.style.display = button_display_prev_value
+                    div_response.textContent = "Error:\n" + err
+                    console.error("Error received: " + err);
+                  });
+
+                // Prevent HTML submit
+                return false;
+              }
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Rate limiting</h3>
+    <p>There's a 5 requests/10sec rate limiting to prevent abuse. That's still a lot for 99% of users</p>
+
+    <button type="button" class="collapsible_collapser">/\ Collapse</button>
+  </div>
+
+  <br/><br/>
+  <h2>Making payments</h2>
+  <div>
+    <div>
+      <p>You can use any app/website/tool that supports adding a reference data to your ETH transaction, as you do with normal bank transfers (this is usually called 'input' or 'extra' or 'reference' data).</p>
+      <p>Some platforms will have the option to choose between BSC, ERC20, Arbitrum, AVAXC. Please only use <b>ERC20</b> for transfers, as this is the ETH 'Main net'. </p>
+
+      <h3>Example platforms:</h3>
+      <ul>
+        <li>✔ <b>Coinbase/Coinbase Pro</b></li>
+        <li>✔ <b>Metamask</b></li>
+        <li>✔ <b>Crypto.com</b></li>
+        <li>✔ <b>Native ETH transaction (advanced)</b></li>
+        <li>✖ <b>Binance</b>: it's <i>not</i> currently possible to make a payment directly, because there's no way to set the extra data field, so we won't be able to identify you.
+          <br/>
+          <i>Workaround: trade some ETH for Solana (or something as faster and with as cheaper fees), create a
+                        Coinbase account, send the Solana to Coinbase, convert the received Solana to ETH</i><br/>
+          <i>Or, you could email us before(!) doing the transaction, specifying your source ETH address,
+                        although this will be slower.</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br/><br/>
+  <h2>Contact us</h2>
+  <div>
+    <div><b></b>pizzaserved gmail com <span style="color: #CCCCCC;">(Not properly formatted to avoid web crawlers)</span></div>
+    <div>You can message us before signing up, just to pseudo-assure you we're not a scam!</div>
+  </div>
+
+  <!-- Prevent page reloading on submit-->
+  <iframe name="iframe_dummy" style="display: none;"></iframe>
+
+  <script>
+    function validate_required_fields_manually(form_name) {
+      for (const el of document.getElementById(form_name).querySelectorAll("[required]")) {
+        if (!el.reportValidity()) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  </script>
+</body>
+
+<!--Collapsible. Need to be placed after the body, so it can see elements after they've been loaded-->
+<script>
+  function register_collapsibles(form_name) {
+    var coll = document.getElementsByClassName("collapsible");
+    var collapsers = document.getElementsByClassName("collapsible_collapser");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("collapsible_active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+    for (i = 0; i < collapsers.length; i++) {
+      collapsers[i].addEventListener("click", function() {
+        var content = this.parentElement;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  }
+  register_collapsibles()
+</script>
+
+</html>

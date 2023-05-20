@@ -43,9 +43,9 @@
 <body style="font-family: Comic Sans MS">
   <h1>Welcome to our modern, responsive, award-wining, photo-realistic, hdr 8k, 80mm, trending website!</h1>
 
-  <div style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
+  <div id="div_http_notice" style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
     <input id="register_button" type="button" value="Load HTTP website" onclick="on_load_http()">
-    <p>required to submit forms on this page, otherwise no buttons work</p>
+    <p>required to submit forms on this page, otherwise no buttons will work</p>
     <p>(fix incoming)</p>
   </div>
 
@@ -432,6 +432,11 @@
     if (location.protocol !== 'http:') {
       location.replace(`http:${location.href.substring(location.protocol.length)}`);
     }
+  }
+
+  if (location.protocol === 'http:') {
+    var notice = document.getElementById("div_http_notice");
+    notice.style.display = 'none'
   }
 </script>
 

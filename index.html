@@ -40,6 +40,24 @@
     gtag('config', 'AW-11185988260');
   </script>
 
+  <!-- Event snippet for Page view conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function() {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11185988260/REhGCKjfkqIYEKTF8tUp',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+
 </head>
 
 <!-- Google tag (gtag.js) (Google Analytics) -->
@@ -110,7 +128,7 @@
 
         // Hide button to avoid double action
         var button = document.getElementById("register_button")
-        button_display_prev_value = button.style.display
+        const button_display_prev_value = button.style.display
         button.style.display = "none"
 
         // Fetch
@@ -120,9 +138,15 @@
           .then(res => res.json())
           .then(json_data => {
             button.style.display = button_display_prev_value
-            json_data_str = JSON.stringify(json_data, null, 2)
+            const json_data_str = JSON.stringify(json_data, null, 2)
             console.info("Response received: " + json_data_str);
             div_response.textContent = json_data_str
+
+            if ("status" in json_data) {
+              if (json_data["status"] == "success") {
+                gtag_report_conversion()
+              }
+            }
           })
           .catch(err => {
             button.style.display = button_display_prev_value

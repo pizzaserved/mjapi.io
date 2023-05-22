@@ -1,19 +1,25 @@
 li {
-    color: #444444;
+  color: #444444;
 }
+
 pre {
-    color: #444444;
+  color: #444444;
 }
+
 span {
-    color: #444444;
+  color: #444444;
 }
+
 p {
-    color: #444444;
+  color: #444444;
 }
+
 body {
-    background-color: #FFF2E8;
+  background-color: #FFF2E8;
 }
-button, input[type="button"] {
+
+button,
+input[type="button"] {
   background-color: #777;
   color: white;
   cursor: pointer;
@@ -26,31 +32,48 @@ button, input[type="button"] {
   height: 30px;
 }
 
+.example_code {
+  margin-right: auto;
+  padding: 7px;
+  min-height: 10px;
+  height: auto;
+  /*background-color: #F6F6F6;*/
+  background-color: rgba(246, 246, 246, 0.1);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #AAAAAA;
+}
+
 .json_code {
-    margin-right: auto;
-    padding: 7px;
-    min-height: 100px;
-    height: auto;
-    /*background-color: #F6F6F6;*/
-    background-color: rgba(246, 246, 246, 0.1);
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: #AAAAAA;
+  margin-right: auto;
+  padding: 7px;
+  min-height: 100px;
+  height: auto;
+  /*background-color: #F6F6F6;*/
+  background-color: rgba(246, 246, 246, 0.1);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #AAAAAA;
 }
 
 .json_code_real_response {
-    margin-left: 50vw;
+  margin-left: 50vw;
 }
 
-.collapsible, collapsible_collapser {
-}
-.collapsible_active, .collapsible:hover, .collapsible_collapser:hover {
+.collapsible,
+collapsible_collapser {}
+
+.collapsible_active,
+.collapsible:hover,
+.collapsible_collapser:hover {
   background-color: #555;
 }
+
 .collapsible_content {
   padding: 0 18px;
   display: none;
   overflow: hidden;
-    background-color: #F9EDE3;
+  background-color: #F9EDE3;
 }

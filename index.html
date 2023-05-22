@@ -170,27 +170,27 @@
         <div>
           <h4>Examples</h4>
           <ul>
-            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></li>
-            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=variations_only</i></li>
-            <li>http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></li>
+            <li>Get 1 image, auto-upscaled: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
+            <li>Get 4 images, then choose variation/upscale in another call: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=with_followup</i></pre></li>
+            <li>Choose a variation/upscale of a previous job: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></pre></li>
           </ul>
         </div>
         <div>
           <h4>Params</h4>
           <ul>
             <li><b>key</b> (required): your API Key</li>
-            <li><b>prompt</b> (required if <b>type</b> is not specified, 'oneshot_upscaled' or 'variations_only'): your prompt, but with any special characters encoded to form a proper URL (for ex., use <i>%20</i> for spaces). You're likely already using
-              a library, so escaping the URL is already be handled for you</li>
+            <li><b>prompt</b> (required if <b>type</b> is not specified or 'oneshot_upscaled'): your prompt, but with any special characters encoded to form a proper URL (for ex., use <i>%20</i> for spaces). You're likely already using a library, so escaping
+              the URL is already be handled for you.</li>
             <li><b>type</b> (optional):
               <ul>
-                <li><b>oneshot_upscaled</b> (default, if <b>pick</b> not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with variations
-                  and such.</li>
-                <li><b>pick</b> (default, if <b>pick</b> given): Choose to create more versions of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4)</li>
-                <li><b>variations_only</b> (<span style="color: #BB0000;">not yet available, message us if you need it</span>): Just generates the 4 variations, returning them as a single image, on which you can later follow-up with another <b>addjob</b>                  request having <b>type</b> = 'pick_variation' or 'pick_upscale'</li>
-                <li><b>pick_variation</b> (<span style="color: #BB0000;">not yet available, message us if you need it</span>): Pick a variation from a previous job created with <b>type</b> = 'variations_only'
-                </li>
+                <li><b>oneshot_upscaled</b> (default if <b>pick</b> is not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with
+                  variations and such.</li>
+                <li><b>with_followup</b>: Generates 4 images, on which you can follow-up with another request to pick a variation/upscale. <span style="color: #BB0000;">~ not yet available, contact us if you need it </span></li>
+                <li><b>followup</b> (default if <b>pick</b> is given): Don't specify it as it's implied when you pass the <b>pick</b> parameter. <span style="color: #BB0000;">~ not yet available</span></li>
               </ul>
             </li>
+            <li><b>pick</b>: Choose to create more versions of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4).</li>
+            <li><b>job_id</b> (required if <b>pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>with_follow_up</b>. <span style="color: #BB0000;">~ not yet available</span></li>
           </ul>
         </div>
         <div><b>Response</b>
@@ -274,7 +274,10 @@
       <div style="margin-left: 50px;">
         <div>
           <h4>Example</h4>
-          http://api.mjapi.io/getjob?job_id=5614325613212231231
+          <ul>
+            <li>Get 1 image, auto-upscaled: <pre class="example_code">http://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></pre></li>
+          </ul>
+
         </div>
         <div>
           <h4>Params</h4>

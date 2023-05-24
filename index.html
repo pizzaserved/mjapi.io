@@ -97,7 +97,7 @@
       <li>You <a href="https://discord.com/register">create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons.</li>
       <li><a href="https://linuxhint.com/get-discord-token/">Find</a> your discord user token.</li>
       <li>Get an official Midjourney <a href="https://docs.midjourney.com/docs/plans">subscription</a> with the newly created discord account.</li>
-      <li>Register here for FREE and get your API Key via email. You get 1 day of free usage.</li>
+      <li>Register here and get your API Key via email. You get 1 day of free usage.</li>
       <li>You're ready to go! Check the API Usage section.</li>
       <li>Once your sub expires, you can extend it by any amount you like!</li>
       <li>You'll get a confirmation email. Your API Key doesn't change.</li>
@@ -158,7 +158,11 @@
           })
           .catch(err => {
             button.style.display = button_display_prev_value
-            div_response.textContent = "Error:\n" + err
+            let msg = "Error:\n" + err
+            if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
+              msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+            }
+            div_response.textContent = msg
             console.error("Error received: " + err);
           });
 
@@ -258,13 +262,17 @@
                   .then(res => res.json())
                   .then(json_data => {
                     button.style.display = button_display_prev_value
-                    json_data_str = JSON.stringify(json_data, null, 2)
+                    const json_data_str = JSON.stringify(json_data, null, 2)
                     console.info("Response received: " + json_data_str);
                     div_response.textContent = json_data_str
                   })
                   .catch(err => {
                     button.style.display = button_display_prev_value
-                    div_response.textContent = "Error:\n" + err
+                    let msg = "Error:\n" + err
+                    if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
+                      msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                    }
+                    div_response.textContent = msg
                     console.error("Error received: " + err);
                   });
 
@@ -377,7 +385,11 @@
                   })
                   .catch(err => {
                     button.style.display = button_display_prev_value
-                    div_response.textContent = "Error:\n" + err
+                    let msg = "Error:\n" + err
+                    if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
+                      msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                    }
+                    div_response.textContent = msg
                     console.error("Error received: " + err);
                   });
 

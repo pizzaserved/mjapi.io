@@ -11,6 +11,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link type="text/css" rel="stylesheet" href="style.css">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta name="robots" content="index, follow">
   <meta name="description" content="MidJourney API access, plain and simple, no BS">
   <meta name="keywords" content="midjourney, midjourney api, api, simple midjourney api">
@@ -37,7 +39,10 @@
     }
     gtag('js', new Date());
 
-    gtag('config', 'AW-11185988260');
+    // Updated as per https://www.tinstar.co.uk/studio-blog/some-cookies-are-misusing-the-recommended-samesite-attribute-how-to-fix
+    gtag('config', 'AW-11185988260', {
+      cookie_flags: 'SameSite=None;Secure'
+    });
   </script>
 
   <!-- Event snippet for Page view conversion page
@@ -70,7 +75,10 @@
   }
   gtag('js', new Date());
 
-  gtag('config', 'G-8PE9QGTNX2');
+  // Updated as per https://www.tinstar.co.uk/studio-blog/some-cookies-are-misusing-the-recommended-samesite-attribute-how-to-fix
+  gtag('config', 'G-8PE9QGTNX2', {
+    cookie_flags: 'SameSite=None;Secure'
+  });
 </script>
 
 <body style="font-family: Comic Sans MS">
@@ -78,8 +86,8 @@
 
   <div id="div_http_notice" style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
     <input type="button" value="Load HTTP website" onclick="on_load_http()">
-    <p>required to submit forms on this page, otherwise no buttons will work</p>
-    <p>(fix incoming)</p>
+    <p>Required by the Register form and Api usage forms (fix incoming)</p>
+    <p>Payments form works either way</p>
   </div>
 
   <br/>
@@ -91,7 +99,7 @@
       <li>Get an official Midjourney <a href="https://docs.midjourney.com/docs/plans">subscription</a> with the newly created discord account.</li>
       <li>Register here for FREE and get your API Key via email. You get 1 day of free usage.</li>
       <li>You're ready to go! Check the API Usage section.</li>
-      <li>Once your sub expires, make an ETH payment to our address, specifying your user id as extra data.</li>
+      <li>Once your sub expires, you can extend it by any amount you like!</li>
       <li>You'll get a confirmation email. Your API Key doesn't change.</li>
       <li>If you want all your data to be deleted from our database, shoot us an email with the message 'delete'.</li>
     </ul>
@@ -394,10 +402,13 @@
   <h2>Making payments</h2>
   <div>
     <div>
-      <p>We're using BTCPay for payments, and we're paying for your fees! Yeah, you see, we really like you (kidding)</p>
       <p>Find your user id in the email we've sent you upon account creation. Make sure it's the correct one!</p>
-      user_id <input type="number" name="input_userid" id="input_userid" required style="width: 30vw;">
-      <div id="div_btcpay" style="display: none;">
+      <form id="form_register_user" style="width: 50vw;" target="iframe_dummy">
+        <pre>
+          user_id <input type="number" name="input_userid" id="input_userid" required style="width: 160px;">
+        </pre>
+      </form>
+      <div id="div_btcpay" style="margin-left: 120px;">
         <style>
           .btcpay-form {
             display: inline-flex;
@@ -589,12 +600,13 @@
         <form method="POST" action="https://btcpay0.voltageapp.io/api/v1/invoices" class="btcpay-form btcpay-form--block">
           <input type="hidden" name="storeId" value="BPjzrWkfmmKZb1GocoNic3WKaRhuBoJJZ1aLCnCMxgGw" />
           <input type="hidden" name="jsonResponse" value="true" />
-          <input type="hidden" name="orderId" value="&lt;tobepopulatedbyfrontend&gt;" />
+          <input id="orderId" type="hidden" name="orderId" value="&lt;tobepopulatedbyfrontend&gt;" />
+          <!-- <input id="orderValue" type="hidden" name="orderValue" value="&lt;tobepopulatedbyfrontend&gt;" /> -->
           <input type="hidden" name="checkoutDesc" value="Extend or create your subscription for roughly ~0.7 USD per day. If you encounter any issues, shoot at pizzaserved@gmail.com" />
-          <input type="hidden" name="serverIpn" value="http://api.mjapi/io/txipn" />
+          <input type="hidden" name="serverIpn" value="http://api.mjapi.io/txipn" />
           <input type="hidden" name="browserRedirect" value="http://mjapi.io" />
           <div class="btcpay-custom-container">
-            <input class="btcpay-input-price" type="number" name="price" min="1" max="69" step="1" value="10" data-price="10" style="width:168px;" />
+            <input id='input_amount' class="btcpay-input-price" type="number" name="price" min="1" max="69" step="1" value="10" data-price="10" style="width:168px;" />
             <select name="currency">
               <option value="USD" selected>USD</option>
               <option value="GBP">GBP</option>
@@ -602,9 +614,10 @@
             </select>
             <input type="range" class="btcpay-input-range" min="1" max="69" step="1" value="10" style="width:168px;margin-bottom:15px;" />
           </div>
-          <button type="submit" class="submit" name="submit" style="min-width:168px;min-height:46px;border-radius:4px;border-style:none;background-color:#0f3b21;cursor:pointer;" title="Pay with BTCPay Server, a Self-Hosted Bitcoin Payment Processor"><span style="color:#fff">Pay with</span>
-        <img src="https://btcpay0.voltageapp.io/img/paybutton/logo.svg" style="height:46px;display:inline-block;padding:5% 0 5% 5px;vertical-align:middle;">
-        </button></form>
+          <button id="button_btcpay" type="submit" class="submit" name="submit" style="min-width:168px;min-height:75px;border-radius:4px;border-style:none;background-color:#0f3b21;cursor:pointer;" title="Pay with BTCPay Server, a Self-Hosted Bitcoin Payment Processor"><span style="color:#fff">Pay with</span>
+          <img src="https://btcpay0.voltageapp.io/img/paybutton/logo.svg" style="height:46px;display:inline-block;padding:5% 0 5% 5px;vertical-align:middle;">
+          </button>
+        </form>
         <script>
           if (!window.btcpay) {
             var script = document.createElement('script');
@@ -682,6 +695,63 @@
           });
         </script>
       </div>
+
+      <!--Populating the orderId from btcpay form with user_id's value-->
+      <script>
+        const input_userid = document.getElementById('input_userid')
+        const div_btcpay = document.getElementById('div_btcpay')
+        const input_orderId = document.getElementById('orderId')
+          // const input_orderValue = document.getElementById('orderValue')
+          // const input_amount = document.getElementById('input_amount')
+        const button_btcpay = document.getElementById('button_btcpay')
+
+        function set_button_enabled(enabled) {
+          if (enabled) {
+            button_btcpay.removeAttribute("disabled"); // enable button
+            button_btcpay.style.opacity = 1.0
+          } else {
+            button_btcpay.setAttribute("disabled", "disabled"); // disable button
+            button_btcpay.style.opacity = 0.5
+          }
+        }
+
+        function update_btn_from_userid_input() {
+          const value = input_userid.value
+            // console.log(`user_id set to ${value}`);
+          input_orderId.value = value + ''
+          const value_str = value + ''
+          if (value && !(value_str.includes("e")) && !(value_str.includes("-")) && !(value_str.includes("+"))) {
+            set_button_enabled(true);
+          } else {
+            set_button_enabled(false);
+          }
+        }
+
+        // function update_input_orderValue() {
+        //   console.log('update_input_orderValue value' + input_amount.value)
+        //   input_orderValue.value = input_amount.value
+
+        //   window.setTimeout(update_input_orderValue, 100);
+        // }
+        // update_input_orderValue();
+
+        function on_btcpay_click() {
+          // console.log('on_btcpay_click value' + input_orderValue.value)
+          // set_button_enabled(false);
+
+          // Seems the button doesn't work at all in some cases if we're disabling it right away. Not confirmed yet
+          window.setTimeout(() => set_button_enabled(false), 200 /* 4 sec */ );
+          // Enable back after a few secs
+          window.setTimeout(update_btn_from_userid_input, 8000 /* 4 sec */ );
+        }
+
+        // Initially disabled
+        set_button_enabled(false);
+        input_userid.addEventListener("change", update_btn_from_userid_input);
+        input_userid.addEventListener("keydown", update_btn_from_userid_input);
+        input_userid.addEventListener("keyup", update_btn_from_userid_input);
+        button_btcpay.addEventListener("click", on_btcpay_click);
+      </script>
     </div>
   </div>
 

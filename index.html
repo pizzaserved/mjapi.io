@@ -19,7 +19,7 @@
   <meta name="revisit-after" content="7 days">
 
   <!--Open Graph tags-->
-  <meta property="og:url" content="http://mjapi.io">
+  <meta property="og:url" content="https://mjapi.io">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MidJourney API">
   <meta property="og:description" content="MidJourney API access, plain and simple, no BS">
@@ -140,7 +140,7 @@
         button.style.display = "none"
 
         // Fetch
-        fetch("http://api.mjapi.io/adduser?" + qparams, {
+        fetch("https://api.mjapi.io/adduser?" + qparams, {
             method: "get"
           })
           .then(res => res.json())
@@ -182,9 +182,9 @@
         <div>
           <h4>Request examples</h4>
           <ul>
-            <li>Get 1 image, auto-upscaled: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
-            <li>Get 4 images, then choose variation/upscale in another call: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=with_followup</i></pre></li>
-            <li>Choose a variation/upscale of a previous job: <pre class="example_code">http://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></pre></li>
+            <li>Get 1 image, auto-upscaled: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
+            <li>Get 4 images, then choose variation/upscale in another call: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=with_followup</i></pre></li>
+            <li>Choose a variation/upscale of a previous job: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></pre></li>
           </ul>
         </div>
         <div>
@@ -256,7 +256,7 @@
                 button.style.display = "none"
 
                 // Fetch
-                fetch("http://api.mjapi.io/addjob?" + qparams, {
+                fetch("https://api.mjapi.io/addjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -291,7 +291,7 @@
         <div>
           <h4>Request example</h4>
           <ul>
-            <li>Get a job's status <pre class="example_code">http://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></pre></li>
+            <li>Get a job's status <pre class="example_code">https://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></pre></li>
           </ul>
 
         </div>
@@ -362,7 +362,7 @@
 
 
                 // Fetch
-                fetch("http://api.mjapi.io/getjob?" + qparams, {
+                fetch("https://api.mjapi.io/getjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -615,8 +615,8 @@
           <input id="orderId" type="hidden" name="orderId" value="&lt;tobepopulatedbyfrontend&gt;" />
           <!-- <input id="orderValue" type="hidden" name="orderValue" value="&lt;tobepopulatedbyfrontend&gt;" /> -->
           <input type="hidden" name="checkoutDesc" value="Extend or create your subscription for roughly ~0.7 USD per day. If you encounter any issues, shoot at pizzaserved@gmail.com" />
-          <input type="hidden" name="serverIpn" value="http://api.mjapi.io/txipn" />
-          <input type="hidden" name="browserRedirect" value="http://mjapi.io" />
+          <input type="hidden" name="serverIpn" value="https://api.mjapi.io/txipn" />
+          <input type="hidden" name="browserRedirect" value="https://mjapi.io" />
           <div class="btcpay-custom-container">
             <input id='input_amount' class="btcpay-input-price" type="number" name="price" min="1" max="69" step="1" value="10" data-price="10" style="width:168px;" />
             <select name="currency">

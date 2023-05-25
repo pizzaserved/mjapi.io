@@ -84,11 +84,11 @@
 <body style="font-family: Comic Sans MS">
   <h1>Welcome to our modern, responsive, award-wining, photo-realistic, hdr 8k, 80mm, trending website!</h1>
 
-  <div id="div_http_notice" style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
-    <input type="button" value="Load HTTP website" onclick="on_load_http()">
+  <!-- <div id="div_http_notice" style="position: fixed; right: 20px; bottom: 20px; background-color: rgb(173, 126, 126); padding: 20px">
+    <input type="button" value="Load HTTP website" onclick="on_load_http_clicked()">
     <p>Required by the Register form and Api usage forms (fix incoming)</p>
     <p>Payments form works either way</p>
-  </div>
+  </div> -->
 
   <br/>
   <h2>How it works</h2>
@@ -160,7 +160,8 @@
             button.style.display = button_display_prev_value
             let msg = "Error:\n" + err
             if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
-              msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+              // msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+              msg += "\nHint: Try loading the HTTP version of the website."
             }
             div_response.textContent = msg
             console.error("Error received: " + err);
@@ -270,7 +271,8 @@
                     button.style.display = button_display_prev_value
                     let msg = "Error:\n" + err
                     if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
-                      msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                      // msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                      msg += "\nHint: Try loading the HTTP version of the website."
                     }
                     div_response.textContent = msg
                     console.error("Error received: " + err);
@@ -387,7 +389,8 @@
                     button.style.display = button_display_prev_value
                     let msg = "Error:\n" + err
                     if (msg.includes("Failed to fetch") && location.protocol !== 'http:') {
-                      msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                      // msg += "\nHint: Try loading the HTTP version of the website. See the bottom-right red box"
+                      msg += "\nHint: Try loading the HTTP version of the website."
                     }
                     div_response.textContent = msg
                     console.error("Error received: " + err);
@@ -824,16 +827,16 @@
 </script>
 
 <script>
-  function on_load_http() {
+  function on_load_http_clicked() {
     if (location.protocol !== 'http:') {
       location.replace(`http:${location.href.substring(location.protocol.length)}`);
     }
   }
 
-  if (location.protocol === 'http:') {
-    var notice = document.getElementById("div_http_notice");
-    notice.style.display = 'none'
-  }
+  // if (location.protocol === 'http:') {
+  //   var notice = document.getElementById("div_http_notice");
+  //   notice.style.display = 'none'
+  // }
 </script>
 
 </html>

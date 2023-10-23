@@ -1,0 +1,157 @@
+<section class="mjapi-header container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-7">
+      <h1>The huge and catchy title comes over here</h1>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="mjapi-header-img">
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-md-7">
+    <button type="button" class="btn btn-primary">Discover now</button>
+  </div>
+</section>
+
+<section class="mjapi-hiw container-fluid">
+  <div *ngFor="let step of steps; let i = index">
+    <div class="row" *ngIf="i % 3 == 0">
+      <div *ngFor="let s of steps.slice(i, i+3)" class="col-sm-6 col-md-4 step-container">
+        <div class="{{s.id}}-icon" [innerHtml]="s.text"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mjapi-register container-fluid">
+  <register-login-form></register-login-form>
+</section>
+
+<section class="mjapi-payment container-fluid">
+  <h2>Payment</h2>
+  <div class="row">
+    <div class="col-12">
+      <form >
+        <div class="input-group">
+          <input type="text" name="uid" id="uid" aria-label="Enter Your User ID">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let item of cardList" >
+      <card [card]="item"></card>
+    </div>
+  </div>
+  <p>or</p>
+  <div class="row">
+    <div class="col-6">
+      <card [card]="btcCard"></card>
+    </div>
+  </div>
+</section>
+
+<section class="mjapi-usage container-fluid">
+  <p>API Usage</p>
+  <div class="api-container" id="apis">
+    <div class="panel-container">
+      <div class="api-header" id="heading-add-job">
+        <button class="btn btn-link collapse-button" collapsiblePanel>
+          GET addJob
+        </button>
+      </div>
+      <div id="collapseAddJob" class="api-body-container">
+        <div class="api-body">
+          <div>
+            <h4>Request examples</h4>
+            <ul>
+              <li>Get 1 image, auto-upscaled: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></span></li>
+              <li>Get 4 images, then choose variation/upscale in another call: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=with_followup</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></span></li>
+              <li>Choose a variation/upscale of a previous job: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></span></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Params</h4>
+            <ul>
+              <li><b>key</b> (required): your API Key</li>
+              <li><b>prompt</b> (required if <b>type</b> is not specified or 'oneshot_upscaled'): your prompt, but with any special characters encoded to form a proper URL (for ex., use <i>%20</i> for spaces). You're likely already using a library, so escaping
+                the URL is already be handled for you.</li>
+              <li><b>type</b> (optional):
+                <ul>
+                  <li><b>oneshot_upscaled</b> (default if <b>pick</b> is not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with
+                    variations and such.</li>
+                  <li><b>with_followup</b>: Generates 4 images, on which you can follow-up with another request to pick a variation/upscale. <span style="color: #BB0000;">~ not yet available, contact us if you need it </span></li>
+                  <li><b>followup</b> (default if <b>pick</b> is given): Don't specify it as it's implied when you pass the <b>pick</b> parameter. <span style="color: #BB0000;">~ not yet available</span></li>
+                </ul>
+              </li>
+              <li><b>pick</b>: Choose to create more versions` of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4).</li>
+              <li><b>job_id</b> (required if <b>pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>with_follow_up</b>. <span style="color: #BB0000;">~ not yet available</span></li>
+            </ul>
+          </div>
+          <div><b>Response</b>
+            <pre class="example-code">
+              <!-- <code> -->
+  {{apiAddJobSampleResponse | json}}
+              <!-- </code> -->
+            </pre>
+          </div>
+          <div>
+            <h4>Try it now</h4>
+            <try-form></try-form>
+          </div>
+          <div>
+            <h4>Rate limiting</h4>
+            <p>There's a 5 requests/10sec rate limiting. That's still a lot for 99% of users</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-container" >
+      <div class="api-header" id="heading-add-job">
+        <button class="btn btn-link" collapsiblePanel>
+          GET getJob
+        </button>
+      </div>
+      <div id="collapseAddJob" class="api-body-container" >
+        <div class="api-body">
+          <h4>Request example</h4>
+          <ul>
+            <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></span></li>
+          </ul>
+
+        
+        <div>
+          <h4>Params</h4>
+          <ul>
+            <li><b>job_id</b>: the job ID you've got from <b>addjob</b></li>
+          </ul>
+        </div>
+        <div><b>Response</b>
+          <pre class="example-code">
+            <code>
+{{apiAddJobSampleResponse | json}}
+            </code>
+          </pre>
+          <div>
+            <h4>Params</h4>
+            <ul>
+              <li><b>progress</b>: -1 = pending; 0-99 = in progress; 100 = done</li>
+              <li><b>result_url</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4>Try it now</h4>
+          <try-form></try-form>
+        </div>
+        <div>
+          <h4>Rate limiting</h4>
+          <p>There's a 5 requests/10sec rate limiting. That's still a lot for 99% of users</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>

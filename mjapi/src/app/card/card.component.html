@@ -1,0 +1,30 @@
+<div class="payment-card">
+    <div *ngIf="card.type != 'btc'" class="simple">
+        <div class="col-12 d-flex justify-content-center">
+            <h5 class="card-title">{{card.name}}</h5>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <h3 class="card-price">{{card.price | dolar}}</h3>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <p class="card-description">{{card.description}}</p>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" >{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button>
+        </div>
+    </div>
+    <div *ngIf="card.type == 'btc'" class="bitcoin">
+        <div class="col-12  d-flex justify-content-center">
+            <p class="card-description">{{card.description}}</p>
+        </div>
+        <form [formGroup]="btcForm">
+            <div class="form-control">
+                <input type="range" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
+            </div>
+            <p class=" d-flex justify-content-center">{{btcForm.get('btcSlider')?.value}}</p>
+            <div class="col-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Pay With Bitcoin</button>
+            </div>
+        </form>
+    </div>
+</div>

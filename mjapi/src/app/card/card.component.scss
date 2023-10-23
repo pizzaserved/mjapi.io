@@ -1,0 +1,16 @@
+.payment-card{
+    border: 1px solid;
+    border-radius: 62px;
+    background: rgba(239, 235, 255, 0.10);
+
+    box-shadow: 0px 0px 100px 22px rgba(242, 242, 242, 0.07);
+    backdrop-filter: blur(10.5px);
+
+    .simple {
+        padding: 3rem;
+    }
+
+    .bitcoin {
+        padding: 3rem;
+    }
+}

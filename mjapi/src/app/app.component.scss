@@ -1,0 +1,70 @@
+.discord-icon::before{
+    background-image: url(../assets/icons/discord.svg);
+}
+.token-icon::before{
+    background-image: url(../assets/icons/token.svg);
+}
+.midjourney-icon::before{
+    background-image: url(../assets/icons/midjourney.svg);
+}
+.key-icon::before{
+    background-image: url(../assets/icons/key.svg);
+}
+.check-down-icon::before{
+    background-image: url(../assets/icons/check-down.svg);
+}
+.expire-icon::before{
+    background-image: url(../assets/icons/expire.svg);
+}
+
+.discord-icon,
+.token-icon,
+.midjourney-icon,
+.key-icon,
+.check-down-icon,
+.expire-icon{
+    &::before{
+        content: '';
+        display: flex;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 140px;
+        height: 92px;
+    }
+}
+
+
+.panel-container {
+    border: 1px solid;
+    border-radius: 46px;
+    background: rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(49.5px);
+    padding: 1rem 1.5rem;
+    &:not(:last-child){
+        margin-bottom: 1rem;
+    }
+
+    .collapse-button{
+        text-decoration: none !important;
+    }
+
+    .api-body-container{
+        display: none;
+        flex-flow: column;
+        max-width: 100%;
+
+        .example-code {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+    }
+    &.open{
+        .api-body-container{
+            display: flex !important;
+        }
+    }
+
+}
+

@@ -158,7 +158,7 @@
         button.style.display = "none"
 
         // Fetch
-        fetch("https://api.mjapi.io/adduser?" + qparams, {
+        fetch("/adduser?" + qparams, {
             method: "get"
           })
           .then(res => res.json())
@@ -275,7 +275,7 @@
                 button.style.display = "none"
 
                 // Fetch
-                fetch("https://api.mjapi.io/addjob?" + qparams, {
+                fetch("/addjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())
@@ -382,7 +382,7 @@
 
 
                 // Fetch
-                fetch("https://api.mjapi.io/getjob?" + qparams, {
+                fetch("/getjob?" + qparams, {
                     method: "get"
                   })
                   .then(res => res.json())

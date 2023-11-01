@@ -203,7 +203,7 @@
           <ul>
             <li>Get 1 image, auto-upscaled: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
             <li>Get 4 images, then choose variation/upscale in another call: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
-            <li>Choose a variation/upscale of a previous job: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>job_id=123213</i>&<i>pick=v1</i></pre></li>
+            <li>Choose a variation/upscale of a previous job: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>picker_job_id=123213</i>&<i>pick=v1</i></pre></li>
           </ul>
         </div>
         <div>
@@ -221,7 +221,7 @@
               </ul>
             </li>
             <li><b>pick</b>: Choose to create more versions of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4).</li>
-            <li><b>job_id</b> (required if <b>pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>grid</b>. <span style="color: #BB0000;">~ not yet available</span></li>
+            <li><b>picker_job_id</b> (required if <b>pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>grid</b>. <span style="color: #BB0000;">~ not yet available</span></li>
           </ul>
         </div>
         <div><b>Response</b>

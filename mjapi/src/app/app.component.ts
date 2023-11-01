@@ -4,7 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CardService } from './shared/card-service.service';
 import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
-import { UserService } from './shared/user.service';
+import { User, UserService } from './shared/user.service';
 
 declare const ScrollMagic: any;
 declare const TweenMax: any;
@@ -87,6 +87,8 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   accountTypeSubscription = new Subscription();
   accountTypeChange = new Subscription();
+  userServiceSubscription = new Subscription();
+
   currentAccounType:string = '';
   // @ViewChild('accType') accType!: ElementRef;
   switchForm: FormGroup = new FormGroup({
@@ -94,20 +96,27 @@ export class AppComponent implements OnInit, AfterViewInit{
   })
   accType: string = '';
 
+  currentUser: User| null = null
+  isLoggedIn: boolean = false;
 
   constructor(private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService){}
 
   ngOnInit(): void {
+
     this.cardList = this.cardService.getPaymentCards();
     this.btcCard = this.cardService.getBtcCard();
     
     this.switchForm.get('accType')?.valueChanges.subscribe(data=> {
       console.log(data);
-      this.accType = data ? 'selfServed' : 'fairy';
+      this.accType = data ? 'selfserve' : 'fairy';
       this.userService.setSelectedTypeAcc(this.accType);
-    })
+    });
     
-
+    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
+      console.log("A user has logged in:", user);
+      this.currentUser = user;
+      this.isLoggedIn = true;
+    })
   }  
 
   ngAfterViewInit() {
@@ -122,7 +131,4 @@ export class AppComponent implements OnInit, AfterViewInit{
     })
   }
 
-  changeAccountType(){
-    // console.log(this.accType)
-  }
 }

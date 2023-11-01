@@ -10,6 +10,7 @@ import { DolarPipe } from './shared/dolar.pipe';
 import { CollapsiblePanelDirective } from './shared/collapsible-panel.directive';
 import { TryFormComponent } from './try-form/try-form.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterLoginComponent } from './register-login/register-login.componen
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 <div class="row main-container">
-    <div class="col-sm-11 col-md-8 col-xl-6 col-xxl-4 register-container">
-      <div class="panel">
+    <div class="col-sm-11 col-md-8 col-xl-6 col-xxxl-4 register-container">
+      <div class="panel" *ngIf="!isLoggedIn">
           <div class="d-flex justify-content-center">
-              <p class="panel-header section-header">Log in or Register Now</p>
+              <p class="panel-header section-header">Log in or Register</p>
           </div>
         <form [formGroup]='registerForm' (ngSubmit)="submitRegister()">
           <div class="switch-container">
@@ -26,18 +26,28 @@
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username" formControlName="username" [class.is-invalid]="!isRegistered && (registerForm.get('username')!.touched || registerForm.get('username')!.dirty) && registerForm.get('username')!.invalid">
                 <span class="invalid-feedback" *ngIf="!isRegistered && (registerForm.get('username')!.touched || registerForm.get('username')!.dirty) && registerForm.get('username')!.invalid">Username is required</span>
             </div>
-            <div class="form-group mb-3" *ngIf="userTypeAccount == 'selfServed'">
-                <input type="text" class="form-control" placeholder="Discord Token" aria-label="Discord Token" name="discordToken" formControlName="discordToken" [class.is-invalid]="userTypeAccount == 'selfServed' && (registerForm.get('discordToken')!.touched || registerForm.get('discordToken')!.dirty) && registerForm.get('discordToken')!.invalid">
-                <span class="invalid-feedback" *ngIf="userTypeAccount == 'selfServed' && (registerForm.get('username')!.touched || registerForm.get('discordToken')!.dirty) && registerForm.get('discordToken')!.invalid">Username is required</span>
+            <div class="form-group mb-3" *ngIf="userTypeAccount == 'selfserve'">
+                <input type="text" class="form-control" placeholder="Discord Token" aria-label="Discord Token" name="discordToken" formControlName="discordToken" [class.is-invalid]="userTypeAccount == 'selfserve' && (registerForm.get('discordToken')!.touched || registerForm.get('discordToken')!.dirty) && registerForm.get('discordToken')!.invalid">
+                <span class="invalid-feedback" *ngIf="userTypeAccount == 'selfserve' && (registerForm.get('username')!.touched || registerForm.get('discordToken')!.dirty) && registerForm.get('discordToken')!.invalid">Username is required</span>
             </div>
           </div>
 
           <div class="row">
             <div class="col-xs-12 d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid"> Register</button>
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Go</button>
             </div>
           </div>
         </form>
+      </div>
+      <div class="pannel" *ngIf="isLoggedIn">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <h3>Hello, {{currentUser!.username}}</h3>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

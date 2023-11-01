@@ -12,8 +12,8 @@ export class TryFormComponent {
   @Input() jobType!: string;
 
   tryNowAddForm:FormGroup = new FormGroup({
-    tryInput: new FormControl(''),
-    propmpt: new FormControl('')
+    key: new FormControl(''),
+    prompt: new FormControl('')
   });
   tryNowGetForm:FormGroup = new FormGroup({
     jobId: new FormControl('')
@@ -23,12 +23,18 @@ export class TryFormComponent {
     data:{},
     value: {},
     url:string,
+    isError: boolean
   }| null = null
 
   constructor(private apiService: ApiService){}
 
   submitTryNow(){
     if(this.jobType == 'add') {
+      console.log(this.tryNowAddForm);
+      
+      let key = this.tryNowAddForm.get('key')!.value;      
+      let prompt = this.tryNowAddForm.get('prompt')!.value;
+      this.response = this.apiService.addJob(key, prompt)
 
     } else if(this.jobType == 'get') {
       let jobId = this.tryNowGetForm.get('jobId')!.value;

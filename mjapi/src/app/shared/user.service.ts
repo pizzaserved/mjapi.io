@@ -1,13 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, of, switchMap } from 'rxjs';
+import { URL_PATH } from '../../global';
+import { CookieService } from 'ngx-cookie';
 
 export type User = {
   accountID: string,
   email: string,
   username: string,
-  accountType: 'selfServed' | 'fairy'
-  endDate: Date
+  accountType: 'selfserve' | 'fairy'
+  endDate: Date,
+  hasFiatSub: boolean
 }
 
 @Injectable({
@@ -18,40 +21,94 @@ export class UserService {
   isRegistered: boolean = false;
   selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
 
-  currentUser: BehaviorSubject<User> | null = null;
+  currentUser: BehaviorSubject<User |null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  register(email: string, username: string, accountType: string, discordToken?: string){
-    console.log('register');
+  private getUser(email: string) {
+    console.log('get user');
+    
+    let  params: HttpParams = new HttpParams();
+    params = params.append('email', email);
+
+    return this.http.get(`${URL_PATH}/getuser`, {params: params})
+    // .subscribe({
+    //   next: (data: any) => {
+    //     console.log('data', data)
+        
+    //   },
+    //   error: (error) => {
+    //     console.log("Eroare register : ",  error);
+    //     if(error.error.status == 'error'){
+    //       // if(error.error.message == 'Email not found'){
+    //         this.isRegistered == false;
+    //       // }
+
+    //     }
+    //   }
+    // })
+  }
+
+  register(email: string, accountType: string, discordToken?: string): boolean{
+    console.log('register', accountType);
 
     let params: HttpParams = new HttpParams();
-    params = params.append('user', username);
     params = params.append('email', email);
-    params = params.append('discord_token', discordToken != undefined ? discordToken : '');
 
-    this.http.get('https://api.mjapi.io/adduser', {params: params})
-      .subscribe({
-        next: (data)=> {
-        console.log("Am inregistrat ",data);
-        // var registeredUser = {
-        //   accountID: data.data.user_id,
-        //   username: data.data.user,
-        //   email: data.data.email,
-        //   endDate: data.data.end_date
-        // }
-        // this.currentUser?.next(registeredUser)
-        }, 
-        error: (error) => {
-          console.log(error);
-          
-        }
+    this.checkUserCookies();
+
+    this.getUser(email).pipe(
+      catchError((error) => {
+        if(error != undefined && error.error != undefined && error.error.status == 'error'){
+          this.isRegistered = false;
+
+          params = params.append('account_type', accountType);
+          if(discordToken != undefined && discordToken != null && discordToken.length > 0){
+            params = params.append('discord_token', discordToken);
+          }
+
+          return this.http.get(`${URL_PATH}/adduser`, {params: params})
+        } 
+        return of(null)
       })
+    ).subscribe((response: any) => {
+      console.log(response);
+      if(response.data !== undefined && response.data !== null) {
+        var responseData = response.data;
+        var newUser: User = {
+          accountType: responseData.account_type,
+          accountID: responseData.user_id,
+          email: responseData.email,
+          username: responseData.user,
+          endDate: responseData.end_date,
+          hasFiatSub: responseData.has_fiat_sub
+        }
+
+        /* Set cookie */
+        this.cookieService.put('userEmail', btoa(newUser.email));
+
+        /* Update current user */
+        this.currentUser.next(newUser);
+        this.isLoggedin = true;
+        this.isRegistered = true;
+      } 
+    })
     
-    // this.currentUser = user;
-    this.isRegistered = true;
-    this.isLoggedin = true;
+    if(this.isLoggedin && this.isRegistered)
+      return true
+
+    return false
   }
+
+  private checkUserCookies() {
+    const userEmail = this.cookieService.get('userEmail');
+
+    if(userEmail) {
+      console.log('Vezi cookie', atob(userEmail))
+    }
+  }
+
+  
 
   login(email: string){
     console.log("login");
@@ -62,7 +119,10 @@ export class UserService {
 
   logout(){
     console.log('logout');
-    
+    this.isLoggedin = false;
+    this.isRegistered = false;
+
+    this.currentUser = new BehaviorSubject<User | null>(null)
   }
 
   getCurrentUser(){

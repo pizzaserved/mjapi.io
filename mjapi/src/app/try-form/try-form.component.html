@@ -3,10 +3,10 @@
 
         <form [formGroup]="tryNowAddForm" (ngSubmit)="submitTryNow()" *ngIf="jobType == 'add'">
             <div class="input-group mb-3">
-                <input class="form-control" type="text" name="tryInput" placeholder="API key">
+                <input class="form-control" type="text" name="key" placeholder="API key" formControlName="key">
             </div>
             <div class="input-group mb-3">
-                <textarea class="form-control" type="text" name="prompt" placeholder="Prompt"></textarea>
+                <textarea class="form-control" type="text" name="prompt" placeholder="Prompt" formControlName="prompt"></textarea>
             </div>
             <div class="row mb-5">
                 <div class="col-xs-12">
@@ -27,13 +27,13 @@
     </div>
 
     <div class="col-12" [class]="jobType == 'add'? 'col-md-5' : 'col-md-7' ">
-        <div class="response-container col-12"  *ngIf="response != null && response.data != {}">
+        <div class="response-container col-12"  *ngIf="response != null">
             <div class="response-data example-code">
-                <pre>
-{{response.data | json}}
+                <pre class="example-code">
+{{response.value | json}}
                 </pre>
             </div>
-            <div class="response-image" *ngIf="response.url != null">
+            <div class="response-image" *ngIf="jobType =='get' && !response.isError && response.url != null">
                 <img [src]="response.url" alt="Loading preview ...">
             </div>
         </div>

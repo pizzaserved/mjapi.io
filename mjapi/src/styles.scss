@@ -226,7 +226,7 @@ button {
 @media (min-width: 1600px){
   .switch{
     width: var(--xl-switch-width);
-    height: var(--xl-switch-height);
+    height: calc(var(--xl-switch-thumb-height) + 2px);
 
     .slider {
       &:before{

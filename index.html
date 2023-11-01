@@ -202,8 +202,8 @@
           <h4>Request examples</h4>
           <ul>
             <li>Get 1 image, auto-upscaled: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
-            <li>Get 4 images, then choose variation/upscale in another call: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
-            <li>Choose a variation/upscale of a previous job: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>picker_job_id=123213</i>&<i>pick=v1</i></pre></li>
+            <li>Get 4 images, then choose optionally adjust it in another call: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></pre></li>
+            <li>Choose an adjustment of a previous job: <pre class="example_code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>parent_job_id=123213</i>&<i>followup_pick=U3</i></pre></li>
           </ul>
         </div>
         <div>
@@ -214,14 +214,14 @@
               the URL is already be handled for you.</li>
             <li><b>type</b> (optional):
               <ul>
-                <li><b>oneshot_upscaled</b> (default if <b>pick</b> is not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with
+                <li><b>oneshot_upscaled</b> (default if <b>followup_pick</b> is not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering with
                   variations and such.</li>
-                <li><b>grid</b>: Generates 4 images, on which you can follow-up with another request to pick a variation/upscale. <span style="color: #BB0000;">~ not yet available, contact us if you need it </span></li>
-                <li><b>followup</b> (default if <b>pick</b> is given): Don't specify it as it's implied when you pass the <b>pick</b> parameter. <span style="color: #BB0000;">~ not yet available</span></li>
+                <li><b>grid</b>: Generates 4 images, on which you can follow-up with another request to pick an adjustment (valid ones returned in response). <span style="color: #BB0000;">~ not yet available, contact us if you need it </span></li>
+                <li><b>followup</b> (default if <b>followup_pick</b> is given): Don't specify it as it's implied when you pass the <b>followup_pick</b> parameter. <span style="color: #BB0000;">~ not yet available</span></li>
               </ul>
             </li>
-            <li><b>pick</b>: Choose to create more versions of a particular variation (v1, v2, v3, v4) or to upscale a particular variation (u1, u2, u3, u4).</li>
-            <li><b>picker_job_id</b> (required if <b>pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>grid</b>. <span style="color: #BB0000;">~ not yet available</span></li>
+            <li><b>followup_pick</b>: Choose to create more versions of a particular variation (V1, V2, V3, V4), to upscale a particular variation (U1, U2, U3, U4) or any other special adjustment such as 'Zoom Out 2x' (returned in the original response).</li>
+            <li><b>parent_job_id</b> (required if <b>followup_pick</b> is given): the job id returned from a previous call to <b>addjob</b> with <b>type</b> being <b>grid</b>. <span style="color: #BB0000;">~ not yet available</span></li>
           </ul>
         </div>
         <div><b>Response</b>

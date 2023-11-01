@@ -1,3 +1,20 @@
+:host{
+    --background-height: 125vh;
+    --xl-section-title-size: calc(var(--xl-body-text-size) * 1.681 * 1.618);
+    --sm-section-title-size: calc(var(--body-text-size) * 1.681);
+    --xl-body-text-size: 1.6rem;
+    --body-text-size: 1rem;
+    --xl-landing-text-size: calc(var(--xl-body-text-size) * 1.681 * 1.618 * 1.681 );
+    --sm-landing-text-size: calc(var(--body-text-size) * 1.681 * 1.618);
+
+    --xl-max-width: 66vw;
+    --md-max-width: 1200px;
+    --sm-max-width: 100%;
+
+    --xl-icons-height: 4vw;
+}
+
+
 .discord-icon::before{
     background-image: url(../assets/icons/discord.svg);
 }
@@ -6,6 +23,7 @@
 }
 .midjourney-icon::before{
     background-image: url(../assets/icons/midjourney.svg);
+    height: 111px !important;
 }
 .key-icon::before{
     background-image: url(../assets/icons/key.svg);
@@ -23,6 +41,8 @@
 .key-icon,
 .check-down-icon,
 .expire-icon{
+    margin-bottom: 1.125rem;
+
     &::before{
         content: '';
         display: flex;
@@ -36,7 +56,6 @@
 
 
 .panel-container {
-    border: 1px solid;
     border-radius: 46px;
     background: rgba(255, 255, 255, 0.04);
 
@@ -48,6 +67,17 @@
 
     .collapse-button{
         text-decoration: none !important;
+
+        &::after{
+            content: url(../assets/icons/arrow-down.svg);
+            margin-left: 1rem;
+        }
+
+        &.open {
+            &::after{
+                content: url(../assets/icons/arrow.svg);
+            }
+        }
     }
 
     .api-body-container{
@@ -58,6 +88,13 @@
         .example-code {
             word-wrap: break-word;
             white-space: pre-wrap;
+            background-color: rgb(18, 18, 31);
+            padding-inline: 2rem;
+            border-radius: 18px;
+        }
+
+        .api-body{
+            margin-inline: 3rem;
         }
     }
     &.open{
@@ -68,3 +105,214 @@
 
 }
 
+.mjapi-header{
+    min-height: 100vh;
+    .mjapi-header-img{
+        border-radius: 50%;
+        .fade-out {
+            width: 100%; 
+            height: auto;
+            mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.6) 36%, rgba(0, 0, 0, 0) 63%);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.6) 36%, rgba(0, 0, 0, 0) 63%);
+        }
+    }
+}
+
+.container-landing{
+    margin: auto;
+
+    .mjapi-hiw{
+        // min-height: 40vh;
+        margin-block: 5rem;
+
+        .container-step{
+            padding: 1rem;
+        }
+    }
+
+    .mjapi-register {
+        // min-height: 30vh;
+        margin-block: 10rem;
+    }
+
+    .mjapi-payment {
+        // min-height: 60vh;
+        margin-block: 5rem;
+    }
+
+    .mjapi-faq{
+        &.panel-container{
+            padding: 2rem 4rem;
+            margin-right: 0;
+            backdrop-filter: unset !important;
+
+            .section-header{
+                font-size: var(--sm-section-title-size) !important;
+            }
+
+            .number{
+                font-family: 'Poppins Semibold';
+            }
+
+            .answer{
+                margin-left: 1.4rem;
+            }
+        }
+    }
+
+}
+.mjapi-footer{
+    background-color: var(--footer-color);
+    padding: 3rem 3.5rem 0 ;
+
+    .git-section{
+        flex-direction: column;
+        .git-header {
+            font-size: 2rem;
+        }
+    }
+    .copyright {
+        p{
+            &::before{
+                content: '©';
+                margin-right: .5rem;
+            }
+            color: rgba(245, 245, 245, 0.24) !important;
+        }
+    }
+}
+
+.section-header{
+    font-size: var(--sm-section-title-size) !important;
+}
+
+.container-header{
+    min-height: 100vh;
+    flex-flow: column;
+    justify-content: center;
+
+    .landing-header{
+        font-size: var(--sm-landing-text-size);
+        text-transform: uppercase;
+    }
+}
+
+.switch-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+
+.main-container{
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: var(--body-text-size);
+    .elipse{
+        background-image: url(../assets/icons/ellipse.svg);
+        position:absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100vw;
+        height: 60vh;
+        top: var(--background-height);
+        // right: -34%;
+        z-index: -1;
+
+        &.elipse-1{
+            top: var(--background-height);
+            transform: rotate(-50deg) translateY(19vh) translateX(40vw);
+            // right: 30%;
+        }
+        &.elipse-2{
+            top: 170vh;
+            transform: rotate(-50deg);
+            // right: 20%;
+        }
+    }
+
+    p{
+        font-size: var(--body-text-size);
+    }
+
+}
+
+.container-faq-body{
+    .panel-container{
+        background-color: transparent !important;
+        margin-bottom: 0!important;
+        padding: unset !important;
+        .answer{
+            display: none;
+        }
+        .question{
+            cursor: pointer;
+            button{
+                display: flex;
+                padding-inline: unset !important;
+                &::after{
+                    height: 30px;
+                    align-items: center;
+                    display: flex;
+                }
+            }
+            &.open +.answer{
+                display: flex;
+            }
+
+            &.open{
+                button::after{
+                    content: url(../assets/icons/arrow.svg);
+                }
+            }
+        }
+    }
+}
+.light-text{
+    font-family: 'Poppins Extralight';
+}
+
+.bold-text{
+    font-family: 'Poppins Semibold';
+}
+
+@media screen and (min-width:2200px) {
+    .landing-header{
+        font-size: var(--xl-landing-text-size) !important;
+    }
+    .container-landing{
+        max-width: var(--xl-max-width) !important;
+    }
+    .section-header{
+        font-size: var(--xl-section-title-size) !important;
+    }
+    .discord-icon,
+    .token-icon,
+    .midjourney-icon,
+    .key-icon,
+    .check-down-icon,
+    .expire-icon{
+        &::before{
+            height: var(--xl-icons-height) !important;
+        }
+    }
+
+    .main-container{
+        font-size: var(--xl-body-text-size);
+        p{
+            font-size: var(--xl-body-text-size);
+        }
+
+        .collapse-button{
+            font-size: var(--xl-body-text-size);
+        }
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:2199.9px) {
+    .container-landing{
+        max-width: var(--md-max-width) !important
+    }
+}

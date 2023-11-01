@@ -14,16 +14,19 @@
         </div>
     </div>
     <div *ngIf="card.type == 'btc'" class="bitcoin">
+        <div class="col-12 d-flex justify-content-center">
+            <h5 class="card-title">{{card.name}}</h5>
+        </div>
         <div class="col-12  d-flex justify-content-center">
             <p class="card-description">{{card.description}}</p>
         </div>
         <form [formGroup]="btcForm">
-            <div class="form-control">
+            <div class="form-control range">
                 <input type="range" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
             </div>
-            <p class=" d-flex justify-content-center">{{btcForm.get('btcSlider')?.value}}</p>
+            <p class=" d-flex justify-content-center">{{btcForm.get('btcSlider')?.value | dolar}}</p>
             <div class="col-12 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Pay With Bitcoin</button>
+                <button type="submit" class="btn btn-primary">Get</button>
             </div>
         </form>
     </div>

@@ -16,6 +16,7 @@ export type User = {
 export class UserService {
   isLoggedin: boolean = false;
   isRegistered: boolean = false;
+  selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
 
   currentUser: BehaviorSubject<User> | null = null;
 
@@ -69,6 +70,17 @@ export class UserService {
       return this.currentUser;
     }
     return null
+  }
+
+  setSelectedTypeAcc(type:string){
+    // console.log(type);
+    
+    if(type != this.selectedTypeAcc.value)
+      this.selectedTypeAcc.next(type);
+  }
+
+  getSelectedTypeAcc(){
+    return this.selectedTypeAcc;
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'try-form',
@@ -8,13 +9,31 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class TryFormComponent {
 
-  tryNowForm:FormGroup = new FormGroup({
+  @Input() jobType!: string;
+
+  tryNowAddForm:FormGroup = new FormGroup({
     tryInput: new FormControl(''),
     propmpt: new FormControl('')
   });
+  tryNowGetForm:FormGroup = new FormGroup({
+    jobId: new FormControl('')
+  });
 
+  response: {
+    data:{},
+    value: {},
+    url:string,
+  }| null = null
+
+  constructor(private apiService: ApiService){}
 
   submitTryNow(){
+    if(this.jobType == 'add') {
 
+    } else if(this.jobType == 'get') {
+      let jobId = this.tryNowGetForm.get('jobId')!.value;
+      this.response = this.apiService.getJob(jobId);
+      console.log("Raspuns primit: ", this.response);
+    }
   }
 }

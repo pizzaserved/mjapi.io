@@ -1,25 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --background-height: 125vh;
+  --section-title-size: 3.5rem;
+  --body-text-size: 1.3rem;
+  --h5-size: 1.8rem;
+  --h1-size: 5rem;
+
+  --body-color: #040210;
+  --primary-brand-color: #C58B34;
+  --footer-color: #1f1c2d47;
+
+  --hover-btn-color: #aa8aba;
+  --disabled-btn-color: #b39e7f;
+  --active-btn-color: #d49f4f;
+  --text-color-white: #DADADA;
+
+  --input-border-radius: 16px;
+
+  --sm-switch-height:22px;
+  --sm-switch-width:60px;
+  --sm-switch-thumb-height:26px;
+  --sm-switch-thumb-width:26px;
+  
+  --xl-switch-height: auto;
+  --xl-switch-width: 68px;
+  --xl-switch-thumb-height:36px;
+  --xl-switch-thumb-width:36px;
+}
+
 @font-face {
   font-family: "Poppins Regular";
   src: url('assets/font/Poppins-Regular.ttf');
 }
+@font-face {
+  font-family: "Poppins Italic";
+  src: url('assets/font/Poppins-Italic.ttf');
+}
+@font-face {
+  font-family: "Poppins Light";
+  src: url('assets/font/Poppins-Light.ttf');
+}
+@font-face {
+  font-family: "Poppins Extralight";
+  src: url('assets/font/Poppins-ExtraLight.ttf');
+}
+@font-face {
+  font-family: "Poppins Semibold";
+  src: url('assets/font/Poppins-SemiBold.ttf');
+}
+@font-face {
+  font-family: "Poppins Thin";
+  src: url('assets/font/Poppins-Thin.ttf');
+}
+@font-face {
+  font-family: "Poppins Thin Italic";
+  src: url('assets/font/Poppins-ThinItalic.ttf');
+}
 
 body{
   font-family: "Poppins Regular", sans-serif;
+  background-color: var(--body-color) !important;
+  color: #DADADA !important;
 }
 
 
 .switch {
+  align-self: center;
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: var(--sm-switch-width);
+  height: var(--sm-switch-height);
 }
 
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.switch-label{
+  align-self: center;
+  color: #C58B34;
+  &:first-child{
+      margin-right: 1rem;
+  }
+  &:last-child{
+      margin-left: 1rem;
+  }
 }
 
 .slider {
@@ -29,7 +96,7 @@ body{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgba(123, 121, 126, 0.37);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -37,21 +104,25 @@ body{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  height: var(--sm-switch-thumb-height);
+  width: var(--sm-switch-thumb-width);
+  left: 0px;
+  // bottom: -1px;
+  background-color: #C58B34;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: rgba(191, 134, 11, 0.37);
+
+  &:before{
+    left: 8px;
+  }
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px rgba(23, 6, 58, 0.37);
 }
 
 input:checked + .slider:before {
@@ -66,4 +137,102 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.form-control{
+  background-color: rgba(217, 217, 217, 0.11) !important;
+  border-color: transparent !important;
+  border-radius: var(--input-border-radius) !important;
+  padding: .75rem 1rem !important;
+  color: #dadada !important;
+
+  &::placeholder{
+    color: #9A9081;
+  }
+
+  &.range{
+    background-color: transparent !important;
+  }
+
+  &:focus{
+    background-color: rgba(217, 217, 217, 0.11) !important;
+    box-shadow: 0 0 0 0.25rem rgba(250, 155, 13, 0.435);
+  }
+  input:-internal-autofill-selected {
+    background-color: rgba(217, 217, 217, 0.11) !important;
+  }
+}
+
+.main-container{
+  p,
+  button{
+    font-size: var(--body-text-size);
+  }
+
+  h5{
+    font-size: var(--h5-size);
+  }
+  .section-header{
+    font-size: var(--section-title-size);
+  }
+}
+
+a{
+  font-family: Poppins Italic;
+  color: var(--text-color-white);
+  text-decoration: none !important;
+}
+
+button {
+  border-radius: 12px !important;
+  padding: .8rem 2rem !important;
+  &.btn-primary {
+    background-color: var(--primary-brand-color);
+    border-color: var(--primary-brand-color);
+    color: var(--text-color-white);
+    &:hover{
+      background-color: var(--hover-btn-color);
+      border-color: var(--hover-btn-color);
+      color: inherit !important;
+    }
+    &:disabled{
+      background-color: var(--disabled-btn-color);
+      border-color: var(--disabled-btn-color);
+    }
+    &:active{
+      background-color: var(--active-btn-color) !important;
+      border-color: var(--active-btn-color) !important;
+      color: var(--text-color-white) !important;
+    }
+  }
+
+  &.btn-link{
+    color: var(--text-color-white) !important;
+
+  }
+}
+
+::-webkit-slider-runnable-track{
+  border-radius: 23px !important;
+  background: rgba(197, 139, 52, 0.59) !important;
+}
+
+::-webkit-slider-thumb{
+  background-color: var(--primary-brand-color) !important;
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+@media (min-width: 1600px){
+  .switch{
+    width: var(--xl-switch-width);
+    height: var(--xl-switch-height);
+
+    .slider {
+      &:before{
+        height: var(--xl-switch-thumb-height);
+        width: var(--xl-switch-thumb-width);
+      }
+    }
+  }
 }

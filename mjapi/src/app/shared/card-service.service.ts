@@ -37,7 +37,7 @@ export class CardService {
   ];
 
   btcCard: Card = {
-    name: '',
+    name: 'Bitcoin',
     price: 0,
     description: 'Some text',
     type: 'btc',

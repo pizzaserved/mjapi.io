@@ -23,6 +23,7 @@ export class RegisterLoginComponent implements OnInit{
 
   currentUser: User | null = null;
   currentUserSubscription: Subscription = new Subscription();
+  accountTypeSubscription: Subscription = new Subscription();
 
   constructor(private userService: UserService){}
 
@@ -42,9 +43,10 @@ export class RegisterLoginComponent implements OnInit{
         this.registerForm.controls['discordToken'].clearValidators();
         this.registerForm.controls['username'].clearValidators();
       }
+      this.userService.setSelectedTypeAcc(this.userTypeAccount)
       this.registerForm.controls['discordToken'].updateValueAndValidity();
       this.registerForm.controls['username'].updateValueAndValidity();
-      console.log(this.userTypeAccount);
+      console.log(this.userTypeAccount, newMode);
     })
 
     this.registerForm.get('email')?.valueChanges.subscribe( email => {
@@ -56,6 +58,11 @@ export class RegisterLoginComponent implements OnInit{
       }
     })
     
+    this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
+      console.log('In register new account type is', type);
+      if(this.userTypeAccount !== type)
+        this.registerForm.get('accType')?.setValue(type === 'fairy' ? false : true)
+    })
   }
 
   submitRegister(){

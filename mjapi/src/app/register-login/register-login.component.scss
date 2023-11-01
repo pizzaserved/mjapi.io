@@ -2,12 +2,30 @@
     justify-content: center;
 
     .register-container {
+        // min-height: 30vh;
+
+        .panel {
+            display: flex;
+            align-items: center;
+            // min-height: inherit !important;
+            flex-direction: column;
+
+            form{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                .form-control,
+                .invalid-feedback{
+                    max-width: 460px;
+                    margin: auto;
+                }
+            }
+        }
     }
 }
 
 .panel {
-    padding: 3rem;
-    border: 1px solid;
+    padding: 4rem 3rem;
     border-radius: 46px;
     background: rgba(239, 235, 255, 0.12);
 
@@ -23,5 +41,12 @@
     .switch-container{
         display: flex;
         justify-content: center;
+        margin-bottom: 1.25rem;
     }
+}
+
+.panel-header{
+    font-size: 2.6rem;
+    // margin-top: -4rem;
+    // margin-bottom: 3rem;
 }

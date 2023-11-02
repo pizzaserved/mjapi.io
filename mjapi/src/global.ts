@@ -1,4 +1,13 @@
-export const TEST_URL= 'http://lutian.asuscomm.com:23103';
-export const PROD_URL= 'https://api.mjapi.io';
-export const IS_TEST= true;
-export const URL_PATH= IS_TEST ? TEST_URL : PROD_URL;
+import env from '../env.json';
+// The expected structure of the env.json
+type ApiConfig = {
+  api_type: 'dev' | 'prod';
+  api_urls: {
+    dev: string;
+    prod: string;
+  };
+};
+
+const config = env as ApiConfig;
+
+export const URL_PATH = config.api_urls[config.api_type]

@@ -12,6 +12,8 @@ set -eoux
 
 part=${1?:Specify part (patch, minor, major)}
 
+read -r -p "Are you sure? Press [Enter] key to continue..."
+
 echo 'Get new version' 
 echo 'If you get an error, install (and restart the terminal): pip install bump2version'
 # src: https://pypi.org/project/bump2version/

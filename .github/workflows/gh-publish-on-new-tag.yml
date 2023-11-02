@@ -1,0 +1,97 @@
+name: gh-publish-on-new-tag
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger the workflow when a tag with the version pattern is pushed
+
+permissions:
+  contents: write
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+
+    - name: Install npm deps
+      run: npm install
+
+    - name: Build ng
+      run: npm run build
+
+    - name: Check remote URL
+      run: git remote -v
+
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run gh-pages -d dist/mjapi
+      env:
+        user_name: 'mjapi.io'
+        user_email: 'hi@mjapi.io'
+        # Update: nope: r/w was already enabled for it and it didn't work..
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        # # github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        # # Works with r/w access enabled in repo settings, as per https://github.com/tschaub/gh-pages/issues/429#issuecomment-1126987413
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+    # - name: Create temp branch for the live pull request and push changes to it
+    #   id: branch_creator
+    #   run: |
+    #     tag=${GITHUB_REF#refs/tags/}
+    #     build_branch="build${tag}"
+    #     git config lfs.https://github.com.locksverify false
+    #     git subtree split --prefix=dist/mjapi --squash -b "$build_branch"
+    #     git push origin "$build_branch" --set-upstream
+    #     echo "tag=$tag" >> $GITHUB_OUTPUT
+    #     echo "build_branch=$build_branch" >> $GITHUB_OUTPUT
+        
+    # - name: Create temp branch for the live pull request and push changes to it
+    #   id: branch_creator
+    #   run: |
+    #     tag=${GITHUB_REF#refs/tags/}
+    #     build_branch="build${tag}"
+        
+    #     echo 'Creating an orphan branch, which will have no commit history'
+    #     git checkout --orphan "$build_branch"
+
+    #     echo 'Removing all files from the current branch's working directory without deleting them from disk'
+    #     git rm -rf .
+
+    #     echo 'Moving target dir to a temp dir outside'
+    #     subdir=dist/mjapi
+    #     tmp_dir=/tmp/mjapi_${build_branch}
+    #     if [ -f "$tmp_dir" ]; the
+    #       rm -rf "$tmp_dir"
+    #     fi
+    #     mkdir -p "$tmp_dir"
+    #     mv "./$subdir" "$tmp_dir"
+        
+    #     echo 'Deleting all local files'
+
+
+    #     echo 'Deleting the tmp dir'
+    #     rm -d "$tmp_dir"
+
+    #     git config lfs.https://github.com.locksverify false
+    #     git subtree split --prefix=dist/mjapi --squash -b "$build_branch"
+    #     git push origin "$build_branch" --set-upstream
+    #     echo "tag=$tag" >> $GITHUB_OUTPUT
+    #     echo "build_branch=$build_branch" >> $GITHUB_OUTPUT
+
+    # - name: Create Pull Request
+    #   uses: peter-evans/create-pull-request@v5.0.2
+    #   with:
+    #     title: "Merge tag ${{ steps.branch_creator.outputs.tag }} into live"
+    #     branch: ${{ steps.branch_creator.outputs.build_branch }}
+    #     body: |
+    #       This is an auto-generated pull request to merge the build from tag ${{ steps.branch_creator.outputs.tag }} into the live branch.
+    #     base: 'live'  # Base branch to merge into
+    #     token: ${{ secrets.GITHUB_TOKEN }}  # Token for the bot to authenticate
+    #     labels: |
+    #       automated pr
+    #     delete-branch: true

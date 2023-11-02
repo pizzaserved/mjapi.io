@@ -47,3 +47,5 @@ git push --follow-tags
 # # Update: this actually creates the branch. Note that the build branch is not tagged as its name already implies its version. The tag is for the sources
 # git subtree split --prefix=dist/mjapi --squash -b "$new_branch"
 # git push origin "$new_branch"
+
+echo 'Done! Check GitHub Actions runs at https://github.com/pizzaserved/mjapi.io/actions'

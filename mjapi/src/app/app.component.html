@@ -108,7 +108,7 @@
               </div>
               <div class="mb-5">
                 <div class="mb-3">
-                  <b>Params</b>
+                  <b>Fields</b>
                 </div>
                 <ul>
                   <li><b>key</b> (required): your API Key</li>
@@ -134,6 +134,17 @@
                 <pre class="example-code">
 {{apiAddJobSampleResponse | json}}
                 </pre>
+                <div>
+                  <b>Notable response fields</b>
+                  <ul>
+                    <li><b>id (int)</b>: the job's id, that you can later use in other requests</li>
+                    <li><b>type (enum str)</b>: oneshot_upscale, grid, followup</li>
+                    <li><b>progress (int)</b>: -1 = pending; 0-99 = in progress; 100 = done. Here, it's usually -1, as the job didn't already start</li>
+                    <li><b>result_url (str)</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results</li>
+                    <li><b>state (enum str) </b>: new, active, done, canceled, failed. Here, it's usually new or cancelled</li>
+                    <li><b>account_type (enum str) </b>: fairy, selfserve</li>
+                  </ul>
+                </div>
               </div>
               <div class="mb-3">
                 <b>Try it now</b>
@@ -168,7 +179,7 @@
 
               <div class="mb-5">
                 <div class="mb-3">
-                  <b>Params</b>
+                  <b>Fields</b>
                 </div>
                 <ul>
                   <li><b>job_id</b>: the job ID you've got from <b>addjob</b></li>
@@ -183,13 +194,15 @@
 {{apiGetJobSampleResponse | json}}
                 </pre>
                 <div>
-                  <b>Params</b>
+                  <b>Notable response fields</b>
                   <ul>
                     <li><b>progress (int)</b>: -1 = pending; 0-99 = in progress; 100 = done</li>
-                    <li><b>type (int)</b>: 0 = oneshot_upscale, 1 = grid, 2 = followup</li>
-                    <li><b>state (str) </b>: new, active, done, canceled, failed</li>
+                    <li><b>type (enum str)</b>: oneshot_upscale, grid, followup</li>
+                    <li><b>state (enum str) </b>: new, active, done, canceled, failed</li>
                     <li><b>result_url (str)</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results</li>
-                    <li><b>followup_menu (str) </b>: comma-separated list of avaialable actions that you can follow-up on</li>
+                    <li><b>result_msg_id (int)</b>: we don't talk about result_msg_id around here</li>
+                    <li><b>followup_menu (str[]) </b>: list of avaialable actions for initiating a follow-up job. Possible values: U1, U2, U3, U4, V1, V2, V3, V4, Vary (Strong), Vary (Subtle), Upscale (2x), Upscale (4x), Zoom Out 2x, Zoom Out 1.5x, ⬅, ➡,
+                      ⬆, ⬇.</li>
                   </ul>
                 </div>
               </div>

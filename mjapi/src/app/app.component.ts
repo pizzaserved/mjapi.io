@@ -51,20 +51,31 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   cardList: Card[] = [];
   btcCard!: Card;
-
-  apiAddJobSampleResponse: Object = {status: 'success', message: 'Yummy!', data: {id: 5614325613212231231, user_id: 4123172867356, prompt: 'photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw', progress: 55, last_update: 1683876767, result_url: null}};
+  apiAddJobSampleResponse: Object = {
+      "status": "success", "message": "Yummy!", "data": {
+        "id": 5614325631231,
+        "user_id": 4123172867356,
+        "type": 'oneshot_upscaled',
+        "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
+        "progress": -1,
+        "last_update": 1683876767,
+        "result_url": null,
+        "state": "new",
+        "account_type": "fairy"
+      }
+  };
   apiGetJobSampleResponse: Object = {
     "status": "success", "message": "Yummy!", "data": {
-      "id": 5614325613212232000,
-      "user_id": 4123172867356,
-      "type": 0,  // 0=oneshot_upscale, 1=grid, 2=followup
+      "id": 56143252232000,
+      "user_id": 4123167356,
+      "type": 'oneshot_upscaled',
       "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
-      "progress": 55,  // -1=pending, 100=done
+      "progress": 55,
       "last_update": 1698658812,
       "result_url": null,
-      "state": "active",  // valid values: new, active, done, canceled, failed
-      "result_msg_id": null,  // unused
-      "followup_menu": null  // Comma-separate list of avaialable actions that you can follow-up on
+      "state": "active",
+      "result_msg_id": null,
+      "followup_menu": null
     }
   };
 

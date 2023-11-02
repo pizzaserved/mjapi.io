@@ -47,7 +47,7 @@ jobs:
         tag=${GITHUB_REF#refs/tags/}
         build_branch="build${tag}"
         git config lfs.https://github.com.locksverify false
-        git subtree split --prefix=mjapi/dist/mjapi --squash -b "$build_branch"
+        git subtree split --prefix=dist/mjapi --squash -b "$build_branch"
         git push origin "$build_branch" --set-upstream
         echo "tag=$tag" >> $GITHUB_OUTPUT
         echo "build_branch=$build_branch" >> $GITHUB_OUTPUT

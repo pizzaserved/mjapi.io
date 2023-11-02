@@ -38,8 +38,8 @@ git config lfs.https://github.com.locksverify false
 echo "Push to the $new_branch branch via git subtree magic"
 # # Pushing directly to a branch, no intermediary steps! 
 # # Thanks https://github.com/IvanMurzak/Unity-Package-Template/blob/master/gitSubTreePushToUPM.bat
-# git subtree push --prefix mjapi/dist/mjapi origin "$new_branch"
+# git subtree push --prefix dist/mjapi origin "$new_branch"
 
 # Update: this actually creates the branch. Note that the build branch is not tagged as its name already implies its version. The tag is for the sources
-git subtree split --prefix=mjapi/dist/mjapi --squash -b "$new_branch"
+git subtree split --prefix=dist/mjapi --squash -b "$new_branch"
 git push origin "$new_branch"

@@ -39,7 +39,7 @@ export class CardService {
   btcCard: Card = {
     name: 'Bitcoin',
     price: 0,
-    description: 'Some text',
+    description: 'Roughly $0.7/$1.0 per day (Fairy/SelfServe account)',
     type: 'btc',
     selected: false
   }

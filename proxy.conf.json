@@ -1,7 +1,0 @@
-{
-    "/api": {
-        "target": "https://api.mjapi.io",
-        "secure": false,
-        "changeOrigin": true
-    }
-}

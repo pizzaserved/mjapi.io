@@ -28,7 +28,8 @@ jobs:
       run: |
         TAG_NAME=${GITHUB_REF#refs/tags/}
         BRANCH_NAME="update-live-with-${TAG_NAME}"
-        git checkout -b $BRANCH_NAME
+        git fetch origin $TAG_NAME
+        git checkout -b $BRANCH_NAME $TAG_NAME
         git remote -v
         git push origin $BRANCH_NAME --set-upstream
         echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT

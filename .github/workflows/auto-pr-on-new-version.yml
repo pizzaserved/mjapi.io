@@ -20,16 +20,10 @@ jobs:
         git config --global user.name 'mjapi.io'
         git config --global user.email 'hi@mjapi.io'
 
-    - name: Create new branch for the live pull request
-      run: |
-        TAG_NAME=${GITHUB_REF#refs/tags/}
-        BRANCH_NAME="update-live-with-${TAG_NAME}"
-        git checkout -b $BRANCH_NAME
-
     - name: Check remote URL
       run: git remote -v
         
-    - name: Push changes to the new branch
+    - name: Create new branch for the live pull request and push changes to the new branch
       run: |
         TAG_NAME=${GITHUB_REF#refs/tags/}
         BRANCH_NAME="update-live-with-${TAG_NAME}"

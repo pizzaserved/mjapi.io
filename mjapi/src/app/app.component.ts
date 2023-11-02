@@ -54,35 +54,37 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   apiAddJobSampleResponse: Object = {status: 'success', message: 'Yummy!', data: {id: 5614325613212231231, user_id: 4123172867356, prompt: 'photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw', progress: 55, last_update: 1683876767, result_url: null}};
   apiGetJobSampleResponse: Object = {
-    "status": "success",
-    "message": "Yummy!",
-    "data": {
-        "id": 5614325613212231231,
-        "user_id": 4123172867356,
-        "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
-        "progress": 55,
-        "last_update": 1683876767,
-        "result_url": null
+    "status": "success", "message": "Yummy!", "data": {
+      "id": 5614325613212232000,
+      "user_id": 4123172867356,
+      "type": 0,  // 0=oneshot_upscale, 1=grid, 2=followup
+      "prompt": "photo of the moon taken from a luxurious skyscraper, starts glowing in space --ar 16:9 --version 5.1 --style raw",
+      "progress": 55,  // -1=pending, 100=done
+      "last_update": 1698658812,
+      "result_url": null,
+      "state": "active",  // valid values: new, active, done, canceled, failed
+      "result_msg_id": null,  // unused
+      "followup_menu": null  // Comma-separate list of avaialable actions that you can follow-up on
     }
   };
 
   questionsList = [
-    {
-      question: 'First very important question?',
-      ans: 'First very important answer.'
-    },
-    {
-      question: 'Second very important question?',
-      ans: 'Second very important answer.'
-    },
-    {
-      question: 'Third very important question?',
-      ans: 'Third very important answer.'
-    },
-    {
-      question: 'Fourth very important question?',
-      ans: 'Fourth very important answer.'
-    },
+      {
+        question: 'Why GET and not POST?',
+        ans: 'We went full minimalistic here, the minimum effort for the desired result. It\'s really convenient to copy-paste the request directly in Chrome and see the result -- no Postman, curl etc. HTTPS makes sure the URL path/query etc. are encrypted, so nothing to be worried about. We might also mirror the current API via POST requests, if enough people ask for it'
+      },
+      {
+        question: 'How do I cancel my sub?',
+        ans: 'To cancel a Stripe sub, simply email us. If the email\'s subject matches \'please cancel my sub\' exactly, it\'ll be automatically cancelled. Otherwise, we\'ll do it manually in 7-14 days. No worries, any extra charges will be refunded. Note that this doesn\'t return your initial payment, and you\'ll continue benefiting from the full existing sub. This merely cancels the auto-renewal, and it\'s how subs work in general (we\'re not reinventing the wheel here)'
+      },
+      {
+        question: 'Can I get a refund?',
+        ans: 'Sure, shoot at hi@mjapi.io. This only works for Stripe one-time-payments (for subs see \'How do I cancel my sub?\'). If the email\'s subject matches \'please refund my previous payment\' exactly, and you\'ve paid less than 7 days ago, it\'s done automatically. In case that doesn\'t happen, simply shoot us a follow-up email.'
+      },
+      {
+        question: 'What if MidJourney gets their own API?',
+        ans: 'mjapi.io started as a solution we\'ve built for ourselves, and several projects rely on it. We\'ll be too lazy to refactor all our front-ends. Instead, we\'ll keep using mjapi.io and just adapt our back-end, if needed. This means you won\'t notice a thing. 👍'
+      },
   ]
 
   accountTypeSubscription = new Subscription();

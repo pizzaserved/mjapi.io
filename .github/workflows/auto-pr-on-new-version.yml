@@ -24,20 +24,23 @@ jobs:
       run: git remote -v
         
     - name: Create new branch for the live pull request and push changes to the new branch
+      id: branch_creator
       run: |
         TAG_NAME=${GITHUB_REF#refs/tags/}
         BRANCH_NAME="update-live-with-${TAG_NAME}"
         git checkout -b $BRANCH_NAME
         git remote -v
         git push origin $BRANCH_NAME --set-upstream
+        echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
       with:
-        title: "Merge tag ${{ env.TAG_NAME }} into live"
-        branch: ${{ env.BRANCH_NAME }}
+        title: "Merge tag ${{ steps.branch_creator.outputs.tag_name }} into live"
+        branch: ${{ steps.branch_creator.outputs.branch_name }}
         body: |
-          This is an auto-generated pull request to merge the changes from tag ${{ env.TAG_NAME }} into the live branch.
+          This is an auto-generated pull request to merge the changes from tag ${{ steps.branch_creator.outputs.tag_name }} into the live branch.
         base: 'live'  # Base branch to merge into
         token: ${{ secrets.GITHUB_TOKEN }}  # Token for the bot to authenticate
         labels: |

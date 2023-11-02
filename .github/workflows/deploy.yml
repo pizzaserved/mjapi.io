@@ -1,4 +1,4 @@
-name: gh-publish-on-new-tag
+name: deploy
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  create-pull-request:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Check out the repo

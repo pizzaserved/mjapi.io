@@ -34,7 +34,7 @@ git config 'lfs.git@github.com:pizzaserved/mjapi.io/info/lfs.locksverify' false
 git config lfs.https://github.com.locksverify false
 
 # NOTE: THIS ONLY WORKS ON BASH! FOR SOME REASON, RUNNING THIS COMMAND MANUALLY IN PS (and probably cmd) FAILS WITH: error: failed to push some refs to 'github.com:xucian/com.thefallengames.needle.git
-echo 'Push to upm release branch via gut subtree magic'
+echo 'Push to the new version branch via gut subtree magic'
 # Pushing directly to a branch, no intermediary steps! 
 # Thanks https://github.com/IvanMurzak/Unity-Package-Template/blob/master/gitSubTreePushToUPM.bat
-git subtree push --prefix mjapi/dist/mjapi "$new_branch"
+git subtree push --prefix mjapi/dist/mjapi origin "$new_branch"

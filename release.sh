@@ -17,6 +17,7 @@ echo 'If you get an error, install (and restart the terminal): pip install bump2
 # src: https://pypi.org/project/bump2version/
 new_vers=$(bump2version --dry-run --list "$part" | grep new_version | sed -r s,"^.*=",,)
 new_vers_str="v$new_vers"
+# shellcheck disable=SC2034  # Unused variables left for readability
 new_branch="build-$new_vers_str"
 # The sources are marked with a tag
 echo 'Bump version & push, including tags'

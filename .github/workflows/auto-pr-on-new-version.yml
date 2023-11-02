@@ -1,0 +1,39 @@
+name: auto-pr-on-new-version
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger the workflow when a tag with the version pattern is pushed
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+
+    - name: Set up Git config
+      run: |
+        git config --global user.name 'mjapi.io'
+        git config --global user.email 'hi@mjapi.io'
+
+    - name: Create new branch for the live pull request
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}
+        BRANCH_NAME="update-live-with-${TAG_NAME}"
+        git checkout -b $BRANCH_NAME
+
+    - name: Push changes to the new branch
+      run: git push origin $BRANCH_NAME
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5.0.2
+      with:
+        title: "Merge tag ${{ env.TAG_NAME }} into live"
+        branch: ${{ env.BRANCH_NAME }}
+        body: |
+          This is an auto-generated pull request to merge the changes from tag ${{ env.TAG_NAME }} into the live branch.
+        base: 'live'  # Base branch to merge into
+        token: ${{ secrets.GITHUB_TOKEN }}  # Token for the bot to authenticate
+        labels: |
+          automated pr

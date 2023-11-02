@@ -20,6 +20,12 @@ jobs:
         git config --global user.name 'mjapi.io'
         git config --global user.email 'hi@mjapi.io'
 
+    - name: Install npm deps
+      run: npm install
+
+    - name: Build ng
+      run: npm run build
+
     - name: Check remote URL
       run: git remote -v
         
@@ -34,6 +40,18 @@ jobs:
         git push origin $BRANCH_NAME --set-upstream
         echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
         echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+        
+    - name: asd
+      id: asd
+      run: |
+        tag=${GITHUB_REF#refs/tags/}
+        build_branch="build${tag}"
+        git config lfs.https://github.com.locksverify false
+        git subtree split --prefix=mjapi/dist/mjapi --squash -b "$build_branch"
+        git push origin "$build_branch" --set-upstream
+        echo "tag=$tag" >> $GITHUB_OUTPUT
+        echo "build_branch=$build_branch" >> $GITHUB_OUTPUT
+      
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
@@ -46,3 +64,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}  # Token for the bot to authenticate
         labels: |
           automated pr
+        delete-branch: true

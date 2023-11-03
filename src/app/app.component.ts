@@ -81,6 +81,10 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   questionsList = [
       {
+        question: 'Do I need a MidJourney sub?',
+        ans: 'No, only the SelfServe accounts need to provide a MJ-enabled discord token'
+      },
+      {
         question: 'Why GET and not POST?',
         ans: 'We went full minimalistic here, the minimum effort for the desired result. It\'s really convenient to copy-paste the request directly in Chrome and see the result -- no Postman, curl etc. HTTPS makes sure the URL path/query etc. are encrypted, so nothing to be worried about. We might also mirror the current API via POST requests, if enough people ask for it'
       },
@@ -96,6 +100,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         question: 'What if MidJourney gets their own API?',
         ans: 'mjapi.io started as a solution we\'ve built for ourselves, and several projects rely on it. We\'ll be too lazy to refactor all our front-ends. Instead, we\'ll keep using mjapi.io and just adapt our back-end, if needed. This means you won\'t notice a thing. 👍'
       },
+      {
+        question: 'Why is SelfServe more expensive?',
+        ans: 'For safety reasons, SelfServe accounts require a dedicated runner instance on our backend. This also means your prompts will get executed faster, since there\'s no queue (unlike Fairy accounts)'
+      }
   ]
 
   accountTypeSubscription = new Subscription();

@@ -144,4 +144,10 @@ export class AppComponent implements OnInit, AfterViewInit{
     })
   }
 
+  scrollToElement(elementId: string): void {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

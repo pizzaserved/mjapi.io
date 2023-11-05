@@ -47,14 +47,14 @@
       <div class="row" [formGroup]="switchForm">
         <div class="switch-container">
 
-          <span class="switch-first-label switch-label">Fairy</span>
+          <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
           <div class="switch d-flex">
             <label class="switch">
                     <input type="checkbox" #accType name="accType" formControlName="accType">
                     <span class="slider round"></span>
                 </label>
           </div>
-          <span class="switch-first-label switch-label">Self Served</span>
+          <span #switchSecondLabel class="switch-first-label switch-label">Self Served</span>
         </div>
       </div>
       <!-- <div class="row">
@@ -68,8 +68,10 @@
       </div> -->
       <div class="row">
         <div class="container-payment d-flex justify-content-center row">
-          <div class="col-12 col-md-6 col-lg-3 container-fluid mb-5" *ngFor="let item of cardList">
-            <card [card]="item"></card>
+          <div class="col-12 col-md-6 col-lg-3 container-fluid" *ngFor="let item of cardList">
+            <div class="mb-5" *ngIf="accountType == item.accountType">
+              <card [card]="item" [disabled]="!isLoggedIn"></card>
+            </div>
           </div>
         </div>
       </div>

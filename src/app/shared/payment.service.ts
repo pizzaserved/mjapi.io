@@ -13,8 +13,8 @@ export class PaymentService {
   payStripe(userId: string, productId:string){
     console.log("Paying with stripe...");
     var params = new HttpParams();
-    params = params.append('userId', userId);
-    params = params.append('productId', productId);
+    params = params.append('user_id', userId);
+    params = params.append('product_id', productId);
 
     this.http.get(`${URL_PATH}/createfiatpaymentlink`, {params: params})
     .subscribe({

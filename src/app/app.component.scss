@@ -166,7 +166,10 @@
     padding: 3rem 3.5rem 0 ;
 
     .git-section{
-        flex-direction: column;
+        // flex-direction: column;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: auto;
         .git-header {
             font-size: 2rem;
         }
@@ -276,6 +279,14 @@
 
 .bold-text{
     font-family: 'Poppins Semibold';
+}
+
+input[type='checkbox']:disabled + span{
+    cursor: unset !important;
+    opacity: .6;
+    &::before{
+        opacity: 0.6;
+    }
 }
 
 @media screen and (min-width:2200px) {

@@ -45,7 +45,7 @@ export class CardService {
     {
       productId:'mjapi_io_1_day_selfserve',
       name: '1 Day',
-      price: 0.75,
+      price: 2,
       description: 'Some text',
       type: 'oneTime',
       accountType: 'selfserve',
@@ -54,7 +54,7 @@ export class CardService {
     {
       productId:'mjapi_io_7_days_selfserve',
       name: '7 Days',
-      price: 5,
+      price: 10,
       description: 'Some text',
       type: 'oneTime',
       accountType: 'selfserve',
@@ -63,7 +63,7 @@ export class CardService {
     {
       productId:'mjapi_io_30_days_selfserve',
       name: '30 Day',
-      price: 22,
+      price: 35,
       description: 'Some text',
       type: 'oneTime',
       accountType: 'selfserve',
@@ -72,7 +72,7 @@ export class CardService {
     {
       productId:'mjapi_io_monthly_selfserve_sub',
       name: 'Monthly',
-      price: 20,
+      price: 30,
       description: 'Some text',
       type: 'subscription',
       accountType: 'selfserve',

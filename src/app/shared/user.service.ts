@@ -84,6 +84,7 @@ export class UserService {
             endDate: responseData.end_date,
             hasFiatSub: responseData.has_fiat_sub
           }
+          this.setSelectedTypeAcc(newUser.accountType);
 
           /* Set cookie */
           this.cookieService.put('userEmail', btoa(newUser.email));
@@ -132,7 +133,7 @@ export class UserService {
             endDate: responseData.end_date,
             hasFiatSub: responseData.has_fiat_sub
           }
-
+          this.setSelectedTypeAcc(newUser.accountType);
           /* Update current user */
           this.currentUser.next(newUser);
 
@@ -152,7 +153,7 @@ export class UserService {
     this.isLoggedin = false;
     this.isRegistered = false;
     this.cookieService.remove('userEmail')
-    this.currentUser = new BehaviorSubject<User | null>(null)
+    this.currentUser.next(null);
   }
 
   getCurrentUser(){

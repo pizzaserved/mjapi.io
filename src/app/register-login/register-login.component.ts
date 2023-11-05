@@ -32,12 +32,20 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
 
     this.currentUserSubscription = this.userService.currentUser.subscribe((user)=> {
       console.log("Nou utilizator interceptat", user);
-      this.currentUser = user
-      this.isLoggedIn = true;
-      this.isRegistered = true
+      if(user){
+        this.currentUser = user
+        this.isLoggedIn = true;
+        this.isRegistered = true
+      }else {
+        this.currentUser = null
+        this.isLoggedIn = false;
+        this.isRegistered = false
+      }
     })
 
     this.registerForm.get('accType')?.valueChanges.subscribe(newMode => {
+      console.log("aicii", newMode);
+      
       if(newMode){
         this.userTypeAccount = 'selfserve';
         this.registerForm.controls['discordToken'].setValidators(Validators.required);

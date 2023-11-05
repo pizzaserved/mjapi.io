@@ -133,13 +133,25 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.accountType = data ? 'selfserve' : 'fairy';
       this.userService.setSelectedTypeAcc(this.accountType);
     });
+  }  
+
+  ngAfterViewInit() {
     
+    this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
+      console.log("after view init", type, this.userService.selectedTypeAcc);
+      
+      if(this.accountType !== type)
+        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
+    })
+
     this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
       console.log("A user has logged in:", user);
       if(user){
         this.currentUser = user;
+        
         this.isLoggedIn = true;
         this.switchForm.get('accType')?.setValue(this.currentUser.accountType == 'fairy'? false : true);
+        
         this.switchForm.get('accType')?.disable();
         this.switchIsDisabled = true;
         
@@ -156,14 +168,6 @@ export class AppComponent implements OnInit, AfterViewInit{
         this.switchForm.get('accType')?.enable();
         this.switchIsDisabled = false;
       }
-    })
-  }  
-
-  ngAfterViewInit() {
-    
-    this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      if(this.accountType !== type)
-        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
     })
   }
 

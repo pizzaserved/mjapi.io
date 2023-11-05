@@ -1,9 +1,10 @@
 import env from '../env.json';
 // The expected structure of the env.json
 type ApiConfig = {
-  api_type: 'dev' | 'prod';
+  api_type: 'dev' | 'preprod' | 'prod';
   api_urls: {
     dev: string;
+    preprod: string;
     prod: string;
   };
 };

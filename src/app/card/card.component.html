@@ -10,7 +10,7 @@
             <p class="card-description">{{card.description}}</p>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <button type="button" class="btn btn-primary" >{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button>
+            <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button>
         </div>
     </div>
     <div *ngIf="card.type == 'btc'" class="bitcoin">

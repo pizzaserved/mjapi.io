@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CardService } from './shared/card-service.service';
@@ -110,45 +110,64 @@ export class AppComponent implements OnInit, AfterViewInit{
   accountTypeChange = new Subscription();
   userServiceSubscription = new Subscription();
 
-  currentAccounType:string = '';
-  // @ViewChild('accType') accType!: ElementRef;
+  @ViewChild('switchFirstLabel') switchFirstLabel!: ElementRef;
+  @ViewChild('switchSecondLabel') switchSecondLabel!: ElementRef;
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
   })
-  accType: string = '';
+  switchIsDisabled: boolean = false;
+  accountType: string = '';
 
   currentUser: User| null = null
   isLoggedIn: boolean = false;
 
-  constructor(private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService){}
+  constructor(private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 
   ngOnInit(): void {
+    this.userService.autoLogin()
 
     this.cardList = this.cardService.getPaymentCards();
     this.btcCard = this.cardService.getBtcCard();
     
     this.switchForm.get('accType')?.valueChanges.subscribe(data=> {
-      console.log(data);
-      this.accType = data ? 'selfserve' : 'fairy';
-      this.userService.setSelectedTypeAcc(this.accType);
+      this.accountType = data ? 'selfserve' : 'fairy';
+      this.userService.setSelectedTypeAcc(this.accountType);
     });
-    
-    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
-      console.log("A user has logged in:", user);
-      this.currentUser = user;
-      this.isLoggedIn = true;
-    })
   }  
 
   ngAfterViewInit() {
     
     this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      console.log('New account type is', type, 'but this accType is', this.accType, type== this.accType, type === this.accType);
-      if(this.accType !== type)
-        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
-      // this.accType.nativeElement.value = type === 'fairy' ? false : true;
-      // console.log(this.accType);
+      console.log("after view init", type, this.userService.selectedTypeAcc);
       
+      if(this.accountType !== type)
+        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
+    })
+
+    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
+      console.log("A user has logged in:", user);
+      if(user){
+        this.currentUser = user;
+        
+        this.isLoggedIn = true;
+        this.switchForm.get('accType')?.setValue(this.currentUser.accountType == 'fairy'? false : true);
+        
+        this.switchForm.get('accType')?.disable();
+        this.switchIsDisabled = true;
+        
+        if(this.accountType == 'fairy'){
+          this.renderer.removeClass(this.switchFirstLabel.nativeElement, 'disabled')
+          this.renderer.addClass(this.switchSecondLabel.nativeElement, 'disabled')
+        } else {
+          this.renderer.addClass(this.switchFirstLabel.nativeElement, 'disabled')
+          this.renderer.removeClass(this.switchSecondLabel.nativeElement, 'disabled')
+        }
+      } else{
+        this.currentUser = null;
+        this.isLoggedIn = false;
+        this.switchForm.get('accType')?.enable();
+        this.switchIsDisabled = false;
+      }
     })
   }
 

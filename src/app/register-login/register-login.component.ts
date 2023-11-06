@@ -30,11 +30,22 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
 
-    // this.currentUserSubscription = this.userService.getCurrentUser()?.subscribe((data)=> {
-    //   console.log("Nou utilizator interceptat", data);
-    // })
+    this.currentUserSubscription = this.userService.currentUser.subscribe((user)=> {
+      console.log("Nou utilizator interceptat", user);
+      if(user){
+        this.currentUser = user
+        this.isLoggedIn = true;
+        this.isRegistered = true
+      }else {
+        this.currentUser = null
+        this.isLoggedIn = false;
+        this.isRegistered = false
+      }
+    })
 
     this.registerForm.get('accType')?.valueChanges.subscribe(newMode => {
+      console.log("aicii", newMode);
+      
       if(newMode){
         this.userTypeAccount = 'selfserve';
         this.registerForm.controls['discordToken'].setValidators(Validators.required);
@@ -64,15 +75,6 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
       if(this.userTypeAccount !== type)
         this.registerForm.get('accType')?.setValue(type === 'fairy' ? false : true)
     })
-
-    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
-      console.log("A user has logged in:", user);
-      if(user != null){
-        this.currentUser = user;
-        this.isRegistered = true;
-        this.isLoggedIn = true;
-      }
-    })
   }
 
   ngAfterViewInit(): void {
@@ -92,7 +94,21 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
       // var username = this.registerForm.controls['username'].value;
       console.log("before register:", this.userTypeAccount);
       
-      this.userService.register(email, this.userTypeAccount, discordToken)
+      this.userServiceSubscription = this.userService.register(email, this.userTypeAccount, discordToken)
+        .subscribe(successfullyRegistered => {
+          if(successfullyRegistered){
+            console.log("heyheyhey", successfullyRegistered);
+            
+            this.userService.currentUser.subscribe((user) => {
+              console.log("A user has logged in:", user);
+              if(user != null){
+                this.currentUser = user;
+                this.isRegistered = true;
+                this.isLoggedIn = true;
+              }
+            })
+          }
+        })
       
     }
   }

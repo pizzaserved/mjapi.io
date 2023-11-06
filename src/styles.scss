@@ -87,6 +87,9 @@ body{
   &:last-child{
       margin-left: 1rem;
   }
+  &.disabled{
+    opacity: .6;
+  }
 }
 
 .slider {
@@ -111,6 +114,7 @@ body{
   background-color: #C58B34;
   -webkit-transition: .4s;
   transition: .4s;
+  top: -2px;
 }
 
 input:checked + .slider {

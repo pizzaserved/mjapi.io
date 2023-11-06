@@ -255,6 +255,9 @@
             button{
                 display: flex;
                 padding-inline: unset !important;
+                h3{
+                    text-align: left;
+                }
                 &::after{
                     height: 30px;
                     align-items: center;

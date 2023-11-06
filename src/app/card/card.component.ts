@@ -39,6 +39,23 @@ export class CardComponent implements OnInit{
   initPayment(productId: string){
     if(this.card.type !== 'btc'){
       this.paymentService.payStripe(this.currentUser!.accountID, productId)
+        .subscribe((response: any)=>{
+          if(response){
+            console.log(response);
+            if(response.data!= undefined && response.data.payment_link != undefined){
+              console.log(response.data.payment_link);
+              
+              /* Open in a ne tab/window */
+              var newWindow = window.open(response.data.payment_link, '_blank');
+              if(newWindow){
+                newWindow.focus()
+              }else{
+                /* if smth goes wrong, open in the same tab */
+                window.location.href = response.data.payment_link; 
+              }
+            }
+          }
+        })
     }
   }
 }

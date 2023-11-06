@@ -33,21 +33,6 @@ export class UserService {
     params = params.append('email', email);
 
     return this.http.get(`${URL_PATH}/getuser`, {params: params})
-    // .subscribe({
-    //   next: (data: any) => {
-    //     console.log('data', data)
-        
-    //   },
-    //   error: (error) => {
-    //     console.log("Eroare register : ",  error);
-    //     if(error.error.status == 'error'){
-    //       // if(error.error.message == 'Email not found'){
-    //         this.isRegistered == false;
-    //       // }
-
-    //     }
-    //   }
-    // })
   }
 
   register(email: string, accountType?: string, discordToken?: string): Observable<boolean>{
@@ -115,8 +100,6 @@ export class UserService {
 
     return null;
   }
-
-  
 
   autoLogin(){
     console.log("login");

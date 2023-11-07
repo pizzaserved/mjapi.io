@@ -10,7 +10,7 @@ export class CardService {
       productId:'mjapi_io_1_day_fairy',
       name: '1 Day',
       price: 1,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'fairy',
       selected: false,
@@ -19,7 +19,7 @@ export class CardService {
       productId:'mjapi_io_7_days_fairy',
       name: '7 Days',
       price: 6,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'fairy',
       selected: false
@@ -28,7 +28,7 @@ export class CardService {
       productId:'mjapi_io_30_days_fairy',
       name: '30 Day',
       price: 25,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'fairy',
       selected: false
@@ -37,7 +37,7 @@ export class CardService {
       productId:'mjapi_io_monthly_fairy_sub',
       name: 'Monthly',
       price: 22,
-      description: 'Some text',
+      description: '',
       type: 'subscription',
       accountType: 'fairy',
       selected: true
@@ -46,7 +46,7 @@ export class CardService {
       productId:'mjapi_io_1_day_selfserve',
       name: '1 Day',
       price: 2,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'selfserve',
       selected: false,
@@ -55,7 +55,7 @@ export class CardService {
       productId:'mjapi_io_7_days_selfserve',
       name: '7 Days',
       price: 10,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'selfserve',
       selected: false
@@ -64,7 +64,7 @@ export class CardService {
       productId:'mjapi_io_30_days_selfserve',
       name: '30 Day',
       price: 35,
-      description: 'Some text',
+      description: '',
       type: 'oneTime',
       accountType: 'selfserve',
       selected: false
@@ -73,7 +73,7 @@ export class CardService {
       productId:'mjapi_io_monthly_selfserve_sub',
       name: 'Monthly',
       price: 30,
-      description: 'Some text',
+      description: '',
       type: 'subscription',
       accountType: 'selfserve',
       selected: true

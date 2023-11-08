@@ -78,7 +78,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       "followup_menu": null
     }
   };
-
+  apiCancelJobSampleResponse: Object = {
+      "status": "success", "message": "Done", "data": null
+  };
+  
   questionsList = [
       {
         question: 'Do I need a MidJourney sub?',

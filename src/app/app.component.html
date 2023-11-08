@@ -93,7 +93,7 @@
         <div class="panel-container">
           <div class="api-header" id="heading-add-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> addJob</span>
+              <span class="light-text">GET</span> <span class="bold-text"> addjob</span>
             </button>
           </div>
           <div id="collapseAddJob" class="api-body-container">
@@ -162,23 +162,21 @@
           </div>
         </div>
         <div class="panel-container">
-          <div class="api-header" id="heading-add-job">
+          <div class="api-header" id="heading-get-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> getJob</span>
+              <span class="light-text">GET</span> <span class="bold-text"> getjob</span>
             </button>
           </div>
-          <div id="collapseAddJob" class="api-body-container">
+          <div id="collapseGetJob" class="api-body-container">
             <div class="api-body">
               <div class="mb-5">
                 <div class="mb-3">
                   <b>Request example</b>
                 </div>
                 <ul>
-                  <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></span></li>
+                  <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325</i></span></li>
                 </ul>
               </div>
-
-
               <div class="mb-5">
                 <div class="mb-3">
                   <b>Fields</b>
@@ -212,6 +210,52 @@
                 <b>Try it now</b>
               </div>
               <try-form [jobType]="'get'"></try-form>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Rate limiting</b>
+                </div>
+                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-container">
+          <div class="api-header" id="heading-cancel-job">
+            <button class="btn btn-link collapse-button" collapsiblePanel>
+              <span class="light-text">GET</span> <span class="bold-text"> canceljob</span>
+            </button>
+          </div>
+          <div id="collapseCancelJob" class="api-body-container">
+            <div class="api-body">
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Request examples</b>
+                </div>
+                <ul>
+                  <li>Cancel a job: <span class="example-code">https://api.mjapi.io/canceljob?<i>key=YOURKEY</i>&<i>job_id=44321</i></span></li>
+                </ul>
+              </div>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Fields</b>
+                </div>
+                <ul>
+                  <li><b>key</b> (required): your API Key</li>
+                  <li><b>job_id</b> (required): a job added via <b>addjob</b>.</li>
+                </ul>
+              </div>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Response</b>
+                </div>
+                <pre class="example-code">
+{{apiCancelJobSampleResponse | json}}
+                </pre>
+              </div>
+              <div class="mb-3">
+                <b>Try it now</b>
+              </div>
+              <try-form [jobType]="'cancel'"></try-form>
               <div class="mb-5">
                 <div class="mb-3">
                   <b>Rate limiting</b>

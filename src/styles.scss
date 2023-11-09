@@ -182,7 +182,7 @@ input:checked + .slider:before {
 }
 
 a{
-  font-family: Poppins Italic;
+  // font-family: Poppins Italic;
   color: var(--text-color-white);
   text-decoration: none !important;
 }
@@ -236,6 +236,7 @@ button {
       &:before{
         height: var(--xl-switch-thumb-height);
         width: var(--xl-switch-thumb-width);
+        top: 0;
       }
     }
   }

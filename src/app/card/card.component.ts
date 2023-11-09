@@ -7,7 +7,7 @@ export type Card = {
   productId: string,
   name: string,
   price: number,
-  description: string,
+  description: any,
   type: string,
   accountType: string,
   selected: boolean

@@ -17,35 +17,35 @@ declare const TweenMax: any;
 export class AppComponent implements OnInit, AfterViewInit{
   title = 'mjapi';
   steps = [
-    // {
-    //   id: "discord",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<div>You  <a href='https://discord.com/register' target='_blank'>create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons</div>"),
-    //   mode: "manual"
-    // },
-    // {
-    //   id: "token",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp; your discord user token"),
-    //   mode: "manual"
-    // },
-    // {
-    //   id: "midjourney",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney  &nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a> &nbsp;with the newly created discord account"),
-    //   mode: "manual"
-    // },
+    {
+      id: "discord",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<div>You  <a href='https://discord.com/register' target='_blank'>create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons</div>"),
+      mode: "selfserve"
+    },
+    {
+      id: "token",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp; your discord user token"),
+      mode: "selfserve"
+    },
+    {
+      id: "midjourney",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney  &nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a> &nbsp;with the newly created discord account"),
+      mode: "selfserve"
+    },
     {
       id: "key",
       text: "Register here and get your API Key via email. You get 1 day of free usage",
-      mode: "auto"
+      mode: "fairy"
     },
     {
       id: "check-down",
       text: "You're ready to go! Check the API Usage section",
-      mode: "auto"
+      mode: "fairy"
     },
     {
       id: "expire",
       text: "Once your sub expires, you can extend it by any amount you like",
-      mode: "auto"
+      mode: "fairy"
     },
   ]
 
@@ -128,6 +128,10 @@ export class AppComponent implements OnInit, AfterViewInit{
 
     this.cardList = this.cardService.getPaymentCards();
     this.btcCard = this.cardService.getBtcCard();
+
+    this.cardList.forEach(card => {
+      card.description = <SafeHtml>this.sanitizer.bypassSecurityTrustHtml(card.description);
+    })
     
     this.switchForm.get('accType')?.valueChanges.subscribe(data=> {
       this.accountType = data ? 'selfserve' : 'fairy';

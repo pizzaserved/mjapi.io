@@ -175,6 +175,8 @@
         }
     }
     .copyright {
+        margin-top: 1rem;
+
         p{
             &::before{
                 content: '©';

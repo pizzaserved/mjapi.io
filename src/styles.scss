@@ -167,7 +167,7 @@ input:checked + .slider:before {
   }
 }
 
-.main-container{
+.main-container {
   p,
   button{
     font-size: var(--body-text-size);
@@ -181,10 +181,21 @@ input:checked + .slider:before {
   }
 }
 
-a{
+a {
   // font-family: Poppins Italic;
   color: var(--text-color-white);
   text-decoration: none !important;
+  opacity: 0.7;
+  
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size .25s, color .25s ease;
+}
+
+a:hover {
+  background-size: 100% 1px;
 }
 
 button {

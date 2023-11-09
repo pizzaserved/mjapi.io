@@ -25,12 +25,12 @@ export class AppComponent implements OnInit, AfterViewInit{
     },
     {
       id: "token",
-      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp; your discord user token"),
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp;your discord user token"),
       mode: "selfserve"
     },
     {
       id: "midjourney",
-      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney  &nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a> &nbsp;with the newly created discord account"),
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney&nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a>&nbsp;with the newly created discord account"),
       mode: "selfserve"
     },
     {

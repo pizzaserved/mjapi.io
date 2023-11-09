@@ -182,7 +182,14 @@ export class AppComponent implements OnInit, AfterViewInit{
   scrollToElement(elementId: string): void {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Using requestAnimationFrame to wait for the next repaint
+      requestAnimationFrame(() => {
+        // Adding another requestAnimationFrame to wait an additional frame
+        // in case the changes are not rendered in the first repaint
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
     }
   }
 }

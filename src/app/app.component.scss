@@ -283,6 +283,10 @@
 .bold-text{
     font-family: 'Poppins Semibold';
 }
+.smaller-darker-text {
+    font-size: smaller; /* adjust as needed */
+    color: #a4a4a4; /* choose a color that represents 'darker' text for your design */
+  }
 
 input[type='checkbox']:disabled + span{
     cursor: unset !important;

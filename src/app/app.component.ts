@@ -5,6 +5,7 @@ import { CardService } from './shared/card-service.service';
 import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
+import { CookieConsentService } from './shared/cookie-consent.service';
 
 declare const ScrollMagic: any;
 declare const TweenMax: any;
@@ -124,7 +125,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   currentUser: User| null = null
   isLoggedIn: boolean = false;
 
-  constructor(private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
+  constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 
   ngOnInit(): void {
     this.userService.autoLogin()

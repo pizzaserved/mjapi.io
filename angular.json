@@ -34,7 +34,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/vanilla-cookieconsent/dist/cookieconsent.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.js"
@@ -102,7 +103,8 @@
               "src/CNAME"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/vanilla-cookieconsent/dist/cookieconsent.css"
             ],
             "scripts": []
           }

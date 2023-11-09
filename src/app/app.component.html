@@ -45,11 +45,11 @@
       <div class="d-flex justify-content-center">
         <p class="section-header">Payment</p>
       </div>
-      <div class="row" [formGroup]="switchForm" (click)="scrollToElement('payment-section-header')">
+      <div class="row" [formGroup]="switchForm">
         <div class="switch-container">
 
           <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
-          <div class="switch d-flex">
+          <div class="switch d-flex" (click)="scrollToElement('payment-section-header')">
             <label class="switch">
               <!--Added scroll to so that the user can compare them without the content jumping around (because of the elements above it changing size)-->
                 <input type="checkbox" #accType name="accType" formControlName="accType">
@@ -70,11 +70,12 @@
       </div>
     </section>
 
-    <section class="mjapi-get">
+    <!--TODO uncomment and add info-->
+    <!-- <section class="mjapi-get">
       <div class="d-flex justify-content-center">
         <p class="section-header">What do you get?</p>
       </div>
-    </section>
+    </section> -->
 
     <section class="mjapi-usage container-fluid">
       <div class="d-flex justify-content-center">

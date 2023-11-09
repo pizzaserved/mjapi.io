@@ -175,6 +175,8 @@
         }
     }
     .copyright {
+        margin-top: 1rem;
+
         p{
             &::before{
                 content: '©';
@@ -283,6 +285,10 @@
 .bold-text{
     font-family: 'Poppins Semibold';
 }
+.smaller-darker-text {
+    font-size: smaller; /* adjust as needed */
+    color: #a4a4a4; /* choose a color that represents 'darker' text for your design */
+  }
 
 input[type='checkbox']:disabled + span{
     cursor: unset !important;
@@ -328,5 +334,18 @@ input[type='checkbox']:disabled + span{
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{
         max-width: var(--md-max-width) !important
+    }
+}
+
+@media screen and (max-width:767.9px) {
+    .collapse-button{
+        padding-inline: 0px !important;
+    }
+    .api-body{
+        margin-inline: 0 !important;
+    }
+
+    .mjapi-faq{
+        padding: 1rem 2rem !important;
     }
 }

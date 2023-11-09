@@ -18,6 +18,10 @@ export class TryFormComponent {
   tryNowGetForm:FormGroup = new FormGroup({
     jobId: new FormControl('')
   });
+  tryNowCancelForm:FormGroup = new FormGroup({
+    key: new FormControl(''),
+    jobId: new FormControl('')
+  });
 
   response: {
     data:{},
@@ -29,17 +33,27 @@ export class TryFormComponent {
   constructor(private apiService: ApiService){}
 
   submitTryNow(){
-    if(this.jobType == 'add') {
-      console.log(this.tryNowAddForm);
-      
-      let key = this.tryNowAddForm.get('key')!.value;      
-      let prompt = this.tryNowAddForm.get('prompt')!.value;
-      this.response = this.apiService.addJob(key, prompt)
-
-    } else if(this.jobType == 'get') {
-      let jobId = this.tryNowGetForm.get('jobId')!.value;
-      this.response = this.apiService.getJob(jobId);
-      console.log("Raspuns primit: ", this.response);
+    switch (this.jobType) {
+      case 'add':
+        console.log(this.tryNowAddForm);
+    
+        let addKey = this.tryNowAddForm.get('key')!.value;      
+        let prompt = this.tryNowAddForm.get('prompt')!.value;
+        this.response = this.apiService.addJob(addKey, prompt);
+        break;
+    
+      case 'get':
+        let getJobId = this.tryNowGetForm.get('jobId')!.value;
+        this.response = this.apiService.getJob(getJobId);
+        console.log("Raspuns primit: ", this.response);
+        break;
+    
+      case 'cancel':
+        let cancelKey = this.tryNowCancelForm.get('key')!.value;    
+        let cancelJobId = this.tryNowCancelForm.get('jobId')!.value;
+        this.response = this.apiService.cancelJob(cancelKey, cancelJobId);
+        console.log("Raspuns primit: ", this.response);
+        break;
     }
   }
 }

@@ -2,10 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Mjapi</title>
+  <!-- <title>Midjourney API | AI Image Generation | mjapi.io</title> -->
+  <title>Midjourney API</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+  <!--To be added in its own component, maybe-->
+  <!--Some SEO-->
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Midjourney API. Optional discord account. Free trial">
+  <meta name="keywords" content="midjourney, midjourney api, api, simple midjourney api, free simple midjourney api, midjourney without discord">
+  <meta name="revisit-after" content="7 days">
+  <!--Open Graph tags-->
+  <meta property="og:url" content="https://mjapi.io">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Midjourney API">
+  <meta property="og:description" content="Midjourney API. Optional discord account. Free trial">
+  <meta property="og:image" content="https://storage.googleapis.com/mjapi-pub/seo_screenshotv2.png">
+
+
+  <!--To be added in its own component, maybe-->
+  <!-- Google tag (gtag.js) (Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11185988260">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    // Updated as per https://www.tinstar.co.uk/studio-blog/some-cookies-are-misusing-the-recommended-samesite-attribute-how-to-fix
+    gtag('config', 'AW-11185988260', {
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
+  <!-- Event snippet for Page view conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function() {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11185988260/REhGCKjfkqIYEKTF8tUp',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+
+  <!--To be added in its own component, maybe-->
+  <!--Schema markup-->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "SoftwareApplication",
+      "name": "Midjourney API",
+      "url": "https://mjapi.io",
+      "description": "MidJourney API access. Simple. No BS",
+      "applicationCategory": "http://schema.org/WebAPI",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "1.00",
+        "priceCurrency": "USD"
+      },
+      "screenshot": "https://storage.googleapis.com/mjapi-pub/seo_screenshotv2.png",
+      "softwareVersion": "1.0"
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

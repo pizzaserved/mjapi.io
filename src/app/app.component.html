@@ -24,7 +24,7 @@
     <section class="mjapi-register container-fluid">
       <register-login-form></register-login-form>
     </section>
-    
+
     <section class="mjapi-hiw container-fluid">
       <div class="d-flex justify-content-center ">
         <p class="section-header">How it works</p>
@@ -32,7 +32,7 @@
       <div *ngFor="let step of steps; let i = index">
         <div class="row" *ngIf="i % 3 == 0">
           <div *ngFor="let s of steps.slice(i, i+3)" class="col-sm-12 col-md-4 step-container">
-            <div class="container-step" *ngIf="s.mode == accountType">
+            <div class="container-step" *ngIf="s.mode == accountType || s.mode == 'fairy'">
               <div class="{{s.id}}-icon d-flex justify-content-center"></div>
               <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
             </div>

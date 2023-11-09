@@ -86,7 +86,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   questionsList = [
       {
         question: 'Do I need a MidJourney sub?',
-        ans: 'No, only the SelfServe accounts need to provide a MJ-enabled discord token'
+        ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
       },
       {
         question: 'Why GET and not POST?',

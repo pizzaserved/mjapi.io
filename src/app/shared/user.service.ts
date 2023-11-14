@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, catchError, of, switchMap } from 'rxjs';
 import { URL_PATH } from '../../global';
 import { CookieService } from 'ngx-cookie';
 import { response } from 'express';
+import { ModalService } from './modal.service';
 
 export type User = {
   accountID: string,
@@ -20,11 +21,12 @@ export type User = {
 export class UserService {
   isLoggedin: boolean = false;
   isRegistered: boolean = false;
+  doOpenModal: boolean = false;
   selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
 
   currentUser: BehaviorSubject<User |null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private modalService: ModalService) { }
 
   private getUser(email: string) {
     console.log('get user');
@@ -52,9 +54,10 @@ export class UserService {
           if(discordToken != undefined && discordToken != null && discordToken.length > 0){
             params = params.append('discord_token', discordToken);
           }
-
+          this.doOpenModal = true;
           return this.http.get(`${URL_PATH}/adduser`, {params: params})
         } 
+        this.doOpenModal = false;
         return of(null)
       }), 
       switchMap((response: any) => {
@@ -82,10 +85,11 @@ export class UserService {
           this.isLoggedin = true;
           this.isRegistered = true;
         } 
-        if(this.isLoggedin && this.isRegistered)
-          return of(response)
-    
-        return of(false)
+        // if(this.isLoggedin && this.isRegistered)
+        //   return of(response)
+        console.log("sent response:", response);
+        
+        return of(response)
       })
     )
   }
@@ -104,6 +108,7 @@ export class UserService {
   autoLogin(){
     console.log("login");
     var userEmail = this.checkUserCookies();
+    this.doOpenModal = false;
     if(userEmail){
       this.getUser(userEmail).subscribe((response:any)=> {
         if(response.data !== undefined && response.data !== null) {
@@ -135,6 +140,7 @@ export class UserService {
     console.log('logout');
     this.isLoggedin = false;
     this.isRegistered = false;
+    this.doOpenModal = false;
     this.cookieService.remove('userEmail')
     this.currentUser.next(null);
   }

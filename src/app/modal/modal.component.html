@@ -1,0 +1,11 @@
+<div class="modal-container">
+    <!-- <h1 mat-dialog-title class="dialog-title">Modal title</h1> -->
+    <div mat-dialog-content>
+        <!-- Your modal content goes here -->
+       {{message}}
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="true" class="btn btn-primary">Great</button>
+    </div>
+</div>
+<div *ngIf="modalService.isDialogOpen()" class="overlay" (click)="closeModal()"></div>

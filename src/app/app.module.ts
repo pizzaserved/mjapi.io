@@ -11,6 +11,9 @@ import { CollapsiblePanelDirective } from './shared/collapsible-panel.directive'
 import { TryFormComponent } from './try-form/try-form.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
 import { CookieModule } from 'ngx-cookie';
+import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { CookieModule } from 'ngx-cookie';
     DolarPipe,
     CollapsiblePanelDirective,
     TryFormComponent,
-    RegisterLoginComponent
+    RegisterLoginComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { CookieModule } from 'ngx-cookie';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

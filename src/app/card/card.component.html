@@ -29,7 +29,7 @@
         </div>
         <form [formGroup]="btcForm">
             <div class="form-control range">
-                <input type="range" [min]="card.accountType == 'fairy'? 0.7 : 1" max="100" step="0.1" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
+                <input type="range" min="1" max="100" step="1" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
             </div>
             <p class=" d-flex justify-content-center">{{btcForm.get('btcSlider')?.value | dolar}}</p>
             <div class="col-12 d-flex justify-content-center">
@@ -38,5 +38,3 @@
         </form>
     </div>
 </div>
-
-<script src="https://your.btcpay.url/modal/btcpay.js"></script>

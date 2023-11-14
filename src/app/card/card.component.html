@@ -13,8 +13,8 @@
             <div class="col-12 d-flex justify-content-evenly">
                 <!-- <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button> -->
                 <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary" (click)="showPaymentOptions($event)">{{card.price | dolar}}</button>
-                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 stripe" #stripeOption (click)="initPayment(card.productId, 'stripe')">Stripe</button>
-                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 paypal" #paypalOption (click)="initPayment(card.productId, 'paypal')">Paypal</button>
+                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 stripe" #stripeOption (click)="initPayment(card.productId, 'stripe')"></button>
+                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 paypal" #paypalOption (click)="initPayment(card.productId, 'paypal')"></button>
             </div>
             <!-- <div class="col-12 d-flex justify-content-center paymentOptionsContainer" #paymentOptions>
             </div> -->

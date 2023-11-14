@@ -11,11 +11,12 @@ export class PaymentService {
 
   constructor(private userService: UserService, private http: HttpClient) {}
 
-  payStripe(userId: string, productId:string){
+  pay(userId: string, productId:string, type: string){
     console.log("Paying with stripe...");
     var params = new HttpParams();
     params = params.append('user_id', userId);
     params = params.append('product_id', productId);
+    params = params.append('type', type);
 
     return this.http.get(`${URL_PATH}/createfiatpaymentlink`, {params: params})
     .pipe(

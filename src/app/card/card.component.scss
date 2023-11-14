@@ -21,6 +21,18 @@
     }
 }
 
+// .buttonsContainer{
+    // position: relative;
+    .paymentOption{
+        display: none;
+        // margin-top: -52px;
+        // position: absolute
+        // button{
+        //     margin-inline: .25rem;
+        // }
+    }
+// }
+
 :host{
     &.disabled{
         button{
@@ -30,5 +42,14 @@
                 background-color: var(--primary-brand-color) !important;
             }
         }
+    }
+}
+
+@media screen and (min-width:991.9px) and (max-width: 1224.5px){
+    .simple{
+        padding: 3rem 1rem !important;
+    }
+    .container-fluid{
+        padding-left: 1rem !important;
     }
 }

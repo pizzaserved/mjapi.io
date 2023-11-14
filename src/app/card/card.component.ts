@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PaymentService } from '../shared/payment.service';
 import { User, UserService } from '../shared/user.service';
@@ -22,6 +22,9 @@ export class CardComponent implements OnInit{
   @Input() card!: Card;
   @Input() disabled!: boolean;
 
+  @ViewChild('stripeOption') stripeOption!: ElementRef;
+  @ViewChild('paypalOption') paypalOption!: ElementRef;
+
   currentUser: User | null = null
 
   btcForm: FormGroup = new FormGroup({
@@ -36,9 +39,20 @@ export class CardComponent implements OnInit{
     })
   }
 
-  initPayment(productId: string){
+  showPaymentOptions(event: Event){
+    console.log(event);
+
+    if(event.target instanceof HTMLElement){
+      event.target.style.display = 'none';
+    }
+
+    this.stripeOption.nativeElement.style.display = 'flex';
+    this.paypalOption.nativeElement.style.display = 'flex';
+  }
+
+  initPayment(productId: string, type: string){
     if(this.card.type !== 'btc'){
-      this.paymentService.payStripe(this.currentUser!.accountID, productId)
+      this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){
             console.log(response);

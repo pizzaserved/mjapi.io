@@ -4,6 +4,7 @@
   --section-title-size: 3.5rem;
   --body-text-size: 1.3rem;
   --h5-size: 1.8rem;
+  --h5-xl-size: calc(1.8rem * 1.6);
   --h1-size: 5rem;
 
   --body-color: #040210;
@@ -254,5 +255,41 @@ button {
         top: 0;
       }
     }
+  }
+}
+@media screen and (min-width:2200px) {
+  .landing-header{
+      font-size: var(--xl-landing-text-size) !important;
+  }
+  .container-landing{
+      max-width: var(--xl-max-width) !important;
+  }
+  .section-header{
+      font-size: var(--xl-section-title-size) !important;
+  }
+  .discord-icon,
+  .token-icon,
+  .midjourney-icon,
+  .key-icon,
+  .check-down-icon,
+  .expire-icon{
+      &::before{
+          height: var(--xl-icons-height) !important;
+      }
+  }
+
+  .main-container{
+      font-size: var(--xl-body-text-size);
+      p,
+      button{
+          font-size: var(--xl-body-text-size) !important;
+      }
+
+      .collapse-button{
+          font-size: var(--xl-body-text-size);
+      }
+      h5{
+        font-size: var(--h5-xl-size);
+      }
   }
 }

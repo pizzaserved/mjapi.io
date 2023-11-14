@@ -21,6 +21,29 @@
     }
 }
 
+.buttonsContainer{
+    // position: relative
+    > div{
+        flex-wrap: wrap;
+    }
+    .paymentOption{
+        display: none;
+        &.stripe{
+            &::before{
+                content: url('../../assets/icons/stripe.svg');
+                height: 22px;
+            }
+        }
+        &.paypal{
+            &::before{
+                content: url('../../assets/icons/paypal.svg');
+                height: 22px;
+                margin-right: .25rem;
+            }
+        }
+    }
+}
+
 :host{
     &.disabled{
         button{
@@ -30,5 +53,14 @@
                 background-color: var(--primary-brand-color) !important;
             }
         }
+    }
+}
+
+@media screen and (min-width:991.9px) and (max-width: 1224.5px){
+    .simple{
+        padding: 3rem 1rem !important;
+    }
+    .container-fluid{
+        padding-left: 1rem !important;
     }
 }

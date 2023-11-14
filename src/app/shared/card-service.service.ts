@@ -80,15 +80,24 @@ export class CardService {
     },
   ];
 
-  btcCard: Card = {
+  btcCard: Card[] = [{
     productId:'btc_payment',
     name: 'Bitcoin',
     price: 0,
-    description: 'Roughly $0.7/$1.0 per day (Fairy/SelfServe account)',
+    description: 'Roughly $0.7 per day',
     type: 'btc',
     accountType: 'fairy',
     selected: false
-  }
+  },
+  {
+    productId:'btc_payment',
+    name: 'Bitcoin',
+    price: 0,
+    description: 'Roughly $1.0 per day ',
+    type: 'btc',
+    accountType: 'selfserve',
+    selected: false
+  }]
   constructor() { }
 
   getPaymentCards(){

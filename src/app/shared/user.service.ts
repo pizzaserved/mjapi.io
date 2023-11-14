@@ -23,6 +23,7 @@ export class UserService {
   isRegistered: boolean = false;
   doOpenModal: boolean = false;
   selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
+  isRequestReady: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   currentUser: BehaviorSubject<User |null> = new BehaviorSubject<User | null>(null);
 
@@ -31,6 +32,8 @@ export class UserService {
   private getUser(email: string) {
     console.log('get user');
     
+    this.isRequestReady.next(false);
+
     let  params: HttpParams = new HttpParams();
     params = params.append('email', email);
 
@@ -55,6 +58,8 @@ export class UserService {
             params = params.append('discord_token', discordToken);
           }
           this.doOpenModal = true;
+          this.isRequestReady.next(false);
+
           return this.http.get(`${URL_PATH}/adduser`, {params: params})
         } 
         this.doOpenModal = false;
@@ -88,6 +93,8 @@ export class UserService {
           if(this.doOpenModal){
             this.openModal({status:response.status, message:response.message})
           }
+
+          this.isRequestReady.next(false);
         } 
         // if(this.isLoggedin && this.isRegistered)
         //   return of(response)
@@ -133,6 +140,8 @@ export class UserService {
           
           this.isLoggedin = true;
           this.isRegistered = true;
+          this.isRequestReady.next(true);
+
         } 
       });
     }

@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   ]
 
   cardList: Card[] = [];
-  btcCard!: Card;
+  btcCardList: Card[] = [];
   apiAddJobSampleResponse: Object = {
       "status": "success", "message": "Yummy!", "data": {
         "id": 5614325631231,
@@ -131,7 +131,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.userService.autoLogin()
 
     this.cardList = this.cardService.getPaymentCards();
-    this.btcCard = this.cardService.getBtcCard();
+    this.btcCardList = this.cardService.getBtcCard();
 
     this.cardList.forEach(card => {
       card.description = <SafeHtml>this.sanitizer.bypassSecurityTrustHtml(card.description);

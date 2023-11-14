@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PaymentService } from '../shared/payment.service';
 import { User, UserService } from '../shared/user.service';
@@ -22,6 +22,11 @@ export class CardComponent implements OnInit{
   @Input() card!: Card;
   @Input() disabled!: boolean;
 
+  isRequestReady: boolean = true;
+
+  @ViewChild('stripeOption') stripeOption!: ElementRef;
+  @ViewChild('paypalOption') paypalOption!: ElementRef;
+
   currentUser: User | null = null
 
   btcForm: FormGroup = new FormGroup({
@@ -34,11 +39,27 @@ export class CardComponent implements OnInit{
     this.userService.currentUser.subscribe((user) => {
       this.currentUser = user;
     })
+    this.paymentService.isRequestReady.subscribe((value) => {
+      this.isRequestReady = value;
+      console.log("isRequest ready?", value);
+      
+    })
   }
 
-  initPayment(productId: string){
-    if(this.card.type !== 'btc'){
-      this.paymentService.payStripe(this.currentUser!.accountID, productId)
+  showPaymentOptions(event: Event){
+    console.log(event);
+
+    if(event.target instanceof HTMLElement){
+      event.target.style.display = 'none';
+    }
+
+    this.stripeOption.nativeElement.style.display = 'flex';
+    this.paypalOption.nativeElement.style.display = 'flex';
+  }
+
+  initPayment(productId: string, type: string){
+    if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
+      this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){
             console.log(response);
@@ -55,7 +76,12 @@ export class CardComponent implements OnInit{
               }
             }
           }
+          this.paymentService.isRequestReady.next(true);
         })
+    } else {
+      if(!this.disabled && this.isRequestReady && this.currentUser){
+        this.paymentService.btcPay(this.currentUser?.accountID, this.btcForm.get('btcSlider')!.value)
+      }
     }
   }
 }

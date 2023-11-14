@@ -9,9 +9,15 @@
         <div class="col-12 d-flex justify-content-center">
             <p class="card-description" [innerHtml]="card.description"></p>
         </div>
-        <div class="col-12 d-flex justify-content-center">
-            <!-- <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button> -->
-            <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.price | dolar}}</button>
+        <div class="buttonsContainer">
+            <div class="col-12 d-flex justify-content-evenly">
+                <!-- <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button> -->
+                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary" (click)="showPaymentOptions($event)">{{card.price | dolar}}</button>
+                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 stripe" #stripeOption (click)="initPayment(card.productId, 'stripe')"></button>
+                <button type="button" [disabled]="disabled || !isRequestReady" class="btn btn-primary paymentOption mt-1 paypal" #paypalOption (click)="initPayment(card.productId, 'paypal')"></button>
+            </div>
+            <!-- <div class="col-12 d-flex justify-content-center paymentOptionsContainer" #paymentOptions>
+            </div> -->
         </div>
     </div>
     <div *ngIf="card.type == 'btc'" class="bitcoin">
@@ -23,11 +29,11 @@
         </div>
         <form [formGroup]="btcForm">
             <div class="form-control range">
-                <input type="range" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
+                <input type="range" min="1" max="100" step="1" class="form-range" id="btc-range" [formControlName]="'btcSlider'" >
             </div>
             <p class=" d-flex justify-content-center">{{btcForm.get('btcSlider')?.value | dolar}}</p>
             <div class="col-12 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Get</button>
+                <button type="submit" class="btn btn-primary" (click)="initPayment(card.productId, '')" [disabled]="disabled || !isRequestReady">Get</button>
             </div>
         </form>
     </div>

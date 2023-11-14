@@ -22,6 +22,8 @@ export class CardComponent implements OnInit{
   @Input() card!: Card;
   @Input() disabled!: boolean;
 
+  isRequestReady: boolean = true;
+
   @ViewChild('stripeOption') stripeOption!: ElementRef;
   @ViewChild('paypalOption') paypalOption!: ElementRef;
 
@@ -36,6 +38,11 @@ export class CardComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentUser.subscribe((user) => {
       this.currentUser = user;
+    })
+    this.paymentService.isRequestReady.subscribe((value) => {
+      this.isRequestReady = value;
+      console.log("isRequest ready?", value);
+      
     })
   }
 
@@ -69,6 +76,7 @@ export class CardComponent implements OnInit{
               }
             }
           }
+          this.paymentService.isRequestReady.next(true);
         })
     }
   }

@@ -227,6 +227,10 @@ button {
   }
 }
 
+.no-scroll {
+  overflow: hidden !important;
+}
+
 ::-webkit-slider-runnable-track{
   border-radius: 23px !important;
   background: rgba(197, 139, 52, 0.59) !important;

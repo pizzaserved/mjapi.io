@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User, UserService } from '../shared/user.service';
 import { Subscription } from 'rxjs';
+import { ModalService } from '../shared/modal.service';
 
 @Component({
   selector: 'register-login-form',
@@ -26,7 +27,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   accountTypeSubscription: Subscription = new Subscription();
   userServiceSubscription: Subscription = new Subscription();
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private modalService: ModalService){}
 
   ngOnInit(): void {
 
@@ -95,8 +96,11 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
       console.log("before register:", this.userTypeAccount);
       
       this.userServiceSubscription = this.userService.register(email, this.userTypeAccount, discordToken)
-        .subscribe(successfullyRegistered => {
+        .subscribe((successfullyRegistered:any) => {
+          console.log("Raspuns", successfullyRegistered);
+          
           if(successfullyRegistered){
+            // this.openModal({status: successfullyRegistered.status, message: successfullyRegistered.message})
             console.log("heyheyhey", successfullyRegistered);
             
             this.userService.currentUser.subscribe((user) => {
@@ -118,4 +122,8 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
     this.isLoggedIn = false;
     this.isRegistered = false
   }
+
+  // openModal({status, message}:{status: string, message:string}): void {
+  //   this.modalService.openModal({status, message});
+  // }
 }

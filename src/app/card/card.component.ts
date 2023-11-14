@@ -58,7 +58,7 @@ export class CardComponent implements OnInit{
   }
 
   initPayment(productId: string, type: string){
-    if(this.card.type !== 'btc'){
+    if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
       this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){
@@ -78,6 +78,10 @@ export class CardComponent implements OnInit{
           }
           this.paymentService.isRequestReady.next(true);
         })
+    } else {
+      if(!this.disabled && this.isRequestReady && this.currentUser){
+        this.paymentService.btcPay(this.currentUser?.accountID, this.btcForm.get('btcSlider')!.value)
+      }
     }
   }
 }

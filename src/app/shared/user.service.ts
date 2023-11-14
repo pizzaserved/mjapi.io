@@ -61,7 +61,7 @@ export class UserService {
         return of(null)
       }), 
       switchMap((response: any) => {
-        console.log(response);
+        console.log("switching response",response);
         if(response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
@@ -84,6 +84,10 @@ export class UserService {
           
           this.isLoggedin = true;
           this.isRegistered = true;
+
+          if(this.doOpenModal){
+            this.openModal({status:response.status, message:response.message})
+          }
         } 
         // if(this.isLoggedin && this.isRegistered)
         //   return of(response)
@@ -163,4 +167,7 @@ export class UserService {
     return this.selectedTypeAcc;
   }
 
+  private openModal({status, message}:{status: string, message:string}): void {
+    this.modalService.openModal({status, message});
+  }
 }

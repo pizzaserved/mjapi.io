@@ -84,5 +84,34 @@ export class ApiService {
 
     return responseObject;
   }
+  
+  cancelJob(key: string, jobId: string) {
+    let params: HttpParams = new HttpParams;
+    params = params.append('key', key);
+    params = params.append('jobId', jobId);
+
+    let responseObject = {
+      data: {},
+      value: {},
+      url: '',
+      isError: false
+    }
+
+    this.http.get(`${URL_PATH}/canceljob`, {params: params})
+      .subscribe({
+        next: (response:any) => {
+          let json = response;
+          responseObject.value = json;
+          responseObject.isError = false;
+        },
+        error:(error) => {
+          let json = error.error;
+          responseObject.value = json;
+          responseObject.isError = true;
+        }
+      })
+
+    return responseObject;
+  }
 
 }

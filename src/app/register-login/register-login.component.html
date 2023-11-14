@@ -22,7 +22,8 @@
             <span class="invalid-feedback" *ngIf="(registerForm.get('email')!.touched || registerForm.get('email')!.dirty) && registerForm.get('email')!.invalid">Not a valid email</span>
           </div>
           <div class="not-registered" *ngIf="!isRegistered && isRegistered != null">
-            <div class="form-group mb-3">
+            <!--Temporarily hid the username, as it's not that relevant, and it adds friction, especially when the user returns to log in-->
+            <div class="form-group mb-3 visually-hidden">
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username" formControlName="username" [class.is-invalid]="!isRegistered && (registerForm.get('username')!.touched || registerForm.get('username')!.dirty) && registerForm.get('username')!.invalid">
                 <span class="invalid-feedback" *ngIf="!isRegistered && (registerForm.get('username')!.touched || registerForm.get('username')!.dirty) && registerForm.get('username')!.invalid">Username is required</span>
             </div>

@@ -20,14 +20,23 @@
   </section>
 
   <div class="container-landing">
+
+    <section class="mjapi-register container-fluid">
+      <register-login-form></register-login-form>
+    </section>
+
     <section class="mjapi-hiw container-fluid">
       <div class="d-flex justify-content-center ">
         <p class="section-header">How it works</p>
       </div>
+      <div class="d-flex justify-content-center">
+        <p class="smaller-darker-text" *ngIf="accountType === 'fairy'">(Fairy)</p>
+        <p class="smaller-darker-text" *ngIf="accountType === 'selfserve'">(Self Serve)</p>
+      </div>
       <div *ngFor="let step of steps; let i = index">
         <div class="row" *ngIf="i % 3 == 0">
           <div *ngFor="let s of steps.slice(i, i+3)" class="col-sm-12 col-md-4 step-container">
-            <div class="container-step">
+            <div class="container-step" *ngIf="s.mode == accountType || s.mode == 'fairy'">
               <div class="{{s.id}}-icon d-flex justify-content-center"></div>
               <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
             </div>
@@ -36,52 +45,41 @@
       </div>
     </section>
 
-    <section class="mjapi-register container-fluid">
-      <register-login-form></register-login-form>
-    </section>
-
-    <section class="mjapi-payment container-fluid">
+    <section id='payment-section-header' class="mjapi-payment container-fluid">
       <div class="d-flex justify-content-center">
         <p class="section-header">Payment</p>
       </div>
       <div class="row" [formGroup]="switchForm">
         <div class="switch-container">
 
-          <span class="switch-first-label switch-label">Fairy</span>
-          <div class="switch d-flex">
+          <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
+          <div class="switch d-flex" (click)="scrollToElement('payment-section-header')">
             <label class="switch">
-                    <input type="checkbox" #accType name="accType" formControlName="accType">
-                    <span class="slider round"></span>
-                </label>
+              <!--Added scroll to so that the user can compare them without the content jumping around (because of the elements above it changing size)-->
+                <input type="checkbox" #accType name="accType" formControlName="accType">
+                <span class="slider round"></span>
+            </label>
           </div>
-          <span class="switch-first-label switch-label">Self Served</span>
+          <span #switchSecondLabel class="switch-first-label switch-label">Self Served</span>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col-12">
-          <form >
-            <div class="input-group">
-              <input type="text" name="uid" id="uid" aria-label="Enter Your User ID">
-            </div>
-          </form>
-        </div>
-      </div> -->
       <div class="row">
         <div class="container-payment d-flex justify-content-center row">
-          <div class="col-12 col-md-6 col-lg-3 container-fluid mb-5" *ngFor="let item of cardList">
-            <card [card]="item"></card>
+          <div class="col-12 col-md-6 col-lg-3 container-fluid" *ngFor="let item of cardList">
+            <div class="mb-5" *ngIf="accountType == item.accountType">
+              <card [card]="item" [disabled]="!isLoggedIn"></card>
+            </div>
           </div>
         </div>
       </div>
-      <!-- <p class="d-flex justify-content-center mb-5">or</p>
-      <div class="row">
-        <div class="d-flex justify-content-center">
-          <div class="col-12 col-md-7 col-lg-6 mb-3">
-            <card [card]="btcCard"></card>
-          </div>
-        </div>
-      </div> -->
     </section>
+
+    <!--TODO uncomment and add info-->
+    <!-- <section class="mjapi-get">
+      <div class="d-flex justify-content-center">
+        <p class="section-header">What do you get?</p>
+      </div>
+    </section> -->
 
     <section class="mjapi-usage container-fluid">
       <div class="d-flex justify-content-center">
@@ -91,7 +89,7 @@
         <div class="panel-container">
           <div class="api-header" id="heading-add-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> addJob</span>
+              <span class="light-text">GET</span> <span class="bold-text"> addjob</span>
             </button>
           </div>
           <div id="collapseAddJob" class="api-body-container">
@@ -154,29 +152,27 @@
                 <div class="mb-3">
                   <b>Rate limiting</b>
                 </div>
-                <p>There's a 5 requests/10sec rate limiting. That's still a lot for 99% of users</p>
+                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
               </div>
             </div>
           </div>
         </div>
         <div class="panel-container">
-          <div class="api-header" id="heading-add-job">
+          <div class="api-header" id="heading-get-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> getJob</span>
+              <span class="light-text">GET</span> <span class="bold-text"> getjob</span>
             </button>
           </div>
-          <div id="collapseAddJob" class="api-body-container">
+          <div id="collapseGetJob" class="api-body-container">
             <div class="api-body">
               <div class="mb-5">
                 <div class="mb-3">
                   <b>Request example</b>
                 </div>
                 <ul>
-                  <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325613212231231</i></span></li>
+                  <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325</i></span></li>
                 </ul>
               </div>
-
-
               <div class="mb-5">
                 <div class="mb-3">
                   <b>Fields</b>
@@ -214,7 +210,53 @@
                 <div class="mb-3">
                   <b>Rate limiting</b>
                 </div>
-                <p>There's a 5 requests/10sec rate limiting. That's still a lot for 99% of users</p>
+                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-container">
+          <div class="api-header" id="heading-cancel-job">
+            <button class="btn btn-link collapse-button" collapsiblePanel>
+              <span class="light-text">GET</span> <span class="bold-text"> canceljob</span>
+            </button>
+          </div>
+          <div id="collapseCancelJob" class="api-body-container">
+            <div class="api-body">
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Request examples</b>
+                </div>
+                <ul>
+                  <li>Cancel a job: <span class="example-code">https://api.mjapi.io/canceljob?<i>key=YOURKEY</i>&<i>job_id=44321</i></span></li>
+                </ul>
+              </div>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Fields</b>
+                </div>
+                <ul>
+                  <li><b>key</b> (required): your API Key</li>
+                  <li><b>job_id</b> (required): a job added via <b>addjob</b>.</li>
+                </ul>
+              </div>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Response</b>
+                </div>
+                <pre class="example-code">
+{{apiCancelJobSampleResponse | json}}
+                </pre>
+              </div>
+              <div class="mb-3">
+                <b>Try it now</b>
+              </div>
+              <try-form [jobType]="'cancel'"></try-form>
+              <div class="mb-5">
+                <div class="mb-3">
+                  <b>Rate limiting</b>
+                </div>
+                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
               </div>
             </div>
           </div>
@@ -246,11 +288,11 @@
   </div>
 
   <section class="mjapi-footer container-fluid">
-    <div class="git-section d-flex align-items-center align-items-md-start">
+    <div class="git-section d-flex align-items-center align-items-md-start row">
       <!-- <p class="git-header">Get in touch</p> -->
-      <p><a href="mailto:hi@mjapi.io">hi@mjapi.io</a></p>
-      <div><a href="/terms.html">Terms of Use</a></div>
-      <div><a href="/privacy.html">Privacy Policy</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="mailto:hi@mjapi.io">hi@mjapi.io</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/terms.html">Terms of Use</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/privacy.html">Privacy Policy</a></div>
     </div>
     <div class="copyright d-flex justify-content-center">
       <p>2023 mjapi.io. All Rigths Reserved</p>

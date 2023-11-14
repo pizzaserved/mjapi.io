@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CardService } from './shared/card-service.service';
 import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
+import { CookieConsentService } from './shared/cookie-consent.service';
 
 declare const ScrollMagic: any;
 declare const TweenMax: any;
@@ -17,35 +18,35 @@ declare const TweenMax: any;
 export class AppComponent implements OnInit, AfterViewInit{
   title = 'mjapi';
   steps = [
-    // {
-    //   id: "discord",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<div>You  <a href='https://discord.com/register' target='_blank'>create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons</div>"),
-    //   mode: "manual"
-    // },
-    // {
-    //   id: "token",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp; your discord user token"),
-    //   mode: "manual"
-    // },
-    // {
-    //   id: "midjourney",
-    //   text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney  &nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a> &nbsp;with the newly created discord account"),
-    //   mode: "manual"
-    // },
+    {
+      id: "discord",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<div>You  <a href='https://discord.com/register' target='_blank'>create</a> a new Discord account just for this purpose. Yes, you shouldn't use your own personal account, for a multitude of reasons</div>"),
+      mode: "selfserve"
+    },
+    {
+      id: "token",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("<a href='https://linuxhint.com/get-discord-token/' target='_blank'>Find</a> &nbsp;your discord user token"),
+      mode: "selfserve"
+    },
+    {
+      id: "midjourney",
+      text: <SafeHtml>this.sanitizer.bypassSecurityTrustHtml("Get an official Midjourney&nbsp;<a href='https://docs.midjourney.com/docs/plans' target='_blank'>subscription</a>&nbsp;with the newly created discord account"),
+      mode: "selfserve"
+    },
     {
       id: "key",
       text: "Register here and get your API Key via email. You get 1 day of free usage",
-      mode: "auto"
+      mode: "fairy"
     },
     {
       id: "check-down",
       text: "You're ready to go! Check the API Usage section",
-      mode: "auto"
+      mode: "fairy"
     },
     {
       id: "expire",
       text: "Once your sub expires, you can extend it by any amount you like",
-      mode: "auto"
+      mode: "fairy"
     },
   ]
 
@@ -78,11 +79,14 @@ export class AppComponent implements OnInit, AfterViewInit{
       "followup_menu": null
     }
   };
-
+  apiCancelJobSampleResponse: Object = {
+      "status": "success", "message": "Done", "data": null
+  };
+  
   questionsList = [
       {
         question: 'Do I need a MidJourney sub?',
-        ans: 'No, only the SelfServe accounts need to provide a MJ-enabled discord token'
+        ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
       },
       {
         question: 'Why GET and not POST?',
@@ -110,52 +114,82 @@ export class AppComponent implements OnInit, AfterViewInit{
   accountTypeChange = new Subscription();
   userServiceSubscription = new Subscription();
 
-  currentAccounType:string = '';
-  // @ViewChild('accType') accType!: ElementRef;
+  @ViewChild('switchFirstLabel') switchFirstLabel!: ElementRef;
+  @ViewChild('switchSecondLabel') switchSecondLabel!: ElementRef;
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
   })
-  accType: string = '';
+  switchIsDisabled: boolean = false;
+  accountType: string = '';
 
   currentUser: User| null = null
   isLoggedIn: boolean = false;
 
-  constructor(private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService){}
+  constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 
   ngOnInit(): void {
+    this.userService.autoLogin()
 
     this.cardList = this.cardService.getPaymentCards();
     this.btcCard = this.cardService.getBtcCard();
+
+    this.cardList.forEach(card => {
+      card.description = <SafeHtml>this.sanitizer.bypassSecurityTrustHtml(card.description);
+    })
     
     this.switchForm.get('accType')?.valueChanges.subscribe(data=> {
-      console.log(data);
-      this.accType = data ? 'selfserve' : 'fairy';
-      this.userService.setSelectedTypeAcc(this.accType);
+      this.accountType = data ? 'selfserve' : 'fairy';
+      this.userService.setSelectedTypeAcc(this.accountType);
     });
-    
-    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
-      console.log("A user has logged in:", user);
-      this.currentUser = user;
-      this.isLoggedIn = true;
-    })
   }  
 
   ngAfterViewInit() {
     
     this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      console.log('New account type is', type, 'but this accType is', this.accType, type== this.accType, type === this.accType);
-      if(this.accType !== type)
-        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
-      // this.accType.nativeElement.value = type === 'fairy' ? false : true;
-      // console.log(this.accType);
+      console.log("after view init", type, this.userService.selectedTypeAcc);
       
+      if(this.accountType !== type)
+        this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
+    })
+
+    this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
+      console.log("A user has logged in:", user);
+      if(user){
+        this.currentUser = user;
+        
+        this.isLoggedIn = true;
+        this.switchForm.get('accType')?.setValue(this.currentUser.accountType == 'fairy'? false : true);
+        
+        this.switchForm.get('accType')?.disable();
+        this.switchIsDisabled = true;
+        
+        if(this.accountType == 'fairy'){
+          this.renderer.removeClass(this.switchFirstLabel.nativeElement, 'disabled')
+          this.renderer.addClass(this.switchSecondLabel.nativeElement, 'disabled')
+        } else {
+          this.renderer.addClass(this.switchFirstLabel.nativeElement, 'disabled')
+          this.renderer.removeClass(this.switchSecondLabel.nativeElement, 'disabled')
+        }
+      } else{
+        this.currentUser = null;
+        this.isLoggedIn = false;
+        this.switchForm.get('accType')?.enable();
+        this.switchIsDisabled = false;
+      }
     })
   }
 
   scrollToElement(elementId: string): void {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Using requestAnimationFrame to wait for the next repaint
+      requestAnimationFrame(() => {
+        // Adding another requestAnimationFrame to wait an additional frame
+        // in case the changes are not rendered in the first repaint
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
     }
   }
 }

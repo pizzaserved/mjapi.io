@@ -132,7 +132,8 @@
 
     .mjapi-register {
         // min-height: 30vh;
-        margin-block: 10rem;
+        // margin-block: 10rem;
+        margin-bottom: 10rem;
     }
 
     .mjapi-payment {
@@ -166,12 +167,17 @@
     padding: 3rem 3.5rem 0 ;
 
     .git-section{
-        flex-direction: column;
+        // flex-direction: column;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: auto;
         .git-header {
             font-size: 2rem;
         }
     }
     .copyright {
+        margin-top: 1rem;
+
         p{
             &::before{
                 content: '©';
@@ -252,6 +258,9 @@
             button{
                 display: flex;
                 padding-inline: unset !important;
+                h3{
+                    text-align: left;
+                }
                 &::after{
                     height: 30px;
                     align-items: center;
@@ -276,6 +285,18 @@
 
 .bold-text{
     font-family: 'Poppins Semibold';
+}
+.smaller-darker-text {
+    font-size: smaller; /* adjust as needed */
+    color: #a4a4a4; /* choose a color that represents 'darker' text for your design */
+  }
+
+input[type='checkbox']:disabled + span{
+    cursor: unset !important;
+    opacity: .6;
+    &::before{
+        opacity: 0.6;
+    }
 }
 
 @media screen and (min-width:2200px) {
@@ -314,5 +335,18 @@
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{
         max-width: var(--md-max-width) !important
+    }
+}
+
+@media screen and (max-width:767.9px) {
+    .collapse-button{
+        padding-inline: 0px !important;
+    }
+    .api-body{
+        margin-inline: 0 !important;
+    }
+
+    .mjapi-faq{
+        padding: 1rem 2rem !important;
     }
 }

@@ -21,17 +21,28 @@
     }
 }
 
-// .buttonsContainer{
-    // position: relative;
+.buttonsContainer{
+    // position: relative
+    > div{
+        flex-wrap: wrap;
+    }
     .paymentOption{
         display: none;
-        // margin-top: -52px;
-        // position: absolute
-        // button{
-        //     margin-inline: .25rem;
-        // }
+        &.stripe{
+            &::before{
+                content: url('../../assets/icons/stripe.svg');
+                height: 22px;
+            }
+        }
+        &.paypal{
+            &::before{
+                content: url('../../assets/icons/paypal.svg');
+                height: 22px;
+                margin-right: .25rem;
+            }
+        }
     }
-// }
+}
 
 :host{
     &.disabled{

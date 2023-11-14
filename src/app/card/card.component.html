@@ -10,11 +10,11 @@
             <p class="card-description" [innerHtml]="card.description"></p>
         </div>
         <div class="buttonsContainer">
-            <div class="col-12 d-flex justify-content-center">
+            <div class="col-12 d-flex justify-content-evenly">
                 <!-- <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="initPayment(card.productId)">{{card.type == 'subscription' ? 'Subscribe' : 'Get'}}</button> -->
                 <button type="button" [disabled]="disabled" class="btn btn-primary" (click)="showPaymentOptions($event)">{{card.price | dolar}}</button>
-                <button type="button" class="btn btn-primary paymentOption" #stripeOption (click)="initPayment(card.productId, 'stripe')">Stripe</button>
-                <button type="button" class="btn btn-primary paymentOption" #paypalOption (click)="initPayment(card.productId, 'paypal')">Paypal</button>
+                <button type="button" class="btn btn-primary paymentOption mt-1 stripe" #stripeOption (click)="initPayment(card.productId, 'stripe')">Stripe</button>
+                <button type="button" class="btn btn-primary paymentOption mt-1 paypal" #paypalOption (click)="initPayment(card.productId, 'paypal')">Paypal</button>
             </div>
             <!-- <div class="col-12 d-flex justify-content-center paymentOptionsContainer" #paymentOptions>
             </div> -->

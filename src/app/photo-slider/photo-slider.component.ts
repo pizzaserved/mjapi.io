@@ -10,6 +10,7 @@ import KeenSlider, { KeenSliderInstance } from "keen-slider";
 export class PhotoSliderComponent implements AfterViewInit{
   @Input() images: string[] = [];
   @Input() duration: number = 0;
+  @Input() wait: number = 0;
   @ViewChild('imageSlider') imageSlider! : ElementRef;
 
   slider: KeenSliderInstance | null = null;
@@ -21,19 +22,22 @@ export class PhotoSliderComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     if(this.images.length > 0){
       setTimeout(() => {
-        this.slider = new KeenSlider(this.imageSlider.nativeElement, {
-          slides: this.images.length,
-          loop: true,
-          defaultAnimation: {
-            duration: 3000
-          },
-          detailsChanged: (s) => {
-            this.opacities = s.track.details.slides.map((slide) => slide.portion);
-          }
-        });
-      })
-      
-      this.loopWithDelay();
+        
+        setTimeout(() => {
+          this.slider = new KeenSlider(this.imageSlider.nativeElement, {
+            slides: this.images.length,
+            loop: true,
+            defaultAnimation: {
+              duration: 3000
+            },
+            detailsChanged: (s) => {
+              this.opacities = s.track.details.slides.map((slide) => slide.portion);
+            }
+          });
+        })
+        
+        this.loopWithDelay();
+      }, this.wait);
     }
   }
 

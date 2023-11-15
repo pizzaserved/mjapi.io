@@ -134,18 +134,37 @@ export class AppComponent implements OnInit, AfterViewInit{
   slider2: KeenSliderInstance | null = null;
   slider3: KeenSliderInstance | null = null;
   
-  images = [
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__d6e14204-ddfa-49ef-a6d3-0b6d5c271403.png",
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_a5387a39-cf98-4980-96b9-decd2e91198c.png",
-    "https://storage.googleapis.com/mjapi-pub/screens/a-4k-ultra-hd-wallpaper-of-a-couple-holding-hands-and-standing-on-a-cliff-overlo-85ot0vwi.jpeg",
-    "https://storage.googleapis.com/mjapi-pub/screens/gifts-are-delivered-by-santa-claus-on-a-motorcycle-njbcpebh.jpeg",
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_cadfa630-b260-4c4e-8ff5-6af009ecf7dd.png",
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_141c5ba0-a293-4722-af94-a8882cad54f2.png",
-    "https://storage.googleapis.com/mjapi-pub/screens/a-man-walking-in-a-foggy-forest-ehmuca4u.jpeg",
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_d0b11198-d3e3-4415-944d-244c34c2b382.png",
-    "https://storage.googleapis.com/mjapi-pub/screens/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_9ac9dfd5-8475-4363-a70b-7eda94a43988.png"
-];
-  thirdPart = Math.floor(this.images.length / 3);
+  squareUrls = [
+    "https://storage.googleapis.com/mjapi-pub/screens/square/boy_skyscraper.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_digital_art_tech_city_pink_and_blue_and_violet_int_ca2255cf-5eb8-43b8-8803-b0707adc4d1d2.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7q.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__cool_teenager_on_a_skyscraper_looking_down_the_city_sun_500c6e6f-ac39-4ccd-b23d-7afdc3d75630e.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_137f3f09-61e3-4d5c-ac9b-d370ea199ddb.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_c4bdcc47-ad81-4b11-b7ff-d586f26fdf84.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_8b0684a9-5cc2-421c-a7d8-093dd035e2eb22.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_digital_art_tech_city_pink_and_blue_and_violet_int_f3bbc807-b494-4dc3-82ef-094e6495c694.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__192413ac-7570-422f-b4d6-75d2a93abb33.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__very_nice_cat_digital_artrealistic_10548c35-a245-40e0-8167-e1346027e3bcbb.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7qqa.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__impressive_disrupting_highly_detailed_sphere_logo_with__c492cfbd-f036-442c-bdc8-7a8fc6bf3a1922.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__incredible_art_poster_urban_punk_technology_cool_39ecba80-dc0a-4bf1-8f92-43f992ecc711b.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_c3bfd812-e3f8-48d1-a25d-17b2c0c83eff.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7qq.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__very_nice_cat_digital_artrealistic_547c6821-147d-4e6a-af96-48ab9db169a622.png"
+  ];
+  
+  landUrls = [
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__d6e14204-ddfa-49ef-a6d3-0b6d5c271403.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_a5387a39-cf98-4980-96b9-decd2e91198c.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/a-4k-ultra-hd-wallpaper-of-a-couple-holding-hands-and-standing-on-a-cliff-overlo-85ot0vwi.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gifts-are-delivered-by-santa-claus-on-a-motorcycle-njbcpebh.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_cadfa630-b260-4c4e-8ff5-6af009ecf7dd.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_141c5ba0-a293-4722-af94-a8882cad54f2.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/a-man-walking-in-a-foggy-forest-ehmuca4u.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_d0b11198-d3e3-4415-944d-244c34c2b382.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_9ac9dfd5-8475-4363-a70b-7eda94a43988.png"
+  ];
+  halfPart = Math.floor(this.squareUrls.length / 2);
 
   constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 

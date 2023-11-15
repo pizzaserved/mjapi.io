@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     },
     {
       id: "expire",
-      text: "Once your sub expires, you can extend it by any amount you like",
+      text: "Once your sub expires, you can extend it by any amount. Stripe, PayPal, BTC accepted",
       mode: "fairy"
     },
   ]
@@ -87,6 +87,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       {
         question: 'Do I need a MidJourney sub?',
         ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
+      },
+      {
+        question: 'Available payment methods?',
+        ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'
       },
       {
         question: 'Why GET and not POST?',

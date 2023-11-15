@@ -35,7 +35,7 @@ export class CardService {
     },
     {
       productId:'mjapi_io_monthly_fairy_sub',
-      name: 'Monthly',
+      name: 'Subscribe',
       price: 22,
       description: '<div class="col-12 text-center">Strings attached</div><div class="col-12 text-center">But cheaper</div>',
       type: 'subscription',
@@ -71,7 +71,7 @@ export class CardService {
     },
     {
       productId:'mjapi_io_monthly_selfserve_sub',
-      name: 'Monthly',
+      name: 'Subscribe',
       price: 30,
       description: '<div class="col-12 text-center">Strings attached</div><div class="col-12 text-center">But cheaper</div',
       type: 'subscription',

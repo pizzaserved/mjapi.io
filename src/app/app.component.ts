@@ -6,6 +6,7 @@ import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
+import KeenSlider, { KeenSliderInstance } from "keen-slider";
 
 declare const ScrollMagic: any;
 declare const TweenMax: any;
@@ -116,6 +117,10 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   @ViewChild('switchFirstLabel') switchFirstLabel!: ElementRef;
   @ViewChild('switchSecondLabel') switchSecondLabel!: ElementRef;
+  @ViewChild('imageSlider') imageSlider! : ElementRef;
+  @ViewChild('imageSlider2') imageSlider2! : ElementRef;
+  @ViewChild('imageSlider3') imageSlider3! : ElementRef;
+
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
   })
@@ -124,6 +129,23 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   currentUser: User| null = null
   isLoggedIn: boolean = false;
+
+  slider: KeenSliderInstance | null = null;
+  slider2: KeenSliderInstance | null = null;
+  slider3: KeenSliderInstance | null = null;
+  
+  images = [
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__d6e14204-ddfa-49ef-a6d3-0b6d5c271403.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_a5387a39-cf98-4980-96b9-decd2e91198c.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/a-4k-ultra-hd-wallpaper-of-a-couple-holding-hands-and-standing-on-a-cliff-overlo-85ot0vwi.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/gifts-are-delivered-by-santa-claus-on-a-motorcycle-njbcpebh.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_cadfa630-b260-4c4e-8ff5-6af009ecf7dd.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_141c5ba0-a293-4722-af94-a8882cad54f2.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/a-man-walking-in-a-foggy-forest-ehmuca4u.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__incredible_art_poster_urban_punk_technology_cool_d0b11198-d3e3-4415-944d-244c34c2b382.png",
+    "https://storage.googleapis.com/mjapi-pub/screens/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_9ac9dfd5-8475-4363-a70b-7eda94a43988.png"
+];
+  thirdPart = Math.floor(this.images.length / 3);
 
   constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 
@@ -191,5 +213,9 @@ export class AppComponent implements OnInit, AfterViewInit{
         });
       });
     }
+  }
+
+  ngOnDestroy() {
+    if (this.slider) this.slider.destroy();
   }
 }

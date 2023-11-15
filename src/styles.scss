@@ -290,7 +290,9 @@ button {
             height: var(--xl-icons-height) !important;
         }
     }
-
+    svg{
+      height: calc(var(--xl-body-text-size) + .6rem) !important;
+    }
     .collapse-button{
         font-size: var(--xl-body-text-size);
     }

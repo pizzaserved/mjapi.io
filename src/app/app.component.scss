@@ -91,6 +91,9 @@
             background-color: rgb(18, 18, 31);
             padding-inline: 2rem;
             border-radius: 18px;
+            color: #bbb; /* Light grey text, commonly used for code */
+            font-family: 'Consolas', 'Monaco', monospace; /* Monospaced font for code */
+            font-size: 0.95rem; /* Adjust the font size as needed */
         }
 
         .api-body{
@@ -127,6 +130,7 @@
 
         .container-step{
             padding: 1rem;
+            color: #bbb;
         }
     }
 
@@ -269,6 +273,7 @@
             }
             &.open +.answer{
                 display: flex;
+                color: #bbb;
             }
 
             &.open{
@@ -287,9 +292,10 @@
     font-family: 'Poppins Semibold';
 }
 .smaller-darker-text {
-    font-size: smaller; /* adjust as needed */
-    color: #a4a4a4; /* choose a color that represents 'darker' text for your design */
-  }
+    font-size: smaller;
+    // color: #a4a4a4;
+    color: #bbb;
+}
 
 input[type='checkbox']:disabled + span{
     cursor: unset !important;
@@ -299,7 +305,10 @@ input[type='checkbox']:disabled + span{
     }
 }
 
-
+.mjapi-slider{
+    max-width: 3000px;
+    margin: auto;
+}
 
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{
@@ -321,35 +330,35 @@ input[type='checkbox']:disabled + span{
 }
 
 @media screen and (min-width:2200px) {
-    .landing-header{
-        font-size: var(--xl-landing-text-size) !important;
-    }
-    .container-landing{
-        max-width: var(--xl-max-width) !important;
-    }
-    .section-header{
-        font-size: var(--xl-section-title-size) !important;
-    }
-    .discord-icon,
-    .token-icon,
-    .midjourney-icon,
-    .key-icon,
-    .check-down-icon,
-    .expire-icon{
-        &::before{
-            height: var(--xl-icons-height) !important;
-        }
-    }
-
+    
     .main-container{
         font-size: var(--xl-body-text-size);
-        p,
+        p:not(.section-header),
         button{
             font-size: var(--xl-body-text-size) !important;
         }
 
         .collapse-button{
             font-size: var(--xl-body-text-size);
+        }
+        .landing-header{
+            font-size: var(--xl-landing-text-size) !important;
+        }
+        .container-landing{
+            max-width: var(--xl-max-width) !important;
+        }
+        .section-header{
+            font-size: var(--xl-section-title-size) !important;
+        }
+        .discord-icon,
+        .token-icon,
+        .midjourney-icon,
+        .key-icon,
+        .check-down-icon,
+        .expire-icon{
+            &::before{
+                height: var(--xl-icons-height) !important;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
+import KeenSlider, { KeenSliderInstance } from "keen-slider";
 
 declare const ScrollMagic: any;
 declare const TweenMax: any;
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     },
     {
       id: "expire",
-      text: "Once your sub expires, you can extend it by any amount you like",
+      text: "Once your sub expires, you can extend it by any amount. Stripe, PayPal, BTC accepted",
       mode: "fairy"
     },
   ]
@@ -89,6 +90,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
       },
       {
+        question: 'Available payment methods?',
+        ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'
+      },
+      {
         question: 'Why GET and not POST?',
         ans: 'We went full minimalistic here, the minimum effort for the desired result. It\'s really convenient to copy-paste the request directly in Chrome and see the result -- no Postman, curl etc. HTTPS makes sure the URL path/query etc. are encrypted, so nothing to be worried about. We might also mirror the current API via POST requests, if enough people ask for it'
       },
@@ -116,6 +121,10 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   @ViewChild('switchFirstLabel') switchFirstLabel!: ElementRef;
   @ViewChild('switchSecondLabel') switchSecondLabel!: ElementRef;
+  @ViewChild('imageSlider') imageSlider! : ElementRef;
+  @ViewChild('imageSlider2') imageSlider2! : ElementRef;
+  @ViewChild('imageSlider3') imageSlider3! : ElementRef;
+
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
   })
@@ -124,6 +133,42 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   currentUser: User| null = null
   isLoggedIn: boolean = false;
+
+  slider: KeenSliderInstance | null = null;
+  slider2: KeenSliderInstance | null = null;
+  slider3: KeenSliderInstance | null = null;
+  
+  squareUrls = [
+    "https://storage.googleapis.com/mjapi-pub/screens/square/boy_skyscraper.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_digital_art_tech_city_pink_and_blue_and_violet_int_ca2255cf-5eb8-43b8-8803-b0707adc4d1d2.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7q.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__cool_teenager_on_a_skyscraper_looking_down_the_city_sun_500c6e6f-ac39-4ccd-b23d-7afdc3d75630e.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_137f3f09-61e3-4d5c-ac9b-d370ea199ddb.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_c4bdcc47-ad81-4b11-b7ff-d586f26fdf84.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_8b0684a9-5cc2-421c-a7d8-093dd035e2eb22.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_digital_art_tech_city_pink_and_blue_and_violet_int_f3bbc807-b494-4dc3-82ef-094e6495c694.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__192413ac-7570-422f-b4d6-75d2a93abb33.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__very_nice_cat_digital_artrealistic_10548c35-a245-40e0-8167-e1346027e3bcbb.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7qqa.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__impressive_disrupting_highly_detailed_sphere_logo_with__c492cfbd-f036-442c-bdc8-7a8fc6bf3a1922.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__incredible_art_poster_urban_punk_technology_cool_39ecba80-dc0a-4bf1-8f92-43f992ecc711b.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_c3bfd812-e3f8-48d1-a25d-17b2c0c83eff.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__best_paint_ever_0e0c01cd-e787-45e5-874d-6a7ddb06caa7qq.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/square/gegep__very_nice_cat_digital_artrealistic_547c6821-147d-4e6a-af96-48ab9db169a622.jpg"
+  ];
+  
+  landUrls = [
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__cool_teenager_girl_on_a_hill_with_her_dog_looking_down__d6e14204-ddfa-49ef-a6d3-0b6d5c271403.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_a5387a39-cf98-4980-96b9-decd2e91198c.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/a-4k-ultra-hd-wallpaper-of-a-couple-holding-hands-and-standing-on-a-cliff-overlo-85ot0vwi.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gifts-are-delivered-by-santa-claus-on-a-motorcycle-njbcpebh.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_cadfa630-b260-4c4e-8ff5-6af009ecf7dd.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_141c5ba0-a293-4722-af94-a8882cad54f2.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/a-man-walking-in-a-foggy-forest-ehmuca4u.jpeg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__incredible_art_poster_urban_punk_technology_cool_d0b11198-d3e3-4415-944d-244c34c2b382.jpg",
+    "https://storage.googleapis.com/mjapi-pub/screens/land/gegep__massive_tree_of_life_in_garden_of_eden_sunrise_far_away_9ac9dfd5-8475-4363-a70b-7eda94a43988.jpg"
+  ];
+  halfPart = Math.floor(this.squareUrls.length / 2);
 
   constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2){}
 
@@ -191,5 +236,9 @@ export class AppComponent implements OnInit, AfterViewInit{
         });
       });
     }
+  }
+
+  ngOnDestroy() {
+    if (this.slider) this.slider.destroy();
   }
 }

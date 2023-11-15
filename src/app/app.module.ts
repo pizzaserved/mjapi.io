@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalService } from './shared/modal.service';
 import { UserService } from './shared/user.service';
+import { PhotoSliderComponent } from './photo-slider/photo-slider.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserService } from './shared/user.service';
     CollapsiblePanelDirective,
     TryFormComponent,
     RegisterLoginComponent,
-    ModalComponent
+    ModalComponent,
+    PhotoSliderComponent
   ],
   imports: [
     BrowserModule,

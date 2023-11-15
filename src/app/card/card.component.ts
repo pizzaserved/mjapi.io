@@ -55,6 +55,15 @@ export class CardComponent implements OnInit{
 
     this.stripeOption.nativeElement.style.display = 'flex';
     this.paypalOption.nativeElement.style.display = 'flex';
+
+    setTimeout(() => {
+      if(event.target instanceof HTMLElement){
+        event.target.style.display = 'flex';
+      }
+  
+      this.stripeOption.nativeElement.style.display = 'none';
+      this.paypalOption.nativeElement.style.display = 'none';
+    }, 10000);
   }
 
   initPayment(productId: string, type: string){

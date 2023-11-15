@@ -1,0 +1,5 @@
+<div class="image-slider fader col-12 mb-3" #imageSlider>
+    <div [ngStyle]="{ opacity: opacities[idx] }" class="fader__slide" *ngFor="let src of images; let idx = index">
+      <img [src]="src" />
+    </div>
+</div>

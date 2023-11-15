@@ -28,7 +28,7 @@ export class PhotoSliderComponent implements AfterViewInit{
             slides: this.images.length,
             loop: true,
             defaultAnimation: {
-              duration: 3000
+              duration: 4000
             },
             detailsChanged: (s) => {
               this.opacities = s.track.details.slides.map((slide) => slide.portion);

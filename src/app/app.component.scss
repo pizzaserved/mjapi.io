@@ -91,6 +91,9 @@
             background-color: rgb(18, 18, 31);
             padding-inline: 2rem;
             border-radius: 18px;
+            color: #bbb; /* Light grey text, commonly used for code */
+            font-family: 'Consolas', 'Monaco', monospace; /* Monospaced font for code */
+            font-size: 0.95rem; /* Adjust the font size as needed */
         }
 
         .api-body{
@@ -127,6 +130,7 @@
 
         .container-step{
             padding: 1rem;
+            color: #bbb;
         }
     }
 
@@ -269,6 +273,7 @@
             }
             &.open +.answer{
                 display: flex;
+                color: #bbb;
             }
 
             &.open{
@@ -287,9 +292,10 @@
     font-family: 'Poppins Semibold';
 }
 .smaller-darker-text {
-    font-size: smaller; /* adjust as needed */
-    color: #a4a4a4; /* choose a color that represents 'darker' text for your design */
-  }
+    font-size: smaller;
+    // color: #a4a4a4;
+    color: #bbb;
+}
 
 input[type='checkbox']:disabled + span{
     cursor: unset !important;

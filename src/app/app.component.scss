@@ -305,7 +305,10 @@ input[type='checkbox']:disabled + span{
     }
 }
 
-
+.mjapi-slider{
+    max-width: 3000px;
+    margin: auto;
+}
 
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{
@@ -327,35 +330,35 @@ input[type='checkbox']:disabled + span{
 }
 
 @media screen and (min-width:2200px) {
-    .landing-header{
-        font-size: var(--xl-landing-text-size) !important;
-    }
-    .container-landing{
-        max-width: var(--xl-max-width) !important;
-    }
-    .section-header{
-        font-size: var(--xl-section-title-size) !important;
-    }
-    .discord-icon,
-    .token-icon,
-    .midjourney-icon,
-    .key-icon,
-    .check-down-icon,
-    .expire-icon{
-        &::before{
-            height: var(--xl-icons-height) !important;
-        }
-    }
-
+    
     .main-container{
         font-size: var(--xl-body-text-size);
-        p,
+        p:not(.section-header),
         button{
             font-size: var(--xl-body-text-size) !important;
         }
 
         .collapse-button{
             font-size: var(--xl-body-text-size);
+        }
+        .landing-header{
+            font-size: var(--xl-landing-text-size) !important;
+        }
+        .container-landing{
+            max-width: var(--xl-max-width) !important;
+        }
+        .section-header{
+            font-size: var(--xl-section-title-size) !important;
+        }
+        .discord-icon,
+        .token-icon,
+        .midjourney-icon,
+        .key-icon,
+        .check-down-icon,
+        .expire-icon{
+            &::before{
+                height: var(--xl-icons-height) !important;
+            }
         }
     }
 }

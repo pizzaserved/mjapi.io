@@ -19,7 +19,19 @@
     </div>
   </section>
 
-  <div class="container-landing">
+  <section class="mjapi-slider row mb-5">
+    <div class="col-12 ">
+      <photo-slider [images]="landUrls" [duration]="3000"></photo-slider>
+    </div>
+    <!-- <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
+      <photo-slider [images]="images.slice(thirdPart, 2*thirdPart)" [duration]="4500"></photo-slider>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 d-none d-lg-block">
+      <photo-slider [images]="images.slice(2 * thirdPart, images.length)" [duration]="7000"></photo-slider>
+    </div> -->
+  </section>
+  
+  <div class="container-landing mt-5">
 
     <section class="mjapi-register container-fluid">
       <register-login-form></register-login-form>
@@ -288,6 +300,15 @@
     <div class="elipse elipse-2"></div>
     <div class="elipse elipse-3"></div>
   </div>
+
+  <section class="mjapi-slider row mb-5">
+    <div class="col-6">
+      <photo-slider [images]="squareUrls.slice(0, halfPart)" [duration]="4000"></photo-slider>
+    </div>
+    <div class="col-6">
+      <photo-slider [images]="squareUrls.slice(halfPart, squareUrls.length)" [duration]="4000" [wait]="2000"></photo-slider>
+    </div>
+  </section>
 
   <section class="mjapi-footer container-fluid">
     <div class="git-section d-flex align-items-center align-items-md-start row">

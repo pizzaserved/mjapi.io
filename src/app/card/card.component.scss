@@ -28,18 +28,22 @@
     }
     .paymentOption{
         display: none;
-        &.stripe{
-            &::before{
-                content: url('../../assets/icons/stripe.svg');
-                height: 22px;
+        &.stripe,
+        &.paypal{
+            padding-inline: 1rem !important;
+            svg{
+                height: calc(var(--body-text-size) + .5rem);
+                width: 55px;
             }
         }
         &.paypal{
-            &::before{
-                content: url('../../assets/icons/paypal.svg');
-                height: 22px;
-                margin-right: .25rem;
+            margin-left: .5rem;
+            svg{
+                width: 20px;
             }
+        }
+        &.stripe{
+            margin-right: .5rem;
         }
     }
 }
@@ -53,6 +57,12 @@
                 background-color: var(--primary-brand-color) !important;
             }
         }
+    }
+}
+
+@media screen and (max-width: 400px){
+    .simple{
+        padding: 2rem 1rem !important;
     }
 }
 

@@ -107,9 +107,9 @@
                   <b>Request examples</b>
                 </div>
                 <ul>
-                  <li>Get 1 image, auto-upscaled: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></span></li>
-                  <li>Get 4 images, then choose optionally adjust it in another call: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=photo%20of%20the%20moon%20taken%20from%20a%20luxurious%20skyscraper%20--version%205.1%20--style%20raw</i></span></li>
-                  <li>Choose an adjustment of a previous job: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>parent_id=123213</i>&<i>pick=U3</i></span></li>
+                  <li>Get 1 image, auto-upscaled: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=big strawberry --ar 16:9</i></span></li>
+                  <li>Get 4 images, then make adjustments: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=big strawberry --ar 16:9</i></span></li>
+                  <li>Adjust a previous job's result: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>parent_id=123213</i>&<i>pick=U3</i></span></li>
                 </ul>
               </div>
               <div class="mb-5">
@@ -137,9 +137,7 @@
                 <div class="mb-3">
                   <b>Response</b>
                 </div>
-                <pre class="example-code">
-{{apiAddJobSampleResponse | json}}
-                </pre>
+                <pre class="example-code">{{apiAddJobSampleResponse | json}}</pre>
                 <div>
                   <b>Notable response fields</b>
                   <ul>
@@ -194,9 +192,7 @@
                   <b>Response</b>
                 </div>
 
-                <pre class="example-code">
-{{apiGetJobSampleResponse | json}}
-                </pre>
+                <pre class="example-code">{{apiGetJobSampleResponse | json}}</pre>
                 <div>
                   <b>Notable response fields</b>
                   <ul>
@@ -252,9 +248,7 @@
                 <div class="mb-3">
                   <b>Response</b>
                 </div>
-                <pre class="example-code">
-{{apiCancelJobSampleResponse | json}}
-                </pre>
+                <pre class="example-code">{{apiCancelJobSampleResponse | json}}</pre>
               </div>
               <div class="mb-3">
                 <b>Try it now</b>

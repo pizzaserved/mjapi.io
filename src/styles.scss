@@ -109,6 +109,8 @@ body{
   background-color: rgba(123, 121, 126, 0.37);
   -webkit-transition: .4s;
   transition: .4s;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
 }
 
 .slider:before {
@@ -122,6 +124,8 @@ body{
   -webkit-transition: .4s;
   transition: .4s;
   top: -2px;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
 }
 
 input:checked + .slider {
@@ -140,8 +144,12 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
+}
+.sr-easeInOutQuad {
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
 .slider.round {
   border-radius: 34px;
 }

@@ -241,6 +241,22 @@
             transform: rotate(-50deg);
             // right: 20%;
         }
+        &.elipse-3{
+            top: 250vh;
+            transform: rotate(0deg) translateX(-60vw);
+        }
+        &.elipse-4{
+            top: 330vh;
+            transform: rotate(0deg) translateX(0vw);
+        }
+        &.elipse-5{
+            top: 400vh;
+            transform: rotate(0deg) translateX(-30vw);
+        }
+        &.elipse-6{
+            top: 500vh;
+            transform: rotate(0deg) translateX(0vw);
+        }
     }
 
     p{
@@ -309,6 +325,8 @@ input[type='checkbox']:disabled + span{
     max-width: 3000px;
     margin: auto;
 }
+
+
 
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{

@@ -296,9 +296,7 @@
       </div>
     </section>
 
-    <div class="elipse elipse-1"></div>
-    <div class="elipse elipse-2"></div>
-    <div class="elipse elipse-3"></div>
+    <div class="elipse elipse-{{item}}" *ngFor="let item of getRange(6)"></div>
   </div>
 
   <section class="mjapi-slider row mb-5">

@@ -8,9 +8,6 @@ import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
 
-declare const ScrollMagic: any;
-declare const TweenMax: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -242,6 +239,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         });
       });
     }
+  }
+
+  getRange(count: number): number[] {
+    return Array.from({ length: count }, (_, index) => index + 1);
   }
 
   ngOnDestroy() {

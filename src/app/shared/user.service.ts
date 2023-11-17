@@ -30,7 +30,7 @@ export class UserService {
   constructor(private http: HttpClient, private cookieService: CookieService, private modalService: ModalService) { }
 
   private getUser(email: string) {
-    console.log('get user');
+    //console.log('get user');
     
     this.isRequestReady.next(false);
 
@@ -41,7 +41,7 @@ export class UserService {
   }
 
   register(email: string, accountType?: string, discordToken?: string): Observable<boolean>{
-    console.log('register', accountType);
+    //console.log('register', accountType);
 
     let params: HttpParams = new HttpParams();
     params = params.append('email', email);
@@ -66,7 +66,7 @@ export class UserService {
         return of(null)
       }), 
       switchMap((response: any) => {
-        console.log("switching response",response);
+        //console.log("switching response",response);
         if(response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
@@ -85,7 +85,7 @@ export class UserService {
           /* Update current user */
           this.currentUser.next(newUser);
 
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           
           this.isLoggedin = true;
           this.isRegistered = true;
@@ -98,7 +98,7 @@ export class UserService {
         } 
         // if(this.isLoggedin && this.isRegistered)
         //   return of(response)
-        console.log("sent response:", response);
+        //console.log("sent response:", response);
         
         return of(response)
       })
@@ -109,7 +109,7 @@ export class UserService {
     const userEmail = this.cookieService.get('userEmail');
 
     if(userEmail) {
-      console.log('Vezi cookie', atob(userEmail))
+      //console.log('Vezi cookie', atob(userEmail))
       return atob(userEmail);
     }
 
@@ -117,7 +117,7 @@ export class UserService {
   }
 
   autoLogin(){
-    console.log("login");
+    //console.log("login");
     var userEmail = this.checkUserCookies();
     this.doOpenModal = false;
     if(userEmail){
@@ -136,7 +136,7 @@ export class UserService {
           /* Update current user */
           this.currentUser.next(newUser);
 
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           
           this.isLoggedin = true;
           this.isRegistered = true;
@@ -150,7 +150,7 @@ export class UserService {
   }
 
   logout(){
-    console.log('logout');
+    //console.log('logout');
     this.isLoggedin = false;
     this.isRegistered = false;
     this.doOpenModal = false;
@@ -166,7 +166,7 @@ export class UserService {
   }
 
   setSelectedTypeAcc(type:string){
-    // console.log(type);
+    // //console.log(type);
     
     if(type != this.selectedTypeAcc.value)
       this.selectedTypeAcc.next(type);

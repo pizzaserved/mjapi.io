@@ -33,7 +33,7 @@ export class ApiService {
             // responseObject.data = json['data'];
             // responseObject.url = json['data']['result_url']
           // } catch (error) {
-            // console.log("Eroare getjob", error);
+            // //console.log("Eroare getjob", error);
           // }
         },
         error:(error) => {
@@ -67,11 +67,11 @@ export class ApiService {
             responseObject.url = json['data']['result_url']
             responseObject.isError = false;
           } catch (error) {
-            console.log("Eroare getjob", error);
+            //console.log("Eroare getjob", error);
           }
         },
         error:(error) => {
-          console.log(error);
+          //console.log(error);
           if(error.statusText == 'Unknown Error'){
             responseObject.value = {error: error.message}
           } else {

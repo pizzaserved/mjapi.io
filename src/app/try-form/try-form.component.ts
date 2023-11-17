@@ -35,7 +35,7 @@ export class TryFormComponent {
   submitTryNow(){
     switch (this.jobType) {
       case 'add':
-        console.log(this.tryNowAddForm);
+        //console.log(this.tryNowAddForm);
     
         let addKey = this.tryNowAddForm.get('key')!.value;      
         let prompt = this.tryNowAddForm.get('prompt')!.value;
@@ -45,14 +45,14 @@ export class TryFormComponent {
       case 'get':
         let getJobId = this.tryNowGetForm.get('jobId')!.value;
         this.response = this.apiService.getJob(getJobId);
-        console.log("Raspuns primit: ", this.response);
+        //console.log("Raspuns primit: ", this.response);
         break;
     
       case 'cancel':
         let cancelKey = this.tryNowCancelForm.get('key')!.value;    
         let cancelJobId = this.tryNowCancelForm.get('jobId')!.value;
         this.response = this.apiService.cancelJob(cancelKey, cancelJobId);
-        console.log("Raspuns primit: ", this.response);
+        //console.log("Raspuns primit: ", this.response);
         break;
     }
   }

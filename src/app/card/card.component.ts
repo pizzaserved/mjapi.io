@@ -41,13 +41,13 @@ export class CardComponent implements OnInit{
     })
     this.paymentService.isRequestReady.subscribe((value) => {
       this.isRequestReady = value;
-      console.log("isRequest ready?", value);
+      //console.log("isRequest ready?", value);
       
     })
   }
 
   showPaymentOptions(event: Event){
-    console.log(event);
+    //console.log(event);
 
     if(event.target instanceof HTMLElement){
       event.target.style.display = 'none';
@@ -71,9 +71,9 @@ export class CardComponent implements OnInit{
       this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){
-            console.log(response);
+            //console.log(response);
             if(response.data!= undefined && response.data.payment_link != undefined){
-              console.log(response.data.payment_link);
+              //console.log(response.data.payment_link);
               
               /* Open in a ne tab/window */
               var newWindow = window.open(response.data.payment_link, '_blank');

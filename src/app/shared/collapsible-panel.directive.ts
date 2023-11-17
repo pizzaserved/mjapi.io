@@ -13,7 +13,7 @@ export class CollapsiblePanelDirective {
   
   @HostListener('click') click(eventData: Event){
     var panel = this.elementRef.nativeElement.closest('.panel-container')
-    console.log(this.isOpened, panel, this.elementRef);
+    //console.log(this.isOpened, panel, this.elementRef);
     if(!this.isOpened){
       this.renderer.addClass(panel,'open');
       this.renderer.addClass(this.elementRef.nativeElement,'open');

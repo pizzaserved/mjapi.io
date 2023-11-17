@@ -32,7 +32,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
 
     this.currentUserSubscription = this.userService.currentUser.subscribe((user)=> {
-      console.log("Nou utilizator interceptat", user);
+      //console.log("Nou utilizator interceptat", user);
       if(user){
         this.currentUser = user
         this.isLoggedIn = true;
@@ -45,7 +45,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
     })
 
     this.registerForm.get('accType')?.valueChanges.subscribe(newMode => {
-      console.log("aicii", newMode);
+      //console.log("aicii", newMode);
       
       if(newMode){
         this.userTypeAccount = 'selfserve';
@@ -59,11 +59,11 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
       this.userService.setSelectedTypeAcc(this.userTypeAccount)
       this.registerForm.controls['discordToken'].updateValueAndValidity();
       this.registerForm.controls['username'].updateValueAndValidity();
-      console.log(this.userTypeAccount, newMode);
+      //console.log(this.userTypeAccount, newMode);
     })
 
     this.registerForm.get('email')?.valueChanges.subscribe( email => {
-      console.log(email.split("@"));
+      //console.log(email.split("@"));
       var parts = email.split("@");
       if(parts.length > 1){
         var uname = parts[0];
@@ -72,7 +72,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
     })
     
     this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      console.log('In register new account type is', type);
+      //console.log('In register new account type is', type);
       if(this.userTypeAccount !== type)
         this.registerForm.get('accType')?.setValue(type === 'fairy' ? false : true)
     })
@@ -87,24 +87,24 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   }
 
   submitRegister(){
-    console.log(this.registerForm);
+    //console.log(this.registerForm);
     if(this.registerForm.status == 'VALID'){
-      console.log("Valid registration");
+      //console.log("Valid registration");
       var email = this.registerForm.controls['email'].value;
       var discordToken = this.registerForm.controls['discordToken'].value;
       // var username = this.registerForm.controls['username'].value;
-      console.log("before register:", this.userTypeAccount);
+      //console.log("before register:", this.userTypeAccount);
       
       this.userServiceSubscription = this.userService.register(email, this.userTypeAccount, discordToken)
         .subscribe((successfullyRegistered:any) => {
-          console.log("Raspuns", successfullyRegistered);
+          //console.log("Raspuns", successfullyRegistered);
           
           if(successfullyRegistered){
             // this.openModal({status: successfullyRegistered.status, message: successfullyRegistered.message})
-            console.log("heyheyhey", successfullyRegistered);
+            //console.log("heyheyhey", successfullyRegistered);
             
             this.userService.currentUser.subscribe((user) => {
-              console.log("A user has logged in:", user);
+              //console.log("A user has logged in:", user);
               if(user != null){
                 this.currentUser = user;
                 this.isRegistered = true;

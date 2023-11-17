@@ -197,14 +197,14 @@ export class AppComponent implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     
     this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      console.log("after view init", type, this.userService.selectedTypeAcc);
+      //console.log("after view init", type, this.userService.selectedTypeAcc);
       
       if(this.accountType !== type)
         this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
     })
 
     this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
-      console.log("A user has logged in:", user);
+      //console.log("A user has logged in:", user);
       if(user){
         this.currentUser = user;
         

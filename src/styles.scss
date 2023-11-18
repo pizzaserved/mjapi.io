@@ -63,6 +63,10 @@
   font-family: "Poppins Thin Italic";
   src: url('assets/font/Poppins-ThinItalic.ttf');
 }
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url('assets/font/Poppins-SemiBold.ttf');
+}
 
 body{
   font-family: "Poppins Regular", sans-serif;
@@ -216,6 +220,7 @@ a:hover {
 button {
   border-radius: 12px !important;
   padding: .8rem 2rem !important;
+  font-family: 'Poppins SemiBold' !important;
   &.btn-primary {
     background-color: var(--primary-brand-color);
     border-color: var(--primary-brand-color);

@@ -57,7 +57,7 @@
       </div>
     </section>
 
-    <section id='payment-section-header' class="mjapi-payment container-fluid">
+    <section class="mjapi-payment container-fluid">
       <div class="d-flex justify-content-center">
         <p class="section-header">Payment</p>
       </div>
@@ -65,7 +65,7 @@
         <div class="switch-container">
 
           <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
-          <div class="switch d-flex" (click)="scrollToElement('payment-section-header')">
+          <div class="switch d-flex" (click)="onSwitchClickedNearPayment()">
             <label class="switch">
               <!--Added scroll to so that the user can compare them without the content jumping around (because of the elements above it changing size)-->
                 <input type="checkbox" #accType name="accType" formControlName="accType">

@@ -227,18 +227,19 @@ export class AppComponent implements OnInit, AfterViewInit{
     })
   }
 
-  scrollToElement(elementId: string): void {
-    const element = document.getElementById(elementId);
-    if (element) {
-      // Using requestAnimationFrame to wait for the next repaint
-      requestAnimationFrame(() => {
-        // Adding another requestAnimationFrame to wait an additional frame
-        // in case the changes are not rendered in the first repaint
-        requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-    }
+  onSwitchClickedNearPayment(elementId: string): void {
+    // TODO if/when needed, store scroll position relative to the page's total height, allow the content to change, then restore it
+    // const element = document.getElementById(elementId);
+    // if (element) {
+    //   // Using requestAnimationFrame to wait for the next repaint
+    //   requestAnimationFrame(() => {
+    //     // Adding another requestAnimationFrame to wait an additional frame
+    //     // in case the changes are not rendered in the first repaint
+    //     requestAnimationFrame(() => {
+    //       element.scrollIntoView({ behavior: 'smooth' });
+    //     });
+    //   });
+    // }
   }
 
   getRange(count: number): number[] {

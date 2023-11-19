@@ -19,6 +19,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   });
   isLoggedIn: boolean = false;
   isRegistered: boolean | null = false;
+  isRequestReady: boolean = true;
 
   userTypeAccount: string = 'fairy';
 
@@ -26,6 +27,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   currentUserSubscription: Subscription = new Subscription();
   accountTypeSubscription: Subscription = new Subscription();
   userServiceSubscription: Subscription = new Subscription();
+  isReqReadySubscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private modalService: ModalService){}
 
@@ -75,6 +77,12 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
       //console.log('In register new account type is', type);
       if(this.userTypeAccount !== type)
         this.registerForm.get('accType')?.setValue(type === 'fairy' ? false : true)
+    })
+
+    this.isReqReadySubscription = this.userService.isRequestReady.subscribe(request => {
+      this.isRequestReady = request;
+      console.log(request);
+      
     })
   }
 

@@ -66,8 +66,8 @@ export class UserService {
         return of(null)
       }), 
       switchMap((response: any) => {
-        //console.log("switching response",response);
-        if(response.data !== undefined && response.data !== null) {
+        // console.log("switching response",response);
+        if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
             accountType: responseData.account_type,
@@ -96,6 +96,10 @@ export class UserService {
 
           this.isRequestReady.next(false);
         } 
+        if(response == null){
+          this.isRequestReady.next(true)
+          return of(null)
+        }
         // if(this.isLoggedin && this.isRegistered)
         //   return of(response)
         //console.log("sent response:", response);
@@ -121,8 +125,15 @@ export class UserService {
     var userEmail = this.checkUserCookies();
     this.doOpenModal = false;
     if(userEmail){
-      this.getUser(userEmail).subscribe((response:any)=> {
-        if(response.data !== undefined && response.data !== null) {
+      this.getUser(userEmail).pipe(
+        catchError(error => {
+          this.isRequestReady.next(true)
+          return of(null)
+        })
+      ).subscribe((response:any)=> {
+        console.log(response);
+        
+        if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
             accountType: responseData.account_type,

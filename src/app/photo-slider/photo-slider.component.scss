@@ -70,14 +70,14 @@
     :host{
        --img-max-width: 84%;
        --img-height: 90%;
-       --translate-x: 12%
+       --translate-x: 10%
     }
 }
 
 @media screen and (min-width: 2001px) and (max-width: 2600px) {
     :host{
        --img-max-width: 84%;
-       --translate-x: 13%;
+       --translate-x: 9.5%;
        --img-height: 80vh;
        --img-width: auto;
     }

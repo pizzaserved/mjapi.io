@@ -31,7 +31,7 @@
     </div> -->
   </section>
   
-  <div class="container-landing mt-5">
+  <div id="login" class="container-landing mt-5">
 
     <section class="mjapi-register container-fluid">
       <register-login-form></register-login-form>
@@ -86,7 +86,7 @@
           <div class="container-fluid justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of btcCardList">
               <div class="mb-5" *ngIf="accountType == item.accountType">
-                <card [card]="item" [disabled]="!isLoggedIn"></card>
+                <card [card]="item" ></card>
               </div>
             </div>
           </div>

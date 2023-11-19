@@ -20,7 +20,7 @@ export type Card = {
 })
 export class CardComponent implements OnInit{
   @Input() card!: Card;
-  @Input() disabled!: boolean;
+  @Input() disabled: boolean = false;
 
   isRequestReady: boolean = true;
 
@@ -38,10 +38,11 @@ export class CardComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentUser.subscribe((user) => {
       this.currentUser = user;
+      console.log(user);
     })
     this.paymentService.isRequestReady.subscribe((value) => {
       this.isRequestReady = value;
-      //console.log("isRequest ready?", value);
+      console.log("isRequest ready?", value);
       
     })
   }
@@ -67,7 +68,9 @@ export class CardComponent implements OnInit{
   }
 
   initPayment(productId: string, type: string){
-    if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
+    if(!this.currentUser){
+      this.userService.setScrollToElement('login');
+    } else if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
       this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){

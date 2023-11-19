@@ -24,6 +24,7 @@ export class UserService {
   doOpenModal: boolean = false;
   selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
   isRequestReady: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  elementToScrollTo: BehaviorSubject<string> = new BehaviorSubject('');
 
   currentUser: BehaviorSubject<User |null> = new BehaviorSubject<User | null>(null);
 
@@ -189,5 +190,9 @@ export class UserService {
 
   private openModal({status, message}:{status: string, message:string}): void {
     this.modalService.openModal({status, message});
+  }
+
+  setScrollToElement(elementId: string): void {
+    this.elementToScrollTo.next(elementId);
   }
 }

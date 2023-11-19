@@ -225,6 +225,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         this.switchIsDisabled = false;
       }
     })
+
+    this.userService.elementToScrollTo.subscribe(elementId => {
+      this.scrollToElement(elementId);
+    })
   }
 
   onSwitchClickedNearPayment(): void {

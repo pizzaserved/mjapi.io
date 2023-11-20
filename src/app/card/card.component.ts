@@ -1,7 +1,8 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PaymentService } from '../shared/payment.service';
 import { User, UserService } from '../shared/user.service';
+import scrollReveal from '../shared/scrollReveal';
 
 export type Card = {
   productId: string,
@@ -18,7 +19,7 @@ export type Card = {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit{
+export class CardComponent implements OnInit, AfterViewInit{
   @Input() card!: Card;
   @Input() disabled: boolean = false;
 
@@ -44,6 +45,18 @@ export class CardComponent implements OnInit{
       this.isRequestReady = value;
       console.log("isRequest ready?", value);
       
+    })
+  }
+
+  ngAfterViewInit(): void {
+    scrollReveal.reveal('.payment-card', {
+      reset: true, 
+      origin: 'right',
+      duration: 1000,
+      delay: 150,
+      distance: '0px',
+      scale: .8,
+      easing: 'cubic-bezier(0.5, 0, 0, 1)'
     })
   }
 

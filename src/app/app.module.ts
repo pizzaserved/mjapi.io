@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalService } from './shared/modal.service';
 import { UserService } from './shared/user.service';
 import { PhotoSliderComponent } from './photo-slider/photo-slider.component';
+import { StepsComponent } from './steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PhotoSliderComponent } from './photo-slider/photo-slider.component';
     TryFormComponent,
     RegisterLoginComponent,
     ModalComponent,
-    PhotoSliderComponent
+    PhotoSliderComponent,
+    StepsComponent
   ],
   imports: [
     BrowserModule,

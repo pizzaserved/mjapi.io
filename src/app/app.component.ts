@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CardService } from './shared/card-service.service';
@@ -7,6 +7,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
+import scrollReveal from './shared/scrollReveal';
 
 @Component({
   selector: 'app-root',
@@ -34,17 +35,17 @@ export class AppComponent implements OnInit, AfterViewInit{
     {
       id: "key",
       text: "Register here and get your API Key via email. You get 1 day of free usage",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
     {
       id: "check-down",
       text: "You're ready to go! Check the API Usage section",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
     {
       id: "expire",
       text: "Once your sub expires, you can extend it by any amount. Stripe, PayPal, BTC accepted",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
   ]
 
@@ -121,6 +122,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('imageSlider') imageSlider! : ElementRef;
   @ViewChild('imageSlider2') imageSlider2! : ElementRef;
   @ViewChild('imageSlider3') imageSlider3! : ElementRef;
+
+  @ViewChildren('api') apis!: QueryList<ElementRef>;
 
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
@@ -229,6 +232,31 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.userService.elementToScrollTo.subscribe(elementId => {
       this.scrollToElement(elementId);
     })
+
+    scrollReveal.reveal('.mjapi-slider', {reset:false, duration: 1000});
+    scrollReveal.reveal('.mjapi-register', {reset:false, delay: 300});
+    scrollReveal.reveal('.step-container', {reset:true,
+      // duration: 1000,
+      delay: 500,
+      // distance: '10px',
+      // scale: .9,
+      easing: 'cubic-bezier(0.5, 0, 0, 1)'});
+    scrollReveal.reveal('.api-container', {
+      reset:false, 
+      delay: 100,
+      easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    });
+
+    console.log(this.apis);
+
+    for(let i = 0; i < this.apis.length ; i++){
+      scrollReveal.reveal(`.api-${i+1}`, {
+        reset:false, 
+        delay: 500 + (i+1) * 200,
+        easing: 'cubic-bezier(0.5, 0, 0, 1)'
+      });
+    }
+    scrollReveal.reveal('.mjapi-faq', {reset:false, delay: 800 + (this.apis.length + 1) *  200});
   }
 
   onSwitchClickedNearPayment(): void {

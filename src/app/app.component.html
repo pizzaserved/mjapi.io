@@ -48,7 +48,7 @@
       <div *ngFor="let step of steps; let i = index">
         <div class="row" *ngIf="i % 3 == 0">
           <div *ngFor="let s of steps.slice(i, i+3)" class="col-sm-12 col-md-4 step-container">
-            <div class="container-step" *ngIf="s.mode == accountType || s.mode == 'fairy'">
+            <div class="container-step" *ngIf="s.mode.includes(accountType)">
               <div class="{{s.id}}-icon d-flex justify-content-center"></div>
               <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
             </div>
@@ -106,7 +106,7 @@
         <p class="section-header">API Usage</p>
       </div>
       <div class="api-container" id="apis">
-        <div class="panel-container">
+        <div #api class="panel-container api api-1">
           <div class="api-header" id="heading-add-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> addjob</span>
@@ -175,7 +175,7 @@
             </div>
           </div>
         </div>
-        <div class="panel-container">
+        <div #api class="panel-container api api-2">
           <div class="api-header" id="heading-get-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> getjob</span>
@@ -231,7 +231,7 @@
             </div>
           </div>
         </div>
-        <div class="panel-container">
+        <div #api class="panel-container api api-3">
           <div class="api-header" id="heading-cancel-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> canceljob</span>

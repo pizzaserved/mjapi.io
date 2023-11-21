@@ -63,6 +63,10 @@
   font-family: "Poppins Thin Italic";
   src: url('assets/font/Poppins-ThinItalic.ttf');
 }
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url('assets/font/Poppins-SemiBold.ttf');
+}
 
 body{
   font-family: "Poppins Regular", sans-serif;
@@ -109,6 +113,8 @@ body{
   background-color: rgba(123, 121, 126, 0.37);
   -webkit-transition: .4s;
   transition: .4s;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
 }
 
 .slider:before {
@@ -122,6 +128,8 @@ body{
   -webkit-transition: .4s;
   transition: .4s;
   top: -2px;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
 }
 
 input:checked + .slider {
@@ -140,8 +148,12 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
+}
+.sr-easeInOutQuad {
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
 .slider.round {
   border-radius: 34px;
 }
@@ -208,6 +220,7 @@ a:hover {
 button {
   border-radius: 12px !important;
   padding: .8rem 2rem !important;
+  font-family: 'Poppins SemiBold' !important;
   &.btn-primary {
     background-color: var(--primary-brand-color);
     border-color: var(--primary-brand-color);

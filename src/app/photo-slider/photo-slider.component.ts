@@ -44,7 +44,7 @@ export class PhotoSliderComponent implements AfterViewInit{
   async loopWithDelay() {
     let counter = 0;
     while (true) {
-      console.log("Iteration:", counter);
+      //console.log("Iteration:", counter);
       // Await a promise that resolves after a delay
       await new Promise((resolve) => setTimeout(resolve, this.duration));
       this.slider!.next();

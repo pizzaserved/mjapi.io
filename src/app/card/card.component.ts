@@ -1,7 +1,8 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PaymentService } from '../shared/payment.service';
 import { User, UserService } from '../shared/user.service';
+import scrollReveal from '../shared/scrollReveal';
 
 export type Card = {
   productId: string,
@@ -18,9 +19,9 @@ export type Card = {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit{
+export class CardComponent implements OnInit, AfterViewInit{
   @Input() card!: Card;
-  @Input() disabled!: boolean;
+  @Input() disabled: boolean = false;
 
   isRequestReady: boolean = true;
 
@@ -38,6 +39,7 @@ export class CardComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentUser.subscribe((user) => {
       this.currentUser = user;
+      console.log(user);
     })
     this.paymentService.isRequestReady.subscribe((value) => {
       this.isRequestReady = value;
@@ -46,8 +48,20 @@ export class CardComponent implements OnInit{
     })
   }
 
+  ngAfterViewInit(): void {
+    // scrollReveal.reveal('.payment-card', {
+    //   reset: true, 
+    //   origin: 'right',
+    //   duration: 1000,
+    //   delay: 150,
+    //   distance: '0px',
+    //   scale: .8,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    // })
+  }
+
   showPaymentOptions(event: Event){
-    console.log(event);
+    //console.log(event);
 
     if(event.target instanceof HTMLElement){
       event.target.style.display = 'none';
@@ -67,13 +81,15 @@ export class CardComponent implements OnInit{
   }
 
   initPayment(productId: string, type: string){
-    if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
+    if(!this.currentUser){
+      this.userService.setScrollToElement('login');
+    } else if(this.card.type !== 'btc' && !this.disabled && this.isRequestReady){
       this.paymentService.pay(this.currentUser!.accountID, productId, type)
         .subscribe((response: any)=>{
           if(response){
-            console.log(response);
+            //console.log(response);
             if(response.data!= undefined && response.data.payment_link != undefined){
-              console.log(response.data.payment_link);
+              //console.log(response.data.payment_link);
               
               /* Open in a ne tab/window */
               var newWindow = window.open(response.data.payment_link, '_blank');

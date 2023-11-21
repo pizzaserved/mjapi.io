@@ -6,7 +6,7 @@
           <div class="row">
             <h1 class="landing-header col-12">MidJourney API.<br/> Simple.<br/> No BS.</h1>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary" (click)="scrollToElement('auth-panel')">Discover</button>
+              <button type="button" class="btn btn-primary" (click)="scrollToElement('login')">Discover</button>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     </div> -->
   </section>
   
-  <div class="container-landing mt-5">
+  <div id="login" class="container-landing mt-5">
 
     <section class="mjapi-register container-fluid">
       <register-login-form></register-login-form>
@@ -45,19 +45,20 @@
         <p class="smaller-darker-text" *ngIf="accountType === 'fairy'">(Fairy)</p>
         <p class="smaller-darker-text" *ngIf="accountType === 'selfserve'">(Self Serve)</p>
       </div>
-      <div *ngFor="let step of steps; let i = index">
-        <div class="row" *ngIf="i % 3 == 0">
-          <div *ngFor="let s of steps.slice(i, i+3)" class="col-sm-12 col-md-4 step-container">
-            <div class="container-step" *ngIf="s.mode == accountType || s.mode == 'fairy'">
+      <!-- <div *ngFor="let step of steps; let i = index">
+        <div class="row" *ngIf="i % 3 == 0"> 
+          <div *ngFor="let s of steps.slice(i, i+3); let idx = index" class="col-sm-12 col-md-4 step-container">
+             <div class="container-step" *ngIf="s.mode== accountType || s.mode == 'fairy'">
               <div class="{{s.id}}-icon d-flex justify-content-center"></div>
               <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
-            </div>
-          </div>
+            </div> -->
+            <steps [stepsArray]="steps" [accType]="accountType"></steps>
+          <!-- </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
-    <section id='payment-section-header' class="mjapi-payment container-fluid">
+    <section class="mjapi-payment container-fluid">
       <div class="d-flex justify-content-center">
         <p class="section-header">Payment</p>
       </div>
@@ -65,7 +66,7 @@
         <div class="switch-container">
 
           <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
-          <div class="switch d-flex" (click)="scrollToElement('payment-section-header')">
+          <div class="switch d-flex" (click)="onSwitchClickedNearPayment()">
             <label class="switch">
               <!--Added scroll to so that the user can compare them without the content jumping around (because of the elements above it changing size)-->
                 <input type="checkbox" #accType name="accType" formControlName="accType">
@@ -86,7 +87,7 @@
           <div class="container-fluid justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of btcCardList">
               <div class="mb-5" *ngIf="accountType == item.accountType">
-                <card [card]="item" [disabled]="!isLoggedIn"></card>
+                <card [card]="item" ></card>
               </div>
             </div>
           </div>
@@ -106,7 +107,7 @@
         <p class="section-header">API Usage</p>
       </div>
       <div class="api-container" id="apis">
-        <div class="panel-container">
+        <div #api class="panel-container api api-1">
           <div class="api-header" id="heading-add-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> addjob</span>
@@ -175,7 +176,7 @@
             </div>
           </div>
         </div>
-        <div class="panel-container">
+        <div #api class="panel-container api api-2">
           <div class="api-header" id="heading-get-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> getjob</span>
@@ -231,7 +232,7 @@
             </div>
           </div>
         </div>
-        <div class="panel-container">
+        <div #api class="panel-container api api-3">
           <div class="api-header" id="heading-cancel-job">
             <button class="btn btn-link collapse-button" collapsiblePanel>
               <span class="light-text">GET</span> <span class="bold-text"> canceljob</span>
@@ -296,9 +297,7 @@
       </div>
     </section>
 
-    <div class="elipse elipse-1"></div>
-    <div class="elipse elipse-2"></div>
-    <div class="elipse elipse-3"></div>
+    <div class="elipse elipse-{{item}}" *ngFor="let item of getRange(6)"></div>
   </div>
 
   <section class="mjapi-slider row mb-5">

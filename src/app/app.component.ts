@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CardService } from './shared/card-service.service';
@@ -7,9 +7,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
-
-declare const ScrollMagic: any;
-declare const TweenMax: any;
+import scrollReveal from './shared/scrollReveal';
 
 @Component({
   selector: 'app-root',
@@ -37,17 +35,17 @@ export class AppComponent implements OnInit, AfterViewInit{
     {
       id: "key",
       text: "Register here and get your API Key via email. You get 1 day of free usage",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
     {
       id: "check-down",
       text: "You're ready to go! Check the API Usage section",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
     {
       id: "expire",
       text: "Once your sub expires, you can extend it by any amount. Stripe, PayPal, BTC accepted",
-      mode: "fairy"
+      mode: "fairy,selfserve"
     },
   ]
 
@@ -126,6 +124,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('imageSlider2') imageSlider2! : ElementRef;
   @ViewChild('imageSlider3') imageSlider3! : ElementRef;
 
+  @ViewChildren('api') apis!: QueryList<ElementRef>;
+
   switchForm: FormGroup = new FormGroup({
     accType : new FormControl(false),
   })
@@ -198,14 +198,14 @@ export class AppComponent implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     
     this.accountTypeSubscription = this.userService.getSelectedTypeAcc().subscribe(type=> {
-      console.log("after view init", type, this.userService.selectedTypeAcc);
+      //console.log("after view init", type, this.userService.selectedTypeAcc);
       
       if(this.accountType !== type)
         this.switchForm.get('accType')?.setValue( type === 'fairy' ? false : true);
     })
 
     this.userServiceSubscription = this.userService.currentUser.subscribe((user) => {
-      console.log("A user has logged in:", user);
+      //console.log("A user has logged in:", user);
       if(user){
         this.currentUser = user;
         
@@ -229,20 +229,72 @@ export class AppComponent implements OnInit, AfterViewInit{
         this.switchIsDisabled = false;
       }
     })
+
+    this.userService.elementToScrollTo.subscribe(elementId => {
+      console.log("Aiciii", elementId);
+      if(elementId != null && elementId != undefined && elementId != '')
+        this.scrollToElement(elementId);
+    })
+
+    // console.log(scrollReveal);
+    
+    // scrollReveal.reveal('.mjapi-slider', {reset:true, duration: 1000});
+    // scrollReveal.reveal('.mjapi-register', {reset:false, delay: 300});
+    // scrollReveal.reveal('.step-container', {reset:true,
+    //   // duration: 1000,
+    //   delay: 500,
+    //   // distance: '10px',
+    //   // scale: .9,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'});
+    // scrollReveal.reveal('.api-container', {
+    //   reset:false, 
+    //   delay: 100,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    // });
+
+    // console.log(this.apis);
+
+    // for(let i = 0; i < this.apis.length ; i++){
+    //   scrollReveal.reveal(`.api-${i+1}`, {
+    //     reset:false, 
+    //     delay: 500 + (i+1) * 200,
+    //     easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    //   });
+    // }
+    // scrollReveal.reveal('.mjapi-faq', {reset:false, delay: 800 + (this.apis.length + 1) *  200});
+  }
+
+  onSwitchClickedNearPayment(): void {
+    // TODO if/when needed, store scroll position relative to the page's total height, allow the content to change, then restore it
+    // const element = document.getElementById(elementId);
+    // if (element) {
+    //   // Using requestAnimationFrame to wait for the next repaint
+    //   requestAnimationFrame(() => {
+    //     // Adding another requestAnimationFrame to wait an additional frame
+    //     // in case the changes are not rendered in the first repaint
+    //     requestAnimationFrame(() => {
+    //       element.scrollIntoView({ behavior: 'smooth' });
+    //     });
+    //   });
+    // }
   }
 
   scrollToElement(elementId: string): void {
     const element = document.getElementById(elementId);
     if (element) {
-      // Using requestAnimationFrame to wait for the next repaint
-      requestAnimationFrame(() => {
-        // Adding another requestAnimationFrame to wait an additional frame
-        // in case the changes are not rendered in the first repaint
+        // Using requestAnimationFrame to wait for the next repaint
         requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
+        //   // Adding another requestAnimationFrame to wait an additional frame
+        //   // in case the changes are not rendered in the first repaint
+          requestAnimationFrame(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          });
         });
-      });
-    }
+      }
+  }
+
+  getRange(count: number): number[] {
+    return Array.from({ length: count }, (_, index) => index + 1);
   }
 
   ngOnDestroy() {

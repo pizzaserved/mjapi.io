@@ -1,0 +1,16 @@
+
+<div *ngFor="let step of stepsArray; let i = index">
+    <div class="row" *ngIf="i % 3 == 0">
+        <div class="d-flex conatiner-test">
+
+       
+        <div *ngFor="let s of stepsArray.slice(i, i+3); let idx = index" class="col-sm-12 col-md-4 step-container">
+
+<div class="container-step" *ngIf="s.mode.includes(accType)">
+    <div class="{{s.id}}-icon d-flex justify-content-center"></div>
+    <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
+</div>
+</div>
+</div>
+</div>
+</div>

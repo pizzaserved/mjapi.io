@@ -24,13 +24,14 @@ export class UserService {
   doOpenModal: boolean = false;
   selectedTypeAcc: BehaviorSubject<string> = new BehaviorSubject('');
   isRequestReady: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  elementToScrollTo: BehaviorSubject<string> = new BehaviorSubject('');
 
   currentUser: BehaviorSubject<User |null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private cookieService: CookieService, private modalService: ModalService) { }
 
   private getUser(email: string) {
-    console.log('get user');
+    //console.log('get user');
     
     this.isRequestReady.next(false);
 
@@ -41,7 +42,7 @@ export class UserService {
   }
 
   register(email: string, accountType?: string, discordToken?: string): Observable<boolean>{
-    console.log('register', accountType);
+    //console.log('register', accountType);
 
     let params: HttpParams = new HttpParams();
     params = params.append('email', email);
@@ -66,8 +67,8 @@ export class UserService {
         return of(null)
       }), 
       switchMap((response: any) => {
-        console.log("switching response",response);
-        if(response.data !== undefined && response.data !== null) {
+        // console.log("switching response",response);
+        if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
             accountType: responseData.account_type,
@@ -85,7 +86,7 @@ export class UserService {
           /* Update current user */
           this.currentUser.next(newUser);
 
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           
           this.isLoggedin = true;
           this.isRegistered = true;
@@ -96,9 +97,13 @@ export class UserService {
 
           this.isRequestReady.next(false);
         } 
+        if(response == null){
+          this.isRequestReady.next(true)
+          return of(null)
+        }
         // if(this.isLoggedin && this.isRegistered)
         //   return of(response)
-        console.log("sent response:", response);
+        //console.log("sent response:", response);
         
         return of(response)
       })
@@ -109,7 +114,7 @@ export class UserService {
     const userEmail = this.cookieService.get('userEmail');
 
     if(userEmail) {
-      console.log('Vezi cookie', atob(userEmail))
+      //console.log('Vezi cookie', atob(userEmail))
       return atob(userEmail);
     }
 
@@ -117,12 +122,19 @@ export class UserService {
   }
 
   autoLogin(){
-    console.log("login");
+    //console.log("login");
     var userEmail = this.checkUserCookies();
     this.doOpenModal = false;
     if(userEmail){
-      this.getUser(userEmail).subscribe((response:any)=> {
-        if(response.data !== undefined && response.data !== null) {
+      this.getUser(userEmail).pipe(
+        catchError(error => {
+          this.isRequestReady.next(true)
+          return of(null)
+        })
+      ).subscribe((response:any)=> {
+        console.log(response);
+        
+        if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;
           var newUser: User = {
             accountType: responseData.account_type,
@@ -136,7 +148,7 @@ export class UserService {
           /* Update current user */
           this.currentUser.next(newUser);
 
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           
           this.isLoggedin = true;
           this.isRegistered = true;
@@ -150,7 +162,7 @@ export class UserService {
   }
 
   logout(){
-    console.log('logout');
+    //console.log('logout');
     this.isLoggedin = false;
     this.isRegistered = false;
     this.doOpenModal = false;
@@ -166,7 +178,7 @@ export class UserService {
   }
 
   setSelectedTypeAcc(type:string){
-    // console.log(type);
+    // //console.log(type);
     
     if(type != this.selectedTypeAcc.value)
       this.selectedTypeAcc.next(type);
@@ -178,5 +190,9 @@ export class UserService {
 
   private openModal({status, message}:{status: string, message:string}): void {
     this.modalService.openModal({status, message});
+  }
+
+  setScrollToElement(elementId: string): void {
+    this.elementToScrollTo.next(elementId);
   }
 }

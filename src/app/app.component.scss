@@ -128,10 +128,10 @@
         // min-height: 40vh;
         margin-block: 5rem;
 
-        .container-step{
-            padding: 1rem;
-            color: #bbb;
-        }
+        // .container-step{
+        //     padding: 1rem;
+        //     color: #bbb;
+        // }
     }
 
     .mjapi-register {
@@ -217,7 +217,8 @@
 
 .main-container{
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    max-height: 100vh;
     z-index: 1;
     font-size: var(--body-text-size);
     .elipse{
@@ -241,6 +242,22 @@
             top: 170vh;
             transform: rotate(-50deg);
             // right: 20%;
+        }
+        &.elipse-3{
+            top: 250vh;
+            transform: rotate(0deg) translateX(-60vw);
+        }
+        &.elipse-4{
+            top: 330vh;
+            transform: rotate(0deg) translateX(0vw);
+        }
+        &.elipse-5{
+            top: min(75%, 400vh);
+            transform: rotate(0deg) translateX(-30vw);
+        }
+        &.elipse-6{
+            top: min(90%, 500vh);
+            transform: rotate(0deg) translateX(0vw);
         }
     }
 
@@ -310,6 +327,8 @@ input[type='checkbox']:disabled + span{
     max-width: 3000px;
     margin: auto;
 }
+
+
 
 @media screen and (min-width:768px) and (max-width:2199.9px) {
     .container-landing{

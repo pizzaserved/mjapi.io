@@ -1,0 +1,57 @@
+.container-step{
+    padding: 1rem;
+    color: #bbb;
+}
+
+.discord-icon::before{
+    background-image: url(../../assets/icons/discord.svg);
+}
+.token-icon::before{
+    background-image: url(../../assets/icons/token.svg);
+}
+.midjourney-icon::before{
+    background-image: url(../../assets/icons/midjourney.svg);
+    height: 111px !important;
+}
+.key-icon::before{
+    background-image: url(../../assets/icons/key.svg);
+}
+.check-down-icon::before{
+    background-image: url(../../assets/icons/check-down.svg);
+}
+.expire-icon::before{
+    background-image: url(../../assets/icons/expire.svg);
+}
+
+.discord-icon,
+.token-icon,
+.midjourney-icon,
+.key-icon,
+.check-down-icon,
+.expire-icon{
+    margin-bottom: 1.125rem;
+
+    &::before{
+        content: '';
+        display: flex;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 140px;
+        height: 92px;
+    }
+}
+@media screen and (min-width:2200px) {
+    
+    .discord-icon,
+    .token-icon,
+    .midjourney-icon,
+    .key-icon,
+    .check-down-icon,
+    .expire-icon{
+        &::before{
+            height: var(--xl-icons-height) !important;
+        }
+    }
+    
+}

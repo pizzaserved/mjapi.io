@@ -80,9 +80,7 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
     })
 
     this.isReqReadySubscription = this.userService.isRequestReady.subscribe(request => {
-      this.isRequestReady = request;
-      console.log(request);
-      
+      this.isRequestReady = request;      
     })
   }
 

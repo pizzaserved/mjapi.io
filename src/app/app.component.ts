@@ -230,33 +230,37 @@ export class AppComponent implements OnInit, AfterViewInit{
     })
 
     this.userService.elementToScrollTo.subscribe(elementId => {
-      this.scrollToElement(elementId);
+      console.log("Aiciii", elementId);
+      if(elementId != null && elementId != undefined && elementId != '')
+        this.scrollToElement(elementId);
     })
 
-    scrollReveal.reveal('.mjapi-slider', {reset:false, duration: 1000});
-    scrollReveal.reveal('.mjapi-register', {reset:false, delay: 300});
-    scrollReveal.reveal('.step-container', {reset:true,
-      // duration: 1000,
-      delay: 500,
-      // distance: '10px',
-      // scale: .9,
-      easing: 'cubic-bezier(0.5, 0, 0, 1)'});
-    scrollReveal.reveal('.api-container', {
-      reset:false, 
-      delay: 100,
-      easing: 'cubic-bezier(0.5, 0, 0, 1)'
-    });
+    // console.log(scrollReveal);
+    
+    // scrollReveal.reveal('.mjapi-slider', {reset:true, duration: 1000});
+    // scrollReveal.reveal('.mjapi-register', {reset:false, delay: 300});
+    // scrollReveal.reveal('.step-container', {reset:true,
+    //   // duration: 1000,
+    //   delay: 500,
+    //   // distance: '10px',
+    //   // scale: .9,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'});
+    // scrollReveal.reveal('.api-container', {
+    //   reset:false, 
+    //   delay: 100,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    // });
 
-    console.log(this.apis);
+    // console.log(this.apis);
 
-    for(let i = 0; i < this.apis.length ; i++){
-      scrollReveal.reveal(`.api-${i+1}`, {
-        reset:false, 
-        delay: 500 + (i+1) * 200,
-        easing: 'cubic-bezier(0.5, 0, 0, 1)'
-      });
-    }
-    scrollReveal.reveal('.mjapi-faq', {reset:false, delay: 800 + (this.apis.length + 1) *  200});
+    // for(let i = 0; i < this.apis.length ; i++){
+    //   scrollReveal.reveal(`.api-${i+1}`, {
+    //     reset:false, 
+    //     delay: 500 + (i+1) * 200,
+    //     easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    //   });
+    // }
+    // scrollReveal.reveal('.mjapi-faq', {reset:false, delay: 800 + (this.apis.length + 1) *  200});
   }
 
   onSwitchClickedNearPayment(): void {
@@ -279,8 +283,8 @@ export class AppComponent implements OnInit, AfterViewInit{
     if (element) {
         // Using requestAnimationFrame to wait for the next repaint
         requestAnimationFrame(() => {
-          // Adding another requestAnimationFrame to wait an additional frame
-          // in case the changes are not rendered in the first repaint
+        //   // Adding another requestAnimationFrame to wait an additional frame
+        //   // in case the changes are not rendered in the first repaint
           requestAnimationFrame(() => {
             element.scrollIntoView({ behavior: 'smooth' });
           });

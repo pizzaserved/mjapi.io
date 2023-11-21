@@ -128,10 +128,10 @@
         // min-height: 40vh;
         margin-block: 5rem;
 
-        .container-step{
-            padding: 1rem;
-            color: #bbb;
-        }
+        // .container-step{
+        //     padding: 1rem;
+        //     color: #bbb;
+        // }
     }
 
     .mjapi-register {
@@ -216,7 +216,8 @@
 
 .main-container{
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    max-height: 100vh;
     z-index: 1;
     font-size: var(--body-text-size);
     .elipse{
@@ -250,11 +251,11 @@
             transform: rotate(0deg) translateX(0vw);
         }
         &.elipse-5{
-            top: 400vh;
+            top: min(75%, 400vh);
             transform: rotate(0deg) translateX(-30vw);
         }
         &.elipse-6{
-            top: 500vh;
+            top: min(90%, 500vh);
             transform: rotate(0deg) translateX(0vw);
         }
     }

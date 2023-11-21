@@ -49,15 +49,15 @@ export class CardComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-    scrollReveal.reveal('.payment-card', {
-      reset: true, 
-      origin: 'right',
-      duration: 1000,
-      delay: 150,
-      distance: '0px',
-      scale: .8,
-      easing: 'cubic-bezier(0.5, 0, 0, 1)'
-    })
+    // scrollReveal.reveal('.payment-card', {
+    //   reset: true, 
+    //   origin: 'right',
+    //   duration: 1000,
+    //   delay: 150,
+    //   distance: '0px',
+    //   scale: .8,
+    //   easing: 'cubic-bezier(0.5, 0, 0, 1)'
+    // })
   }
 
   showPaymentOptions(event: Event){

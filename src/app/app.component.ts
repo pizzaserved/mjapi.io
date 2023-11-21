@@ -83,11 +83,10 @@ export class AppComponent implements OnInit, AfterViewInit{
   };
   
   questionsList = [
-      // Temp for stripe verification
-      // {
-      //   question: 'Do I need a MidJourney sub?',
-      //   ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
-      // },
+      {
+        question: 'Do I need a MidJourney sub?',
+        ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
+      },
       {
         question: 'Available payment methods?',
         ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'

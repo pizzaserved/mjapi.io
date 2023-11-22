@@ -96,11 +96,50 @@
     </section>
 
     <!--TODO uncomment and add info-->
-    <!-- <section class="mjapi-get">
-      <div class="d-flex justify-content-center">
-        <p class="section-header">What do you get?</p>
+    <section class="mjapi-get container-fluid">
+      <div class="d-flex justify-content-center flex-column">
+        <p class="section-header text-center">What do you get?</p>
+        <div class="panel-container d-flex flex-column">
+          <div class="common-benefits mt-4">
+            <div class="heading text-center">
+              <p class="bold">All accounts</p>
+            </div>
+            <div class="body row">
+              <!-- <ul> -->
+                <div *ngFor="let item of benefitsList" class="col-12 col-md-4 get-body">
+                  <div class="bold d-flex align-items-center {{item.icon}}-benefit">{{item.title}}:</div> {{item.content}}
+                </div>
+              <!-- </ul> -->
+            </div>
+          </div>
+          
+          <div class="accounts-benefits d-flex row justify-content-around mb-4 mt-4">
+            <div class="benefits col-12 col-md-5 m-2">
+              <input type="radio" name="radioAccountType" id="fairy-radio" (click)="selectRadio('fairy-radio')" [(ngModel)]="radioAccountType" value="fairy">
+              <div class="heading text-center">
+                <p class="bold">Fairy</p>
+              </div>
+              <div class="body">
+                <!-- <ul> -->
+                  <div *ngFor="let item of benefitsFairy" class="mb-4"> <div class="bold col-12 mb-1">{{item.title}}:</div> {{item.content}}</div>
+                <!-- </ul> -->
+              </div>
+            </div>
+            <div class="benefits col-12 col-md-5 m-2">
+              <input type="radio" name="radioAccountType" id="ss-radio" (click)="selectRadio('ss-radio')" [(ngModel)]="radioAccountType" value="ss">
+              <div class="heading text-center">
+                <p class="bold">SelfServed</p>
+              </div>
+              <div class="body">
+                <!-- <ul> -->
+                  <div *ngFor="let item of benefitsSelfserved" class="mb-4"><div class="bold col-12 mb-1">{{item.title}}:</div> {{item.content}}</div>
+                <!-- </ul> -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section> -->
+    </section>
 
     <section class="mjapi-usage container-fluid">
       <div class="d-flex justify-content-center">

@@ -91,7 +91,7 @@
             background-color: rgb(18, 18, 31);
             padding-inline: 2rem;
             border-radius: 18px;
-            color: #bbb; /* Light grey text, commonly used for code */
+            color: #d4d4d4; /* Light grey text, commonly used for code */
             font-family: 'Consolas', 'Monaco', monospace; /* Monospaced font for code */
             font-size: 0.95rem; /* Adjust the font size as needed */
         }
@@ -130,7 +130,7 @@
 
         // .container-step{
         //     padding: 1rem;
-        //     color: #bbb;
+        //     color: #d4d4d4;
         // }
     }
 
@@ -171,6 +171,7 @@
 
         .get-body{
             margin-block: 2rem;
+            color: #d4d4d4;
 
             .access-benefit{
                 &:before{
@@ -209,6 +210,7 @@
             .price-benefit,
             .security-benefit,
             .support-benefit{
+                color: var(--text-color-white);
                 &::before{
                     margin-right: .5rem;
                 }
@@ -384,7 +386,7 @@
             }
             &.open +.answer{
                 display: flex;
-                color: #bbb;
+                color: #d4d4d4;
             }
 
             &.open{
@@ -405,7 +407,7 @@
 .smaller-darker-text {
     font-size: smaller;
     // color: #a4a4a4;
-    color: #bbb;
+    color: #d4d4d4;
 }
 
 input[type='checkbox']:disabled + span{

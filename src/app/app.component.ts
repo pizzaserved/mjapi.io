@@ -179,28 +179,28 @@ export class AppComponent implements OnInit, AfterViewInit{
   benefitsList = [
     {
       icon:'lunch',
-      title: 'Free lunch',
+      title: 'Free Lunch',
       content: '1 day of usage for new accounts – "The right to try"'
     },
     {
       icon: 'access',
       title: 'Instant Access',
-      content: `you don't even need a password, we email you a key upon account creation and you're ready to go`
+      content: `You don't even need a password, we email you a key upon account creation and you're ready to go`
     },
     {
       icon: 'no-work',
       title: 'Simplified Workflow',
-      content: `Everything is a GET request, test it directly in your browser's address bar, forget Postman.`
+      content: `Everything is a GET request, test it directly in your browser's address bar, forget Postman`
     },
     {
       icon: 'price',
-      title: 'Clear pricing',
+      title: 'Clear Pricing',
       content: 'Pay for as little as 1 day, or subscribe for hassle-free auto-renewals'
     },
     {
       icon: 'security',
       title: 'Secure Transactions',
-      content: 'We partnered with Stripe for fiat payments and maximum transparency; alternatively, pay with Bitcoin via BTCPay'
+      content: `We partnered with Stripe and PayPal, the payment gateways we all know and love`
     },
     {
       icon: 'support',
@@ -210,15 +210,15 @@ export class AppComponent implements OnInit, AfterViewInit{
   ];
   
   benefitsFairy = [
-    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or MidJourney subscription – start right away.' },
-    { title: 'Shared Resource Efficiency', content: 'Leverage our shared bots for an economical and efficient service.' },
-    { title: 'Simplified Pricing', content: 'Enjoy lower costs with our Fairy account, ideal for users with basic needs.' }
+    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or MidJourney subscription – start right away' },
+    { title: 'Shared Resource Efficiency', content: 'Leverage our shared bots for an economical and efficient service' },
+    { title: 'Simplified Pricing', content: 'Enjoy lower costs with our Fairy account, ideal for users with basic needs' }
   ];
 
   benefitsSelfserved = [
-    { title: 'Full Control', content: 'Directly use your own MidJourney-enabled Discord account for a personalized experience.' },
-    { title: 'Dedicated Resources', content: 'Benefit from a dedicated worker, ensuring consistent performance and availability.' },
-    { title: 'Enhanced Privacy', content: 'Manage your integration with the assurance of complete privacy and security.' }
+    { title: 'Full Control', content: 'Use your own MidJourney-enabled Discord account for a personalized experience' },
+    { title: 'Dedicated Resources', content: 'Benefit from a dedicated worker, ensuring consistent performance and availability' },
+    { title: 'Enhanced Privacy', content: 'Manage your integration with the assurance of complete privacy and security' }
   ];
 
   halfPart = Math.floor(this.squareUrls.length / 2);

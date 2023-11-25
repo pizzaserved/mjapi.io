@@ -14,7 +14,7 @@ export class StepsComponent implements AfterViewInit{
   constructor(){}
 
   ngAfterViewInit(): void {
-    console.log("after init", this.stepsArray);
+    // console.log("after init", this.stepsArray);
     
     // scrollReveal.reveal('.container-test', {
     //   reset: true, 

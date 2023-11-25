@@ -132,7 +132,7 @@ export class UserService {
           return of(null)
         })
       ).subscribe((response:any)=> {
-        console.log(response);
+        // console.log(response);
         
         if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;
@@ -162,12 +162,13 @@ export class UserService {
   }
 
   logout(){
-    //console.log('logout');
+    // console.log('logout');
     this.isLoggedin = false;
     this.isRegistered = false;
     this.doOpenModal = false;
     this.cookieService.remove('userEmail')
     this.currentUser.next(null);
+    this.isRequestReady.next(true);
   }
 
   getCurrentUser(){

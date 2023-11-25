@@ -279,7 +279,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     })
 
     this.userService.elementToScrollTo.subscribe(elementId => {
-      console.log("Aiciii", elementId);
+      // console.log("Aiciii", elementId);
       if(elementId != null && elementId != undefined && elementId != '')
         this.scrollToElement(elementId);
     })

@@ -39,11 +39,11 @@ export class CardComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.userService.currentUser.subscribe((user) => {
       this.currentUser = user;
-      console.log(user);
+      // console.log(user);
     })
     this.paymentService.isRequestReady.subscribe((value) => {
       this.isRequestReady = value;
-      console.log("isRequest ready?", value);
+      // console.log("isRequest ready?", value);
       
     })
   }

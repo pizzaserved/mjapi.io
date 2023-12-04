@@ -12,7 +12,8 @@ export type User = {
   username: string,
   accountType: 'selfserve' | 'fairy'
   endDate: Date,
-  hasFiatSub: boolean
+  hasFiatSub: boolean,
+  permaCredits: number
 }
 
 @Injectable({
@@ -75,8 +76,9 @@ export class UserService {
             accountID: responseData.user_id,
             email: responseData.email,
             username: responseData.user,
-            endDate: responseData.end_date,
-            hasFiatSub: responseData.has_fiat_sub
+            endDate: new Date(responseData.end_date * 1000), // Convert Unix timestamp to Date
+            hasFiatSub: responseData.has_fiat_sub,
+            permaCredits: responseData.perma_credits
           }
           this.setSelectedTypeAcc(newUser.accountType);
 
@@ -141,8 +143,9 @@ export class UserService {
             accountID: responseData.user_id,
             email: responseData.email,
             username: responseData.user,
-            endDate: responseData.end_date,
-            hasFiatSub: responseData.has_fiat_sub
+            endDate: new Date(responseData.end_date * 1000), // Convert Unix timestamp to Date
+            hasFiatSub: responseData.has_fiat_sub,
+            permaCredits: responseData.perma_credits
           }
           this.setSelectedTypeAcc(newUser.accountType);
           /* Update current user */

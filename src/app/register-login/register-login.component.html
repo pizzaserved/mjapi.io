@@ -40,10 +40,16 @@
           </div>
         </form>
       </div>
-      <div class="pannel" *ngIf="isLoggedIn">
+      <div class="panel" *ngIf="isLoggedIn">
         <div class="row">
           <div class="col-12 d-flex justify-content-center">
             <h3>Hello, {{currentUser!.username}}</h3>
+          </div>
+          <div class="col-12 d-flex justify-content-center panel-detail">
+            <p>{{ currentUser!.endDate.getTime() > getDateNow() ? ('Expires ' + (currentUser!.endDate | date:'medium')) : ('Expired ' + (currentUser!.endDate | date:'medium')) }}</p>
+          </div>
+          <div class="col-12 d-flex justify-content-center panel-detail">
+            <p>Perma-credits {{currentUser!.permaCredits}}</p>
           </div>
           <div class="col-12 d-flex justify-content-center">
             <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>

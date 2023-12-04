@@ -92,6 +92,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'
       },
       {
+        question: 'What are Perma-credits?',
+        ans: 'Simple: instead of per-day, you pay per-job. They\'re only consumed if you don\'t have an active per-day plan. Pretty cool, huh?'
+      },
+      {
         question: 'Why GET and not POST?',
         ans: 'We went full minimalistic here, the minimum effort for the desired result. It\'s really convenient to copy-paste the request directly in Chrome and see the result -- no Postman, curl etc. HTTPS makes sure the URL path/query etc. are encrypted, so nothing to be worried about. We might also mirror the current API via POST requests, if enough people ask for it'
       },

@@ -132,4 +132,8 @@ export class RegisterLoginComponent implements OnInit, AfterViewInit{
   // openModal({status, message}:{status: string, message:string}): void {
   //   this.modalService.openModal({status, message});
   // }
+  
+  getDateNow() {
+    return Date.now()
+  }
 }

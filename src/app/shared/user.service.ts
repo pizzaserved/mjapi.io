@@ -52,6 +52,7 @@ export class UserService {
 
     return this.getUser(email).pipe(
       catchError((error) => {
+        // getuser error
         if(error != undefined && error.error != undefined && error.error.status == 'error'){
           this.isRegistered = false;
 
@@ -67,7 +68,16 @@ export class UserService {
         this.doOpenModal = false;
         return of(null)
       }), 
+      catchError((error) => {
+        // adduser error
+        if (error != null && error.error !== undefined && error.error.status === 'error') {
+          this.openModal({status:error.error.status, message:error.error.message})
+        }
+        return of(null)
+      }), 
       switchMap((response: any) => {
+        // getuser or adduser is successful
+
         // console.log("switching response",response);
         if(response != null && response.data !== undefined && response.data !== null) {
           var responseData = response.data;

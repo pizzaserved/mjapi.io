@@ -88,6 +88,10 @@ export class AppComponent implements OnInit, AfterViewInit{
         ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
       },
       {
+        question: 'Fairy account limits?',
+        ans: 'Because resources are shared for this account type, we think it\'s only fair to put a \'reasonable use\' cap per day per account. Currently, it\'s between 80-150 jobs per 24H, and jobs that never started don\'t count. Another limit, though obvious, is occasionally getting slower jobs due to increased overall load from other users. We\'re happy to see high usage, and this prompts us to add more horsepower to the backend, so on average everyone will have an decent experience'
+      },
+      {
         question: 'Available payment methods?',
         ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'
       },
@@ -214,14 +218,14 @@ export class AppComponent implements OnInit, AfterViewInit{
   ];
   
   benefitsFairy = [
-    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or MidJourney subscription – start right away' },
-    { title: 'Shared Resource Efficiency', content: 'Leverage our shared bots for an economical and efficient service' },
-    { title: 'Simplified Pricing', content: 'Enjoy lower costs with our Fairy account, ideal for users with basic needs' }
+    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or MidJourney subscription - start right away' },
+    { title: 'Shared Resource Efficiency', content: 'Leverage our shared accounts for an eco-friendly experience, adhering to a fair-use daily limit' },
+    { title: 'Simplified Pricing', content: 'Enjoy lower costs, ideal for users with basic needs that are trying out mjapi' }
   ];
 
   benefitsSelfserved = [
     { title: 'Full Control', content: 'Use your own MidJourney-enabled Discord account for a personalized experience' },
-    { title: 'Dedicated Resources', content: 'Benefit from a dedicated worker, ensuring consistent performance and availability' },
+    { title: 'Dedicated Resources', content: 'Benefit from a dedicated worker, ensuring consistent performance and availability, with no daily limits' },
     { title: 'Enhanced Privacy', content: 'Manage your integration with the assurance of complete privacy and security' }
   ];
 

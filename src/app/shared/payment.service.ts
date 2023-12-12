@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BTCPAY_PATH, URL_PATH } from '../../global';
 import { BehaviorSubject, catchError, of, switchMap } from 'rxjs';
+import { ModalService } from './modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { BehaviorSubject, catchError, of, switchMap } from 'rxjs';
 export class PaymentService {
   isRequestReady: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
-  constructor(private userService: UserService, private http: HttpClient) {}
+  constructor(private userService: UserService, private http: HttpClient, private modalService: ModalService) {}
 
   pay(userId: string, productId:string, type: string){
     //console.log("Paying with stripe...");
@@ -32,7 +33,12 @@ export class PaymentService {
         //console.log("Payment error ", error);
         this.isRequestReady.next(false);
         //console.log(this.isRequestReady.getValue());
-
+        if (error != null && error.error !== undefined && error.error.status !== undefined && error.error.status === 'error' && error.error.message !== undefined) {
+          this.openModal({
+            status: error.error.status, 
+            message: 'Oups: ' + error.error.message + '. This product is probably disabled for the selected payment method while we\'re working on it, but reach us at hi@mjapi.io so we can manually activate it for you'
+          })
+        }
         return of(null);
       })
     )
@@ -73,5 +79,9 @@ export class PaymentService {
           this.isRequestReady.next(true);
         }, 1500);
     })
+  }
+
+  private openModal({status, message}:{status: string, message:string}): void {
+    this.modalService.openModal({status, message});
   }
 }

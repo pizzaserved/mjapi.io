@@ -109,6 +109,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       {
         question: 'Why is SelfServe more expensive?',
         ans: 'For safety reasons, SelfServe accounts require a dedicated runner instance on our backend. This also means your prompts will get executed faster, since there\'s no queue (unlike Fairy accounts)'
+      },
+      {
+        question: 'How long should the prompt be?',
+        ans: 'At the moment, we limit prompts to 1000 chars for Fairy and 3000 for SelfServe, but before thinking about reaching those lengths, please read: https://mid-journey.ai/midjourney-prompt-length/'
       }
   ]
 

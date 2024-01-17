@@ -28,7 +28,7 @@ export class CardService {
       productId:'mjapi_io_30_days_fairy',
       name: '30 Days',
       price: 25,
-      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Then renew if needed</div>',
+      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Renew manually</div>',
       type: 'oneTime',
       accountType: 'fairy',
       selected: false
@@ -37,7 +37,7 @@ export class CardService {
       productId:'mjapi_io_monthly_fairy_sub',
       name: 'Subscribe',
       price: 22,
-      description: '<div class="col-12 text-center">Non-stop access</div><div class="col-12 text-center">Renews monthly</div>',
+      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Auto-renews</div>',
       type: 'subscription',
       accountType: 'fairy',
       selected: true
@@ -64,7 +64,7 @@ export class CardService {
       productId:'mjapi_io_30_days_selfserve',
       name: '30 Days',
       price: 35,
-      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Then renew if needed</div>',
+      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Renew manually</div>',
       type: 'oneTime',
       accountType: 'selfserve',
       selected: false
@@ -73,7 +73,7 @@ export class CardService {
       productId:'mjapi_io_monthly_selfserve_sub',
       name: 'Subscribe',
       price: 30,
-      description: '<div class="col-12 text-center">Non-stop access</div><div class="col-12 text-center">Renews monthly</div',
+      description: '<div class="col-12 text-center">Full month access</div><div class="col-12 text-center">Auto-renews</div',
       type: 'subscription',
       accountType: 'selfserve',
       selected: true

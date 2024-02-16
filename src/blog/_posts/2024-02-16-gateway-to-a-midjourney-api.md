@@ -1,5 +1,5 @@
 ---
-title: 'mjapi.io: Your Gateway to MidJourney API'
+title: 'mjapi.io: Your Gateway to a MidJourney API'
 author: kindest
 date: 2024-02-16 14:10:00 +0200
 categories: [Blogging]

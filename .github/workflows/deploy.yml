@@ -30,8 +30,9 @@ jobs:
         working-directory: 'src/blog'
 
     # This will generate the /src/blog/_site directory
-    - name: Install npm deps
+    - name: Build blog via Jekyll in /src/blog
       run: bundle exec jekyll build
+      working-directory: 'src/blog'
     # /Blog building with Jekyll
 
     - name: Install npm deps

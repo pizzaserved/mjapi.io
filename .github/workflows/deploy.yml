@@ -22,6 +22,12 @@ jobs:
             exit 1
         fi
 
+    # Needed for blog building
+    - uses: ruby/setup-ruby@v1
+      with:
+        # ruby-version: '3.3' # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
     - name: Install npm deps
       run: npm install
 

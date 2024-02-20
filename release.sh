@@ -42,10 +42,10 @@ git push --follow-tags
 # echo "Push to the $new_branch branch via git subtree magic"
 # # # Pushing directly to a branch, no intermediary steps! 
 # # # Thanks https://github.com/IvanMurzak/Unity-Package-Template/blob/master/gitSubTreePushToUPM.bat
-# # git subtree push --prefix dist/mjapi origin "$new_branch"
+# # git subtree push --prefix dist origin "$new_branch"
 
 # # Update: this actually creates the branch. Note that the build branch is not tagged as its name already implies its version. The tag is for the sources
-# git subtree split --prefix=dist/mjapi --squash -b "$new_branch"
+# git subtree split --prefix=dist --squash -b "$new_branch"
 # git push origin "$new_branch"
 
 echo 'Done! Check GitHub Actions runs at https://github.com/pizzaserved/mjapi.io/actions'

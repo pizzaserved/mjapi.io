@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mjapi",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -32,6 +32,7 @@
               "src/privacy.html",
               "src/fraud.html",
               "src/CNAME",
+              "src/robots.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",
@@ -109,6 +110,7 @@
               "src/privacy.html",
               "src/fraud.html",
               "src/CNAME",
+              "src/robots.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",

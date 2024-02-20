@@ -41,6 +41,9 @@ jobs:
     - name: Build ng
       run: npm run build
 
+    - name: Duplicate blog posts to site root
+      run: ./duplicate-blog-posts-to-root.sh
+
     - name: Check remote URL
       run: git remote -v
 

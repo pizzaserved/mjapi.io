@@ -6,6 +6,11 @@
 # - type: twitter
 #   icon: "fa-brands fa-x-twitter"
 
+- type: back
+  icon: "fa fa-arrow-left"
+  noblank: true # open link in current tab
+  url: "https://mjapi.io"
+
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab

@@ -44,6 +44,9 @@ jobs:
     - name: Duplicate blog posts to site root
       run: ./duplicate-blog-posts-to-root.sh
 
+    - name: Generate root sitemap 
+      run: node ./generate-root-sitemap.js
+
     - name: Check remote URL
       run: git remote -v
 

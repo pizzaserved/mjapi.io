@@ -32,6 +32,7 @@
               "src/privacy.html",
               "src/fraud.html",
               "src/CNAME",
+              "src/robots.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",
@@ -109,6 +110,7 @@
               "src/privacy.html",
               "src/fraud.html",
               "src/CNAME",
+              "src/robots.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",

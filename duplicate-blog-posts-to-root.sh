@@ -11,6 +11,7 @@ dest_dir="./dist"
 # Jekyll generated dirs
 exclude_list=("about" "archives" "assets" "categories" "norobots" "posts" "tags")
 
+echo "Copying to root:"
 for dir in "$src_dir"/*/; do
     dir_name=$(basename "$dir")
     should_exclude=0
@@ -29,7 +30,7 @@ for dir in "$src_dir"/*/; do
             exit 1
         fi
 
-        echo "Copy: $dir_name"
+        echo "- $dir_name"
         cp -r "$dir" "$dest_dir/"
     fi
 

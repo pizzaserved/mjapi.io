@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: https://mjapi.io/blog/blog/sitemap.xml
+Sitemap: https://mjapi.io/blog/sitemap.xml

@@ -42,7 +42,10 @@ jobs:
       run: npm run build
 
     - name: Duplicate blog posts to site root
-      run: ./duplicate-blog-posts-to-root.sh
+      run: |
+        script=duplicate-blog-posts-to-root.sh
+        chmod +x $script
+        ./$script
 
     - name: Generate root sitemap 
       run: node ./generate-root-sitemap.js

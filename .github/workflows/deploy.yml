@@ -68,7 +68,7 @@ jobs:
     #     tag=${GITHUB_REF#refs/tags/}
     #     build_branch="build${tag}"
     #     git config lfs.https://github.com.locksverify false
-    #     git subtree split --prefix=dist/mjapi --squash -b "$build_branch"
+    #     git subtree split --prefix=dis --squash -b "$build_branch"
     #     git push origin "$build_branch" --set-upstream
     #     echo "tag=$tag" >> $GITHUB_OUTPUT
     #     echo "build_branch=$build_branch" >> $GITHUB_OUTPUT
@@ -86,7 +86,7 @@ jobs:
     #     git rm -rf .
 
     #     echo 'Moving target dir to a temp dir outside'
-    #     subdir=dist/mjapi
+    #     subdir=dist
     #     tmp_dir=/tmp/mjapi_${build_branch}
     #     if [ -f "$tmp_dir" ]; the
     #       rm -rf "$tmp_dir"
@@ -101,7 +101,7 @@ jobs:
     #     rm -d "$tmp_dir"
 
     #     git config lfs.https://github.com.locksverify false
-    #     git subtree split --prefix=dist/mjapi --squash -b "$build_branch"
+    #     git subtree split --prefix=dist --squash -b "$build_branch"
     #     git push origin "$build_branch" --set-upstream
     #     echo "tag=$tag" >> $GITHUB_OUTPUT
     #     echo "build_branch=$build_branch" >> $GITHUB_OUTPUT

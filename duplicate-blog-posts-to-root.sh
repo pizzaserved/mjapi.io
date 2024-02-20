@@ -4,24 +4,35 @@
 
 set -euo pipefail
 
-src_dir="./dist/blog/posts"
+# src_dir="./dist/blog/posts"
+src_dir="./dist/blog"  # assuming the path was simplified in _config.yml to exclude the "posts" segment
 dest_dir="./dist"
-directories=()
 
-# Check conflicts
+# Jekyll generated dirs
+exclude_list=("about" "archives" "assets" "categories" "norobots" "posts" "tags")
+
 for dir in "$src_dir"/*/; do
     dir_name=$(basename "$dir")
-    if [ -d "$dest_dir/$dir_name" ]; then
-        echo "Error: Dir '$dir_name' already exists in dest. Preventing data unintended overrides"
-        exit 1
-    fi
-    directories+=("$dir")
-done
+    should_exclude=0
 
-# Copy
-for dir in "${directories[@]}"; do
-    dir_name=$(basename "$dir")
-    cp -r "$dir" "$dest_dir"
+    for item in "${exclude_list[@]}"; do
+        if [[ "$item" == "$dir_name" ]]; then
+            should_exclude=1
+            break
+        fi
+    done
+
+    if [[ $should_exclude != 1 ]]; then
+
+        if [ -d "$dest_dir/$dir_name" ]; then
+            echo "Error: Dir '$dir_name' already exists in dest. Preventing data unintended overrides"
+            exit 1
+        fi
+
+        echo "Copy: $dir_name"
+        cp -r "$dir" "$dest_dir/"
+    fi
+
 done
 
 echo "Done."

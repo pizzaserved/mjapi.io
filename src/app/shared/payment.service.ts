@@ -48,12 +48,12 @@ export class PaymentService {
 
     if (!(window as any).btcpay) {
       var script = document.createElement('script');
-      script.src = "https://btcpay0.voltageapp.io/modal/btcpay.js";
+      script.src = "https://btcpay.mjapi.io/modal/btcpay.js";
       document.getElementsByTagName('head')[0].append(script);
     }
 
     var formData = new FormData();
-    formData.append('storeId', 'BPjzrWkfmmKZb1GocoNic3WKaRhuBoJJZ1aLCnCMxgGw');
+    formData.append('storeId', 'AL6hUiHaXFNs1b9nNjLvz1GeJhEKPzpMfPLCv6dYT6oz');
     formData.append('jsonResponse', 'true');
     formData.append('orderId', userId);
     formData.append('checkoutDesc', 'Extend or create your subscription for roughly ~0.7 USD per day. If you encounter any issues, shoot at hi@mjapi.io');

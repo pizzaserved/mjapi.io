@@ -54,6 +54,13 @@ export class UserService {
       catchError((error) => {
         // getuser error
         if(error != undefined && error.error != undefined && error.error.status == 'error'){
+
+          // Added 05.05.2024: Not allowing fairy users to register anymore, because of abuse (and lack of scaling capabilities in the sense that MJ bans our shared accounts too fast)
+          if (accountType === 'fairy') {
+            this.openModal({status: 'info', message: 'Only Self-Serve accounts are supported now (we almost got a PhD in trying to fight abusive usage of our Fairy plans, but the force is strong in these ones)'});
+            return of(null);  // Stop further processing
+          }
+
           this.isRegistered = false;
 
           params = params.append('account_type', accountType!);

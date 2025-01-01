@@ -1,0 +1,36 @@
+.source-banner {
+  background: linear-gradient(90deg, rgba(89, 66, 117, 0.3) 0%, rgba(89, 66, 117, 0.1) 100%);
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+  border-radius: 0;
+  max-width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  .banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    
+    p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text-color-white);
+    }
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      padding: 0.5rem;
+      
+      button {
+        width: auto;
+        min-width: 200px;
+      }
+    }
+  }
+} 

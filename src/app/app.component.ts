@@ -84,7 +84,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   questionsList = [
       {
-        question: 'Do I need a MidJourney sub?',
+        question: 'Do I need a Midjourney sub?',
         ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
       },
       {
@@ -112,7 +112,7 @@ export class AppComponent implements OnInit, AfterViewInit{
         ans: 'Sure, shoot at hi@mjapi.io. This only works for Stripe one-time-payments (for subs see \'How do I cancel my sub?\'). If the email\'s subject matches \'please refund my previous payment\' exactly, and you\'ve paid less than 7 days ago, it\'s done automatically. In case that doesn\'t happen, simply shoot us a follow-up email.'
       },
       {
-        question: 'What if MidJourney gets their own API?',
+        question: 'What if Midjourney gets their own API?',
         ans: 'mjapi.io started as a solution we\'ve built for ourselves, and several projects rely on it. We\'ll be too lazy to refactor all our front-ends. Instead, we\'ll keep using mjapi.io and just adapt our back-end, if needed. This means you won\'t notice a thing. 👍'
       },
       {
@@ -222,13 +222,13 @@ export class AppComponent implements OnInit, AfterViewInit{
   ];
   
   benefitsFairy = [
-    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or MidJourney subscription - start right away' },
+    { title: 'Hassle-Free Setup', content: 'No need for a separate Discord account or Midjourney subscription - start right away' },
     { title: 'Shared Resource Efficiency', content: 'Leverage our shared accounts for an eco-friendly experience, adhering to a fair-use daily limit' },
     { title: 'Simplified Pricing', content: 'Enjoy lower costs, ideal for users with basic needs that are trying out mjapi' }
   ];
 
   benefitsSelfserved = [
-    { title: 'Full Control', content: 'Use your own MidJourney-enabled Discord account for a personalized experience' },
+    { title: 'Full Control', content: 'Use your own Midjourney-enabled Discord account for a personalized experience' },
     { title: 'Dedicated Resources', content: 'Benefit from a dedicated worker, ensuring consistent performance and availability, with no daily limits' },
     { title: 'Enhanced Privacy', content: 'Manage your integration with the assurance of complete privacy and security' }
   ];

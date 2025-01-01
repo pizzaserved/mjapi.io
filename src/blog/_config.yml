@@ -16,10 +16,10 @@ timezone: Europe/Bucharest
 
 title: MJAPI Blog # the main title
 
-tagline: Learn about our unofficial MidJourney API # it will display as the sub-title
+tagline: Learn about our unofficial Midjourney API # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Your search for a home-made MidJourney API ends here.
+  Your search for a home-made Midjourney API ends here.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.

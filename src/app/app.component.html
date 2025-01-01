@@ -4,7 +4,7 @@
       <div class="row">
         <div class="d-flex align-items-center col-12 col-md-7 col-xl-6">
           <div class="row">
-            <h1 class="landing-header col-12">MidJourney API.<br/> Simple.<br/> No BS.</h1>
+            <h1 class="landing-header col-12">Midjourney API.<br/> Simple.<br/> No BS.</h1>
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary" (click)="scrollToElement('login')">Discover</button>
             </div>
@@ -18,6 +18,8 @@
       </div>
     </div>
   </section>
+
+  <source-banner></source-banner>
 
   <section class="mjapi-slider row mb-5">
     <div class="col-12 ">
@@ -98,6 +100,19 @@
                 <card [card]="item" ></card>
               </div>
             </div>
+          </div>
+          <p class="text-center mb-5">or</p>
+          <!-- <div class="container-fluid justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of sourceCardList">
+              <div class="mb-5" *ngIf="accountType == item.accountType">
+                <card [card]="item" ></card>
+              </div>
+            </div>
+          </div> -->
+          <div class="container-fluid justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 container-fluid">
+              <source-code-card></source-code-card>
+            </div> 
           </div>
         </div>
       </div>

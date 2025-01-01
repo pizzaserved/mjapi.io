@@ -10,6 +10,7 @@ import { DolarPipe } from './shared/dolar.pipe';
 import { CollapsiblePanelDirective } from './shared/collapsible-panel.directive';
 import { TryFormComponent } from './try-form/try-form.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
+import { SourceCodeCardComponent } from './source-code-card/source-code-card.component';
 import { CookieModule } from 'ngx-cookie';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +19,7 @@ import { ModalService } from './shared/modal.service';
 import { UserService } from './shared/user.service';
 import { PhotoSliderComponent } from './photo-slider/photo-slider.component';
 import { StepsComponent } from './steps/steps.component';
+import { SourceBannerComponent } from './source-banner/source-banner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { StepsComponent } from './steps/steps.component';
     RegisterLoginComponent,
     ModalComponent,
     PhotoSliderComponent,
-    StepsComponent
+    StepsComponent,
+    SourceBannerComponent,
+    SourceCodeCardComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ import { ModalService } from './shared/modal.service';
 import { UserService } from './shared/user.service';
 import { PhotoSliderComponent } from './photo-slider/photo-slider.component';
 import { StepsComponent } from './steps/steps.component';
+import { SourceBannerComponent } from './source-banner/source-banner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StepsComponent } from './steps/steps.component';
     RegisterLoginComponent,
     ModalComponent,
     PhotoSliderComponent,
-    StepsComponent
+    StepsComponent,
+    SourceBannerComponent
   ],
   imports: [
     BrowserModule,

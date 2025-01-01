@@ -19,6 +19,8 @@
     </div>
   </section>
 
+  <source-banner></source-banner>
+
   <section class="mjapi-slider row mb-5">
     <div class="col-12 ">
       <photo-slider [images]="landUrls" [duration]="4500"></photo-slider>
@@ -94,6 +96,14 @@
           <p class="text-center mb-5">or</p>
           <div class="container-fluid justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of btcCardList">
+              <div class="mb-5" *ngIf="accountType == item.accountType">
+                <card [card]="item" ></card>
+              </div>
+            </div>
+          </div>
+          <p class="text-center mb-5">or</p>
+          <div class="container-fluid justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of sourceCardList">
               <div class="mb-5" *ngIf="accountType == item.accountType">
                 <card [card]="item" ></card>
               </div>

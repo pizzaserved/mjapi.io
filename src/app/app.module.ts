@@ -10,6 +10,7 @@ import { DolarPipe } from './shared/dolar.pipe';
 import { CollapsiblePanelDirective } from './shared/collapsible-panel.directive';
 import { TryFormComponent } from './try-form/try-form.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
+import { SourceCodeCardComponent } from './source-code-card/source-code-card.component';
 import { CookieModule } from 'ngx-cookie';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +32,8 @@ import { SourceBannerComponent } from './source-banner/source-banner.component';
     ModalComponent,
     PhotoSliderComponent,
     StepsComponent,
-    SourceBannerComponent
+    SourceBannerComponent,
+    SourceCodeCardComponent
   ],
   imports: [
     BrowserModule,

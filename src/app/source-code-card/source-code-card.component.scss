@@ -1,0 +1,31 @@
+.source-code-card {
+  border-radius: 62px;
+  background: rgba(239, 235, 255, 0.10);
+  box-shadow: 0px 0px 100px 22px rgba(242, 242, 242, 0.07);
+  backdrop-filter: blur(10.5px);
+  max-width: 800px;
+  margin: auto;
+
+  .simple {
+    padding: 3rem;
+  }
+
+  .card-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-description {
+    margin-bottom: 2rem;
+  }
+
+  button {
+    min-width: 150px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .simple {
+    padding: 2rem 1rem !important;
+  }
+} 

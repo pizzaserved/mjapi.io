@@ -98,25 +98,6 @@ export class CardService {
     accountType: 'selfserve',
     selected: false
   }]
-
-  sourceCard: Card[] = [{
-    productId:'source_code',
-    name: 'Source Code',
-    price: 0,
-    description: 'MJAPI\'s original source code',
-    type: 'source',
-    accountType: 'fairy',
-    selected: false
-  },
-  {
-    productId:'source_code',
-    name: 'Source Code',
-    price: 0,
-    description: 'MJAPI\'s original source code',
-    type: 'source',
-    accountType: 'selfserve',
-    selected: false
-  }]
   constructor() { }
 
   getPaymentCards(){
@@ -127,8 +108,8 @@ export class CardService {
     return this.btcCard;
   }
 
-  getSourceCard(){
-    return this.sourceCard;
-  }
+  // getSourceCard(){
+  //   return this.sourceCard;
+  // }
 
 }

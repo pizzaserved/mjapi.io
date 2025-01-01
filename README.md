@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# RELEASE (LL)
+### If on mac:
+```shell
+python3 -m venv .venv
+. .venv/bin/activate
+pip install bump2version
+```
+
+### Release script
+./release.sh patch

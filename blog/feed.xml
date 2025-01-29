@@ -4,7 +4,7 @@
   <id>https://mjapi.io/blog/</id>
   <title>MJAPI Blog</title>
   <subtitle>Your search for a home-made Midjourney API ends here.</subtitle>
-  <updated>2025-01-29T20:37:03+02:00</updated>
+  <updated>2025-01-29T20:43:03+02:00</updated>
   <author>
     <name>Kindest Pizza Boy In The World</name>
     <uri>https://mjapi.io/blog/</uri>
@@ -20,8 +20,8 @@
 
   
   <entry>
-    <title>Selling the whole backend for the midjourney api!</title>
-    <link href="https://mjapi.io/blog/midjourney-api-source-code/" rel="alternate" type="text/html" title="Selling the whole backend for the midjourney api!" />
+    <title>Selling the whole midjourney api backend!</title>
+    <link href="https://mjapi.io/blog/midjourney-api-source-code/" rel="alternate" type="text/html" title="Selling the whole midjourney api backend!" />
     <published>2025-01-29T14:30:00+02:00</published>
   
     <updated>2025-01-29T14:30:00+02:00</updated>

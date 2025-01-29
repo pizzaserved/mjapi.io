@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConstantsService } from '../shared/constants.service';
 
 @Component({
   selector: 'source-banner',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./source-banner.component.scss']
 })
 export class SourceBannerComponent {
+  constructor(private constants: ConstantsService) {}
+
   navigateToGumroad() {
-    window.open('https://exploder.gumroad.com/l/mjapi-python', '_blank');
+    window.open(this.constants.GUMROAD_URL, '_blank');
   }
 } 

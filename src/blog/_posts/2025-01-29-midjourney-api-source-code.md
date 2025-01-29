@@ -1,5 +1,5 @@
 ---
-title: 'midjourney api - yes, we\'re selling the code'
+title: 'We are the source code for the midjourney api!'
 author: kindest
 date: 2025-01-29 14:30:00 +0200
 categories: [Blogging]

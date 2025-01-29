@@ -7,22 +7,22 @@ tags: [midjourney,python,api,source code,backend,automation]
 render_with_liquid: false
 ---
 
-After countless requests from our community, we're excited to announce that the original Python source code powering mjapi.io's backend is now available! This release marks a significant pivot in our whole approach to selling access to image gen models.
+Excited to announce that the original Python source code powering [mjapi.io](https://mjapi.io)'s backend is now available! This release marks a significant pivot in our whole approach to selling access to image gen models.
 
 ## Why
 
-The decision to release our source code stems from our commitment to transparency and our evolution as a service. We're transitioning to a more scalable architecture. The original Python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
+Transitioning to a more scalable architecture. The original Python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
 
 ## What's inside
 
 The package contains our core library with all the essential components:
-- Complete Discord wrapper managing the lifecycle of image generation requests
+- The whole SaaS backend, with payments, user auth, extensive spam detection, job queue etc. probably 50% of this code can be repurposed to any other project
+- Complete Discord wrapper managing the lifecycle of image generation requests. This is the actual "bot" doing the heavy lifting.
 - Automated captcha solving (via your own api key from a third-party service)
 - Comprehensive request handling (sending requests, monitoring generation, handling reactions)
 - Generally robust, well-documented code ready for integration
-- The whole SaaS backend, with payments, user auth, extensive spam detection, job queue etc. probably 50% of this code can be repurposed to any other project
 
-You can also get the minimal self-contained bot version that you can use directly in your own project, which is cheaper.
+You can also get the minimal self-contained bot version that you can use directly in your own project, which is cheaper if you're only interested in that.
 
 ## A deeper dive into the Why
 
@@ -39,26 +39,30 @@ While this backend wasn't ideal for our scale (we started to have hundreds of co
 
 ## Pricing
 
-Based on development hours and market value, this backend could command $1000+ per pack. However, we're offering it at a significantly lower price during our initial release phase to gather community feedback and support independent developers.
+For the amount of work we've put in? Dirt cheap.
 
 ## What's next
 
 ![man looking at the horizon optimistic 4k sun positive](/blog/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png) _(man looking at the horizon optimistic 4k sun positive)_
 
 
-We're evolving! MJAPI is pivoting to a self-hosted open-source model that will include:
-- image generation
-- inpainting and outpainting
+We're evolving! [mjapi.io](https://mjapi.io) is pivoting to a self-hosted open-source model. We'll have all of the stuff you'd expect:
+- image gen
+- inpaint/outpaint
 - face swap
-- outfit generation
+- outfit gen
 - everything else the current open source models are capable of
 
-it's EXCITING that we've reached 5k monthly visitors just a few days ago and growing at 10% month-over-month, I can't wait for this new direction that will allow us to scale "infinitely", while still keeping a mj-like quality (at least 90% imo), for cheaper and without any constraints. we're going native baby
+It's EXCITING that we've reached 5k monthly visitors just a few days ago and growing at 10% month-over-month, I can't wait for this new direction that will allow us to scale "infinitely", while still keeping a mj-like quality (at least 90% imo), for cheaper and without any constraints. We're going native baby
 
-## Ready to dive in?
+## Dive in
 
 You can get the source code now on [Gumroad](https://exploder.gumroad.com/l/mjapi-python?utm_source=mjapi-site&utm_medium=blog-source-code&utm_campaign=mjapi)
 
-This pack is the culmination of months of dev and real-world testing (the most frustrating part was keeping the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for it, I'm definitely using it in all of my upcoming projects). 
+This pack is the culmination of months of dev and real-world testing.
 
-Stay tuned! 
+Fun fact: the most frustrating part was keeping the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for this piece too, I'm definitely using it in all of my upcoming projects. 
+
+Stay tuned!
+
+PS: I know there's no easy way to get notified of new posts, but you can join our discord, I'll be posting there too!

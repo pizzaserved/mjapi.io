@@ -43,7 +43,7 @@ For the amount of work we've put in? Dirt cheap.
 
 ## What's next
 
-![man looking at the horizon optimistic 4k sun positive](/blog/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png) _(man looking at the horizon optimistic 4k sun positive)_
+![man looking at the horizon optimistic 4k sun positive](/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png) _(man looking at the horizon optimistic 4k sun positive)_
 
 
 We're evolving! [mjapi.io](https://mjapi.io) is pivoting to a self-hosted open-source model. We'll have all of the stuff you'd expect:

@@ -4,7 +4,7 @@
   <id>https://mjapi.io/blog/</id>
   <title>MJAPI Blog</title>
   <subtitle>Your search for a home-made Midjourney API ends here.</subtitle>
-  <updated>2025-01-29T14:54:04+02:00</updated>
+  <updated>2025-01-29T19:45:46+02:00</updated>
   <author>
     <name>Kindest Pizza Boy In The World</name>
     <uri>https://mjapi.io/blog/</uri>
@@ -17,6 +17,44 @@
   <icon>/blog/assets/img/favicons/favicon.ico</icon>
   <logo>/blog/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title></title>
+    <link href="https://mjapi.io/blog/2025-01-29-midjourney-api-source-code/" rel="alternate" type="text/html" title="" />
+    <published>2025-01-29T19:45:46+02:00</published>
+  
+    <updated>2025-01-29T19:45:46+02:00</updated>
+  
+    <id>https://mjapi.io/blog/2025-01-29-midjourney-api-source-code/</id>
+    <content src="https://mjapi.io/blog/2025-01-29-midjourney-api-source-code/" />
+    <author>
+      <name>Kindest Pizza Boy In The World</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Excited to announce that the original Python source code powering mjapi.io’s backend is now available! This release marks a significant pivot in our whole approach to selling access to image gen models.
+
+Why
+
+Transitioning to a more scalable architecture. The original Python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
+
+What’s i...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>

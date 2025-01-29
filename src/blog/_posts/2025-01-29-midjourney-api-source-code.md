@@ -1,5 +1,5 @@
 ---
-title: 'Selling the whole backend for the midjourney api!'
+title: 'Selling the whole midjourney api backend!'
 author: kindest
 date: 2025-01-29 14:30:00 +0200
 categories: [Blogging]

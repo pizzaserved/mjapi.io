@@ -42,13 +42,33 @@ npm run blog:setup
 
 ### Development Workflow
 
-1. Make changes to blog content in `src/blog/`
-2. Run `npm run blog:build` to build static files
-3. Your Angular app will serve the updated blog content
+**For Angular development:**
+```bash
+npm run start                   # Build blog + start Angular dev server
+```
+- Blog available at `/blog/gateway-to-a-midjourney-api/`
+- Angular app for main development
+
+**For testing like production (replicates GitHub Pages):**
+```bash
+npm run preview                 # Build everything + serve static files
+```
+- Blog available at `/blog/` AND `/gateway-to-a-midjourney-api/` (short URLs)
+- Exact same behavior as mjapi.io
+
+### Build Scripts
+
+```bash
+npm run blog:setup              # First-time setup
+npm run blog:build              # Build blog only  
+npm run blog:clean              # Clean blog artifacts
+npm run build:full              # Complete build (same as CI)
+npm run preview                 # Build + serve like GitHub Pages
+```
 
 ### Manual Script Usage
 
-You can also use the script directly:
+You can also use the scripts directly:
 
 ```bash
 ./scripts/build-blog.sh setup   # Setup environment
@@ -57,4 +77,4 @@ You can also use the script directly:
 ./scripts/build-blog.sh help    # Show help
 ```
 
-The same script is used in both local development and CI/CD, ensuring consistency. 
+The same scripts are used in both local development and CI/CD, ensuring consistency. 

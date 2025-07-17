@@ -3,14 +3,16 @@
   "version": "0.5.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run blog:build && ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "gh-pages -d dist",
     "blog:setup": "./scripts/build-blog.sh setup",
     "blog:build": "./scripts/build-blog.sh build",
-    "blog:clean": "./scripts/build-blog.sh clean"
+    "blog:clean": "./scripts/build-blog.sh clean",
+    "build:full": "npm run blog:build && npm run build && ./duplicate-blog-posts-to-root.sh",
+    "preview": "npm run build:full && npx serve dist -p 4200"
   },
   "private": true,
   "dependencies": {

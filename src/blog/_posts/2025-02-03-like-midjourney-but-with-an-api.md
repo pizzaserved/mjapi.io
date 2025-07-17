@@ -55,7 +55,6 @@ you want to call an endpoint and get an image back. revolutionary concept, right
 - native models running on our infrastructure
 - same simple api you're used to
 - better uptime (99.9% vs whatever discord felt like giving us)
-- faster generation times
 - predictable costs
 
 ![placeholder: uptime comparison chart showing old vs new](/assets/img/2025-02-03-like-midjourney-but-with-an-api/uptime-chart.png) _(reliability you can actually count on)_

@@ -7,27 +7,27 @@ tags: [mjapi,api,image generation,open source,ai,automation,midjourney alternati
 render_with_liquid: false
 ---
 
-`/imagine` midjourney had an api...
-
-> generating...20%
-> generating...60%
-> generating...80%
+> `/imagine` midjourney had an api...
+> 
+> generating... 20%... 60%... 80%...
 >
 > **mjapi.io** (fast) <span style="color: gray;">_(edited)_</span>
 
 
 is there anything else to say? yes, and mjapi has a story
 
-mjapi used to be an unofficial midjourney api, but, apart from the gray area vibes, there was a scaling ceiling. some time has passed, mjapi became the 1st result on google for "midjourney api" and that pushed us to actually build something ourselves. that's it 
+mjapi used to be an unofficial midjourney api, but, apart from the gray area vibes, it hit a scaling ceiling early on (very early, actually). some time has passed, mjapi became the 1st result on google for "midjourney api" and that pushed us to actually build something ourselves. that's it 
 
 
 > _incredible art poster urban punk technology artistic war_
 > 
+> 
 > ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rmxvlzpmw56lsbu1dqvw.png)
-> <span style="color: gray;">_midjourney_</span>
+> <span style="color: gray; float: right;">_midjourney_</span>
+>
 > 
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/incredible_art_poster_urban_punk_technology_artistic_war-mjapi.jpg)
-> <span style="color: gray;">_mjapi_</span>
+> <span style="color: gray; float: right;">_mjapi_</span>
 
 this is not to say mjapi is "superior" or anything like that, we're just happy if ppl will use it
 
@@ -40,16 +40,16 @@ _mjapi.io unchained_ is here (not sure about the naming yet). zero midjourney de
 just pure, clean image generation with an api that actually works.
 
 
-> _https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg muscular, tough --ar 16:9_
+> _muscular, tough --ar 16:9 https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg_
 > 
+> <span style="color: gray; float: right;">_original_</span>
 > ![placeholder: original](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h68amjmqet1tcup6r41o.png)
-> <span style="color: gray;">_original_</span>
 > 
+> <span style="color: gray; float: right;">_midjourney_</span>
 > ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/c9ybtob0aqtron9o9czu.png)
-> <span style="color: gray;">_midjourney_</span>
 > 
+> <span style="color: gray; float: right;">_mjapi_</span>
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/muscular-tough-mjapi.jpg)
-> <span style="color: gray;">_mjapi_</span>
 
 
 if it moonwalks like mj and it sings like mj and it even looks like mj...
@@ -63,11 +63,13 @@ ok, that was my attempt at humour (I'm sure you're impressed)
 
 > _incredible art poster urban punk technology artistic war_
 > 
+> 
 > ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xqb042qpfuqxpxswoit8.png)
-> <span style="color: gray;">_midjourney_</span>
+> <span style="color: gray; float: right;">_midjourney_</span>
+> 
 > 
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/cool-teenager-mjapi.png)
-> <span style="color: gray;">_mjapi_</span>
+> <span style="color: gray; float: right;">_mjapi_</span>
 
 
 
@@ -81,11 +83,13 @@ you want to call an endpoint and get an image back. revolutionary concept, right
 
 > _massive tree of life in garden of eden sunrise far away and some mountains_
 > 
+> 
 > ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gjod0itn8mrpgdy9d8ra.png)
-> <span style="color: gray;">_midjourney_</span>
+> <span style="color: gray; float: right;">_midjourney_</span>
+> 
 > 
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/tree-of-life-garden-of-eden-mjapi.jpg)
-> <span style="color: gray;">_mjapi_</span>
+> <span style="color: gray; float: right;">_mjapi_</span>
 
 I like how mjapi reads youd mind and infers the _right_ amount of detail. if you would've just said "tree of life in garden of eden", it might've added some more details by itself (rivers, birds etc., like midjourney), but because you also mention "some mountains", it _understands_ that you've already thought about details, so it is less likely to assume you've missed some of them, the result being something what we (subjectively) think is closer to your intent
 
@@ -109,11 +113,13 @@ but here's the thing: we have an api, and even if mj releases their own, we've a
 
 > _pencil color portrait sketch of beautiful woman from Kansas USA, aged 35 --v 6.1_
 > 
+> 
 > ![placeholder: midjourney result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-midjourney.jpg)
-> <span style="color: gray;">_midjourney_</span>
+> <span style="color: gray; float: right;">_midjourney_</span>
+> 
 > 
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-mjapi.jpg)
-> <span style="color: gray;">_mjapi_ ("--v 6.1" part is ignored)</span>
+> <span style="color: gray; float: right;">_mjapi_ ("--v 6.1" part is ignored)</span>
 
 ## technical stuff
 
@@ -142,11 +148,13 @@ if you want it to just work, you're in the right place
 
 > _man looking at the horizon optimistic 4k sun positive_
 > 
+> 
 > ![placeholder: midjourney result](https://mjapi.io/blog/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png)
-> <span style="color: gray;">_midjourney_</span>
+> <span style="color: gray; float: right;">_midjourney_</span>
+> 
 > 
 > ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/man-horizon-mjapi.jpg)
-> <span style="color: gray;">_mjapi_ ("--v 6.1" part is ignored)</span>
+> <span style="color: gray; float: right;">_mjapi_ ("--v 6.1" part is ignored)</span>
 
 this is the foundation. after we launch:
 - collect feedback

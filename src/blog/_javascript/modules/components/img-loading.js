@@ -11,7 +11,10 @@ const cover = {
 };
 
 function removeCover(clzss) {
+  // Remove shimmer from parent (theme default)
   $(this).parent().removeClass(clzss);
+  // Also remove shimmer from image itself (for direct application)
+  $(this).removeClass(clzss);
 }
 
 function handleImage() {

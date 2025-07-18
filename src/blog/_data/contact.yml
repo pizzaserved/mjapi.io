@@ -9,7 +9,7 @@
 - type: back
   icon: "fa fa-arrow-left"
   noblank: true # open link in current tab
-  url: "https://mjapi.io"
+  url: "/"
 
 - type: email
   icon: "fas fa-envelope"

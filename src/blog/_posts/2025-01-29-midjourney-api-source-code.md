@@ -1,68 +1,68 @@
 ---
-title: 'Selling the whole midjourney api backend!'
+title: 'selling the whole midjourney api backend!'
 author: kindest
 date: 2025-01-29 14:30:00 +0200
-categories: [Blogging]
+categories: [blogging]
 tags: [midjourney,python,api,source code,backend,automation]
 render_with_liquid: false
 ---
 
-Excited to announce that the original Python source code powering [mjapi.io](https://mjapi.io)'s backend is now available! This release marks a significant pivot in our whole approach to selling access to image gen models.
+excited to announce that the original python source code powering [mjapi.io](https://mjapi.io)'s backend is now available! this release marks a significant pivot in our whole approach to selling access to image gen models.
 
-## Why
+## why
 
-Transitioning to a more scalable architecture. The original Python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
+transitioning to a more scalable architecture. the original python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
 
-## What's inside
+## what's inside
 
-The package contains our core library with all the essential components:
-- The whole SaaS backend, with payments, user auth, extensive spam detection, job queue etc. probably 50% of this code can be repurposed to any other project
-- Complete Discord wrapper managing the lifecycle of image generation requests. This is the actual "bot" doing the heavy lifting.
-- Automated captcha solving (via your own api key from a third-party service)
-- Comprehensive request handling (sending requests, monitoring generation, handling reactions)
-- Generally robust, well-documented code ready for integration
+the package contains our core library with all the essential components:
+- the whole saas backend, with payments, user auth, extensive spam detection, job queue etc. probably 50% of this code can be repurposed to any other project
+- complete discord wrapper managing the lifecycle of image generation requests. this is the actual "bot" doing the heavy lifting.
+- automated captcha solving (via your own api key from a third-party service)
+- comprehensive request handling (sending requests, monitoring generation, handling reactions)
+- generally robust, well-documented code ready for integration
 
-You can also get the minimal self-contained bot version that you can use directly in your own project, which is cheaper if you're only interested in that.
+you can also get the minimal self-contained bot version that you can use directly in your own project, which is cheaper if you're only interested in that.
 
-## A deeper dive into the Why
+## a deeper dive into the why
 
-We believe in complete transparency, so here's what you should know:
+we believe in complete transparency, so here's what you should know:
 
-- **Does it work?** Absolutely! We've used this code extensively for our own projects.
-- **Will I get banned?** Eventually, yes. Midjourney typically flags accounts after 2-3 months or ~300 API calls per day. This latter limit might just be a coincidence, but it was somethign we've experienced
-- **How to minimize risks?** Always use throwaway Discord accounts.
-- **Future updates?** We'll try to adapt the lib when Midjourney changes their API.
+- **does it work?** absolutely! we've used this code extensively for our own projects.
+- **will i get banned?** eventually, yes. midjourney typically flags accounts after 2-3 months or ~300 api calls per day. this latter limit might just be a coincidence, but it was somethign we've experienced
+- **how to minimize risks?** always use throwaway discord accounts.
+- **future updates?** we'll try to adapt the lib when midjourney changes their api.
 
-## It's still perfect for individual use
+## it's still perfect for individual use
 
-While this backend wasn't ideal for our scale (we started to have hundreds of concurrent users, and it was a nightmare), it's perfect for individual developers and small projects. The sweet spot is 1-5 Discord accounts per IP address, which covers 99% of use cases.
+while this backend wasn't ideal for our scale (we started to have hundreds of concurrent users, and it was a nightmare), it's perfect for individual developers and small projects. the sweet spot is 1-5 discord accounts per ip address, which covers 99% of use cases.
 
-## Pricing
+## pricing
 
-For the amount of work we've put in? Dirt cheap.
+for the amount of work we've put in? dirt cheap.
 
-## What's next
+## what's next
 
 ![man looking at the horizon optimistic 4k sun positive](/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png) _(man looking at the horizon optimistic 4k sun positive)_
 
 
-We're evolving! [mjapi.io](https://mjapi.io) is pivoting to a self-hosted open-source model. We'll have all of the stuff you'd expect:
+we're evolving! [mjapi.io](https://mjapi.io) is pivoting to a self-hosted open-source model. we'll have all of the stuff you'd expect:
 - image gen
 - inpaint/outpaint
 - face swap
 - outfit gen
 - everything else the current open source models are capable of
 
-It's EXCITING that we've reached 5k monthly visitors just a few days ago and growing at 10% month-over-month, I can't wait for this new direction that will allow us to scale "infinitely", while still keeping a mj-like quality (at least 90% imo), for cheaper and without any constraints. We're going native baby
+it's exciting that we've reached 5k monthly visitors just a few days ago and growing at 10% month-over-month, i can't wait for this new direction that will allow us to scale "infinitely", while still keeping a mj-like quality (at least 90% imo), for cheaper and without any constraints. we're going native baby
 
-## Dive in
+## dive in
 
-You can get the source code now on [Gumroad](https://exploder.gumroad.com/l/mjapi-python?utm_source=mjapi-site&utm_medium=blog-source-code&utm_campaign=mjapi)
+you can get the source code now on [gumroad](https://exploder.gumroad.com/l/mjapi-python?utm_source=mjapi-site&utm_medium=blog-source-code&utm_campaign=mjapi)
 
-This pack is the culmination of months of dev and real-world testing.
+this pack is the culmination of months of dev and real-world testing.
 
-Fun fact: the most frustrating part was keeping the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for this piece too, I'm definitely using it in all of my upcoming projects. 
+fun fact: the most frustrating part was keeping the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for this piece too, i'm definitely using it in all of my upcoming projects. 
 
-Stay tuned!
+stay tuned!
 
-PS: I know there's no easy way to get notified of new posts, but you can join our discord, I'll be posting there too!
+ps: i know there's no easy way to get notified of new posts, but you can join our discord, i'll be posting there too!

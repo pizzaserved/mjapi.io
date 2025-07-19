@@ -1,6 +1,8 @@
 /* The common styles */
 
 html {
+  font-size: 16px;
+  
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
     &[data-mode='light'] {
@@ -22,8 +24,6 @@ html {
       @include light-scheme;
     }
   }
-
-  font-size: 16px;
 }
 
 body {
@@ -510,40 +510,9 @@ main {
   display: inline-flex;
 }
 
+/* Shimmer animation disabled - caused issues with external URL images */
 .shimmer {
-  overflow: hidden;
-  position: relative;
-  background: var(--img-bg);
-
-  &::before {
-    content: '';
-    position: absolute;
-    background: var(--shimmer-bg);
-    height: 100%;
-    width: 100%;
-    -webkit-animation: shimmer 1.3s infinite;
-    animation: shimmer 1.3s infinite;
-  }
-
-  @-webkit-keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  /* No shimmer effect - images load without animation */
 }
 
 .embed-video {

@@ -145,6 +145,10 @@ if you want it to just work, you're in the right place
 > <span style="color: gray; float: right;">mjapi</span>
 > ![placeholder: mjapi result](/assets/img/2025-07-17-reboot-like-midjourney-but-api/man-horizon-mjapi.jpg)
 
+midjourney tries to impress you (and it works, and I love their outputs), but mjapi tries to guess your intent. did you write "impressive" or "cinematic"? nope, so we're not implanting any intentions on top of what you _actually_ want -- it's easier to add what you want than to remove what you don't want
+
+and again, we're not "better", just _different_
+
 this is the foundation. after we launch:
 - collect feedback
 - fast iteration changes  

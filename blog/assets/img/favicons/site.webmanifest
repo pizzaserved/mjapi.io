@@ -1,9 +1,9 @@
 
 
 {
-  "name": "MJAPI Blog",
-  "short_name": "MJAPI Blog",
-  "description": "Your search for a home-made Midjourney API ends here.",
+  "name": "mjapi blog",
+  "short_name": "mjapi blog",
+  "description": "your search for a home-made Midjourney API ends here.",
   "icons": [
     {
       "src": "/blog/assets/img/favicons/android-chrome-192x192.png",

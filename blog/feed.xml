@@ -2,18 +2,18 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://mjapi.io/blog/</id>
-  <title>MJAPI Blog</title>
-  <subtitle>Your search for a home-made Midjourney API ends here.</subtitle>
-  <updated>2025-07-19T11:28:31+03:00</updated>
+  <title>mjapi blog</title>
+  <subtitle>your search for a home-made Midjourney API ends here.</subtitle>
+  <updated>2025-07-19T11:34:20+03:00</updated>
   <author>
-    <name>Kindest Pizza Boy In The World</name>
+    <name>kindest pizza boy in the world</name>
     <uri>https://mjapi.io/blog/</uri>
   </author>
   <link rel="self" type="application/atom+xml" href="https://mjapi.io/blog/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
     href="https://mjapi.io/blog/"/>
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
-  <rights> © 2025 Kindest Pizza Boy In The World </rights>
+  <rights> © 2025 kindest pizza boy in the world </rights>
   <icon>/blog/assets/img/favicons/favicon.ico</icon>
   <logo>/blog/assets/img/favicons/favicon-96x96.png</logo>
 

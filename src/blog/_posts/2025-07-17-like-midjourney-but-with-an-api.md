@@ -21,13 +21,11 @@ mjapi used to be an unofficial midjourney api, but, apart from the gray area vib
 
 > _incredible art poster urban punk technology artistic war_
 > 
-> 
-> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rmxvlzpmw56lsbu1dqvw.png)
 > <span style="color: gray; float: right;">_midjourney_</span>
+> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rmxvlzpmw56lsbu1dqvw.png)
 >
-> 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/incredible_art_poster_urban_punk_technology_artistic_war-mjapi.jpg)
 > <span style="color: gray; float: right;">_mjapi_</span>
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/incredible_art_poster_urban_punk_technology_artistic_war-mjapi.jpg)
 
 this is not to say mjapi is "superior" or anything like that, we're just happy if ppl will use it
 
@@ -61,17 +59,6 @@ if it moonwalks like mj and it sings like mj and it even looks like mj...
 ok, that was my attempt at humour (I'm sure you're impressed)
 
 
-> _cool teenager on a skyscraper looking down the city digital art_
-> 
-> 
-> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xqb042qpfuqxpxswoit8.png)
-> <span style="color: gray; float: right;">_midjourney_</span>
-> 
-> 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/cool-teenager-mjapi.jpg)
-> <span style="color: gray; float: right;">_mjapi_</span>
-
-
 
 ## who this is for
 
@@ -83,13 +70,11 @@ you want to call an endpoint and get an image back. revolutionary concept, right
 
 > _massive tree of life in garden of eden sunrise far away and some mountains_
 > 
-> 
-> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gjod0itn8mrpgdy9d8ra.png)
 > <span style="color: gray; float: right;">_midjourney_</span>
+> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gjod0itn8mrpgdy9d8ra.png)
 > 
-> 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/tree-of-life-garden-of-eden-mjapi.jpg)
 > <span style="color: gray; float: right;">_mjapi_</span>
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/tree-of-life-garden-of-eden-mjapi.jpg)
 
 I like how mjapi reads youd mind and infers the _right_ amount of detail. if you would've just said "tree of life in garden of eden", it might've added some more details by itself (rivers, birds etc., like midjourney), but because you also mention "some mountains", it _understands_ that you've already thought about details, so it is less likely to assume you've missed some of them, the result being something what we (subjectively) think is closer to your intent
 
@@ -103,23 +88,28 @@ I like how mjapi reads youd mind and infers the _right_ amount of detail. if you
 - better uptime (99.9% vs whatever discord felt like giving us)
 - predictable costs
 
+> _cool teenager on a skyscraper looking down the city digital art_
+> 
+> <span style="color: gray; float: right;">_midjourney_</span>
+> ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xqb042qpfuqxpxswoit8.png)
+> 
+> <span style="color: gray; float: right;">_mjapi_</span>
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/cool-teenager-mjapi.jpg)
 
 ## the quality question
 
-again, I don't say the mjapi model are identical to midjourney. they're not. they're close. really close.
+again, I don't say mjapi's models are identical to midjourney. they're not. they're close. really close.
 
 but here's the thing: we have an api, and even if mj releases their own, we've already started to diverge, we're not a clone, there are many features down the roadmap that I'm excited about, that are unique to us. I can't say it rn, but here's a hint: vibe image prompting. I'll leave it at that
 
 
 > _pencil color portrait sketch of beautiful woman from Kansas USA, aged 35 --v 6.1_
 > 
-> 
-> ![placeholder: midjourney result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-midjourney.jpg)
 > <span style="color: gray; float: right;">_midjourney_</span>
+> ![placeholder: midjourney result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-midjourney.jpg)
 > 
-> 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-mjapi.jpg)
 > <span style="color: gray; float: right;">_mjapi_ ("--v 6.1" part is ignored)</span>
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/pencil-kansas-woman-mjapi.jpg)
 
 ## technical stuff
 
@@ -140,7 +130,7 @@ we're not here to compete on price. we're here to provide value. it might even b
 
 you pay for reliability, support, and not having to maintain your own gpu cluster
 
-if you want cheap and/or a single, specific kind of img gen, you can create up your own, specific pipeline, self-host it or use existing cloud providers (it's actually not that hard if you know exactly what you need and have enough time on hand)
+if you want cheap and/or a single, specific kinds of img gen, you can create up your own pipeline, self-host it or use existing cloud providers (it's actually not that hard if you know exactly what you need and have enough time on hand)
 
 if you want it to just work, you're in the right place
 
@@ -148,13 +138,11 @@ if you want it to just work, you're in the right place
 
 > _man looking at the horizon optimistic 4k sun positive_
 > 
-> 
-> ![placeholder: midjourney result](https://mjapi.io/blog/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png)
 > <span style="color: gray; float: right;">_midjourney_</span>
+> ![placeholder: midjourney result](https://mjapi.io/blog/assets/img/2025-01-29-midjourney-api-source-code/man-looking-at-horizon.png)
 > 
-> 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/man-horizon-mjapi.jpg)
 > <span style="color: gray; float: right;">_mjapi_ ("--v 6.1" part is ignored)</span>
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/man-horizon-mjapi.jpg)
 
 this is the foundation. after we launch:
 - collect feedback
@@ -169,14 +157,14 @@ this is the foundation. after we launch:
 
 
 > competition is for losers - Peter Thiel
-> 
-the future is not about copying existing platforms, it's about building something unique. and importantly, something we ourselves use
+
+the future is not about copying existing platforms, it's about building something unique. and importantly, something we, ourselves, use
 
 
 ## wen launch?
 
 watch for the Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
 
-we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images.
+we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images, and understands user's intent.
 
 which is apparently harder to find than it should be.

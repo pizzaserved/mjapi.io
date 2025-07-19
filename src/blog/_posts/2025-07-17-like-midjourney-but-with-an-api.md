@@ -1,7 +1,7 @@
 ---
-title: 'like midjourney, but with an api'
+title: 'like midjourney, but with an api [draft]'
 author: kindest
-date: 2025-02-03 16:20:00 +0200
+date: 2025-07-17 16:20:00 +0200
 categories: [Blogging]
 tags: [mjapi,api,image generation,open source,ai,automation,midjourney alternative]
 render_with_liquid: false

@@ -1,7 +1,8 @@
 <!-- Navigation buttons at the bottom of the post. -->
 
 <nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
-  {% assign previous = site.data.locales[include.lang].post.button.previous %}
+  {% comment %} LL: 19.07.2025: removed the previous/next buttons as there's already a "further reading" section above it {% endcomment %}
+  {% comment %} {% assign previous = site.data.locales[include.lang].post.button.previous %}
   {% assign next = site.data.locales[include.lang].post.button.next %}
 
   {% if page.previous.url %}
@@ -30,5 +31,5 @@
     <div class="btn btn-outline-primary disabled" aria-label="{{ next }}">
       <p>-</p>
     </div>
-  {% endif %}
+  {% endif %} {% endcomment %}
 </nav>

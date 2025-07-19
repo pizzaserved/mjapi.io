@@ -33,9 +33,9 @@ this is not to say mjapi is "superior" or anything like that, we're just happy i
 
 remember when we were reverse engineering discord bots and praying to not get banned? yeah, that's over. while it will work for individuals, you couldn't provide it as a service due to a low ceiling in max images per account per day  
 
-_mjapi.io unchained_ is here (not sure about the naming yet). zero midjourney dependencies. zero discord wrappers. zero captcha solving. zero throwaway accounts.
+mjapi.io "unchained" is here (not sure about the naming yet). zero midjourney dependencies. zero discord wrappers. zero captcha solving. zero throwaway accounts
 
-just pure, clean image generation with an api that actually works.
+just pure, clean image generation and editing with an api that actually works
 
 
 > _muscular, tough --ar 16:9 https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg_
@@ -80,9 +80,7 @@ I like how mjapi reads youd mind and infers the _right_ amount of detail. if you
 
 ## what changed
 
-- no more discord dependencies
-- no more account rotation
-- no more ban anxiety
+- no more discord dependencies, account rotation, ban anxiety
 - native models running on mjapi's infrastructure
 - same simple api you're used to
 - better uptime (99.9% vs whatever discord felt like giving us)
@@ -98,7 +96,7 @@ I like how mjapi reads youd mind and infers the _right_ amount of detail. if you
 
 ## the quality question
 
-again, I don't say mjapi's models are identical to midjourney. they're not. they're close. really close.
+again, I don't say mjapi's models are identical to midjourney. they're not. they're close. really close
 
 but here's the thing: we have an api, and even if mj releases their own, we've already started to diverge, we're not a clone, there are many features down the roadmap that I'm excited about, that are unique to us. I can't say it rn, but here's a hint: vibe image prompting. I'll leave it at that
 
@@ -115,7 +113,7 @@ but here's the thing: we have an api, and even if mj releases their own, we've a
 
 - midjourney-compatible prompting (e.g. `man holding an apple --ar 16:9 --raw`)
 - tens of models and variations
-- 1024x1024 native resolution 
+- 1024x1024 native resolution (optional upscaling to 2048, 4096 etc.)
 - aspect ratio support
 - inpainting and outpainting
 - style references
@@ -163,10 +161,10 @@ the future is not about copying existing platforms, it's about building somethin
 
 ## wen launch?
 
-watch for the Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates.
+watch for Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
 
-on launch, I'll do a a more detailed blog that dives into each feature (they're just briefly mentioned here), you'll like it
+on launch, I'll do a a more detailed blog, diving into each feature (they're just briefly mentioned here)
 
-we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images, and understands user's intent.
+we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images, and understands user's intent
 
-which is apparently harder to find than it should be.
+which is apparently harder to find than it should be

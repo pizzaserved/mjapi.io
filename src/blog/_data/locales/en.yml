@@ -3,74 +3,74 @@
 # ----- Commons label -----
 
 layout:
-  post: Post
-  category: Category
-  tag: Tag
+  post: post
+  category: category
+  tag: tag
 
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: Home
-  categories: Categories
-  tags: Tags
-  archives: Archives
-  about: About
+  home: home
+  categories: categories
+  tags: tags
+  archives: archives
+  about: about
 
 # the text displayed in the search bar & search results
 search:
   hint: search
-  cancel: Cancel
-  no_results: Oops! No results found.
+  cancel: cancel
+  no_results: oops! no results found.
 
 panel:
-  lastmod: Recently Updated
-  trending_tags: Trending Tags
-  toc: Contents
+  lastmod: recently updated
+  trending_tags: trending tags
+  toc: contents
 
 copyright:
-  # Shown at the bottom of the post
+  # shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
-    name: CC BY 4.0
+    template: this post is licensed under :license_name by the author.
+    name: cc by 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
-  # Displayed in the footer
-  brief: Some rights reserved.
+  # displayed in the footer
+  brief: some rights reserved.
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    except where otherwise noted, the blog posts on this site are licensed
+    under the creative commons attribution 4.0 international (cc by 4.0) license by the author.
 
-# meta: Using the :THEME theme for :PLATFORM.
-meta: Other searches for midjourney include midjourner, midjourn, midgerny, midjournez, mid journey al, middlejourney ai, midhurney, midjarny, midjourn ey, midjourne y, midjourneyia, midjurni, mishourney, mitjurny, modjournet
+# meta: using the :theme theme for :platform.
+meta: other searches for midjourney include midjourner, midjourn, midgerny, midjournez, mid journey al, middlejourney ai, midhurney, midjarny, midjourn ey, midjourne y, midjourneyia, midjurni, mishourney, mitjurny, modjournet
 
 not_found:
-  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  statment: sorry, we've misplaced that url or it's pointing to something that doesn't exist.
 
 notification:
-  update_found: A new version of content is available.
-  update: Update
+  update_found: a new version of content is available.
+  update: update
 
-# ----- Posts related labels -----
+# ----- posts related labels -----
 
 post:
-  written_by: By
-  posted: Posted
-  updated: Updated
+  written_by: by
+  posted: posted
+  updated: updated
   words: words
   pageview_measure: views
   read_time:
     unit: min
     prompt: read
-  relate_posts: Further Reading
-  share: Share
+  relate_posts: further reading
+  share: share
   button:
-    next: Newer
-    previous: Older
+    next: newer
+    previous: older
     copy_code:
-      succeed: Copied!
+      succeed: copied!
     share_link:
-      title: Copy link
-      succeed: Link copied successfully!
+      title: copy link
+      succeed: link copied successfully!
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>

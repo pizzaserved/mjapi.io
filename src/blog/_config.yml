@@ -14,12 +14,12 @@ timezone: Europe/Bucharest
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: MJAPI Blog # the main title
+title: mjapi blog # the main title
 
 tagline: former midjourney api, now something better  # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Your search for a home-made Midjourney API ends here.
+  your search for a home-made Midjourney API ends here.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Kindest Pizza Boy In The World
+  name: kindest pizza boy in the world
   email: hi@mjapi.io # change to your email address
   links:
     # # The first element serves as the copyright owner's link

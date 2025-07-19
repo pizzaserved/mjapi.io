@@ -163,8 +163,8 @@ the future is not about copying existing platforms, it's about building somethin
 
 watch for Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
 
-on launch, I'll do a a more detailed blog, diving into each feature (they're just briefly mentioned here)
+on launch, I'll do a a more detailed blog post, diving into each feature (they're just briefly mentioned here)
 
-we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images, and understands user's intent
+we're not going to oversell this. it's not magic. rn, it's just a reliable api that deeply understands your intent and generates good images/edits
 
 which is apparently harder to find than it should be

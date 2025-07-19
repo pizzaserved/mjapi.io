@@ -1,5 +1,5 @@
 ---
-title: 'like midjourney, but with an api [draft]'
+title: 'like midjourney, but with an api'
 author: kindest
 date: 2025-07-17 16:20:00 +0200
 categories: [Blogging]
@@ -163,7 +163,9 @@ the future is not about copying existing platforms, it's about building somethin
 
 ## wen launch?
 
-watch for the Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
+watch for the Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates.
+
+on launch, I'll do a a more detailed blog that dives into each feature (they're just briefly mentioned here), you'll like it
 
 we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images, and understands user's intent.
 

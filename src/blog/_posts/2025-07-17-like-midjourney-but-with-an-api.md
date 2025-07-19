@@ -5,6 +5,9 @@ date: 2025-07-17 16:20:00 +0200
 categories: [Blogging]
 tags: [mjapi,api,image generation,open source,ai,automation,midjourney alternative]
 render_with_liquid: false
+image:
+  path: /assets/img/2025-07-17-like-midjourney-but-with-an-api/reboot-blog-post-seo-mjapi.jpg
+  alt: mjapi is now a standalone product
 ---
 
 > `/imagine` midjourney had an api...

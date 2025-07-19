@@ -4,7 +4,7 @@
   <id>https://mjapi.io/blog/</id>
   <title>MJAPI Blog</title>
   <subtitle>Your search for a home-made Midjourney API ends here.</subtitle>
-  <updated>2025-03-02T12:48:59+02:00</updated>
+  <updated>2025-07-19T08:11:22+03:00</updated>
   <author>
     <name>Kindest Pizza Boy In The World</name>
     <uri>https://mjapi.io/blog/</uri>
@@ -20,8 +20,52 @@
 
   
   <entry>
-    <title>Selling the whole midjourney api backend!</title>
-    <link href="https://mjapi.io/blog/midjourney-api-source-code/" rel="alternate" type="text/html" title="Selling the whole midjourney api backend!" />
+    <title>like midjourney, but with an api</title>
+    <link href="https://mjapi.io/blog/like-midjourney-but-with-an-api/" rel="alternate" type="text/html" title="like midjourney, but with an api" />
+    <published>2025-02-03T16:20:00+02:00</published>
+  
+    <updated>2025-02-03T16:20:00+02:00</updated>
+  
+    <id>https://mjapi.io/blog/like-midjourney-but-with-an-api/</id>
+    <content src="https://mjapi.io/blog/like-midjourney-but-with-an-api/" />
+    <author>
+      <name>kindest</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+  /imagine midjourney had an api…
+
+  generating… 20%… 60%… 80%…
+
+  mjapi.io (fast) (edited)
+
+
+is there anything else to say? yes, and mjapi has a story
+
+mjapi used to be an unofficial midjourney api, but, apart from the gray area vibes, it hit a scaling ceiling early on (very early, actually). some time has passed, mjapi became the 1st result on google for “midjourney api” and that pushed us t...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>selling the whole midjourney api backend!</title>
+    <link href="https://mjapi.io/blog/midjourney-api-source-code/" rel="alternate" type="text/html" title="selling the whole midjourney api backend!" />
     <published>2025-01-29T14:30:00+02:00</published>
   
     <updated>2025-01-29T14:30:00+02:00</updated>
@@ -34,7 +78,7 @@
 
   
     
-    <category term="Blogging" />
+    <category term="blogging" />
     
   
 
@@ -46,13 +90,13 @@
 
 
 
-      Excited to announce that the original Python source code powering mjapi.io’s backend is now available! This release marks a significant pivot in our whole approach to selling access to image gen models.
+      excited to announce that the original python source code powering mjapi.io’s backend is now available! this release marks a significant pivot in our whole approach to selling access to image gen models.
 
-Why
+why
 
-Transitioning to a more scalable architecture. The original Python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
+transitioning to a more scalable architecture. the original python backend, though perfect for individual use, faces challenges when scaling to even hundreds of concurrent users.
 
-What’s i...
+what’s i...
     </summary>
   
 
@@ -60,8 +104,8 @@ What’s i...
 
   
   <entry>
-    <title>mjapi.io: Your Gateway to a Midjourney API</title>
-    <link href="https://mjapi.io/blog/gateway-to-a-midjourney-api/" rel="alternate" type="text/html" title="mjapi.io: Your Gateway to a Midjourney API" />
+    <title>mjapi.io: your gateway to a midjourney api</title>
+    <link href="https://mjapi.io/blog/gateway-to-a-midjourney-api/" rel="alternate" type="text/html" title="mjapi.io: your gateway to a midjourney api" />
     <published>2024-02-16T14:10:00+02:00</published>
   
     <updated>2024-02-16T14:10:00+02:00</updated>
@@ -74,7 +118,7 @@ What’s i...
 
   
     
-    <category term="Blogging" />
+    <category term="blogging" />
     
   
 
@@ -86,11 +130,11 @@ What’s i...
 
 
 
-      In a world where digital creativity is at the forefront, mjapi.io emerges as a game-changer for developers. This unofficial API offers seamless access to Midjourney’s image-generation capabilities previously only available via Discord.
+      in a world where digital creativity is at the forefront, mjapi.io emerges as a game-changer for developers. this unofficial api offers seamless access to midjourney’s image-generation capabilities previously only available via discord.
 
-What?
+what?
 
-mjapi.io is a developer’s portal to the impressive Midjourney functionality. With Midjourney lacking an official API, mjapi.io steps in to fill this gap,...
+mjapi.io is a developer’s portal to the impressive midjourney functionality. with midjourney lacking an official api, mjapi.io steps in to fill this gap,...
     </summary>
   
 

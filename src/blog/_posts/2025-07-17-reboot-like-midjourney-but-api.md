@@ -109,7 +109,7 @@ but here's the thing: we have an api, and even if mj releases their own, we've a
 > <span style="color: gray; float: right;">midjourney</span>
 > ![placeholder: midjourney result](/assets/img/2025-07-17-reboot-like-midjourney-but-api/pencil-kansas-woman-midjourney.jpg)
 > 
-> <span style="color: gray; float: right;">_mjapi_ ("--v 6.1" part is ignored)</span>
+> <span style="color: gray; float: right;">mjapi ("--v 6.1" part is ignored)</span>
 > ![placeholder: mjapi result](/assets/img/2025-07-17-reboot-like-midjourney-but-api/pencil-kansas-woman-mjapi.jpg)
 
 ## technical stuff

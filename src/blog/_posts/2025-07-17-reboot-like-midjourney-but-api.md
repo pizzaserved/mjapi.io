@@ -59,7 +59,7 @@ if it moonwalks like mj and it sings like mj and it even looks like mj...
 
 .. but something close enough
 
-ok, that was my attempt at humour (I'm sure you're impressed)
+ok, that was my attempt at humor (I'm sure you're impressed)
 
 
 

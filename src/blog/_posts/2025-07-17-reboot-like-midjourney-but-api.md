@@ -168,7 +168,7 @@ the future is not about copying existing platforms, it's about building somethin
 
 ## wen launch?
 
-watch for Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
+watch for Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates, or check [mjapi.io](https://mjapi.io) directly
 
 on launch, I'll do a a more detailed blog post, diving into each feature (they're just briefly mentioned here)
 

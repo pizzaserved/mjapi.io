@@ -61,14 +61,14 @@ if it moonwalks like mj and it sings like mj and it even looks like mj...
 ok, that was my attempt at humour (I'm sure you're impressed)
 
 
-> _incredible art poster urban punk technology artistic war_
+> _cool teenager on a skyscraper looking down the city digital art_
 > 
 > 
 > ![placeholder: midjourney result](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xqb042qpfuqxpxswoit8.png)
 > <span style="color: gray; float: right;">_midjourney_</span>
 > 
 > 
-> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/cool-teenager-mjapi.png)
+> ![placeholder: mjapi result](/assets/img/2025-07-17-like-midjourney-but-with-an-api/cool-teenager-mjapi.jpg)
 > <span style="color: gray; float: right;">_mjapi_</span>
 
 
@@ -175,7 +175,7 @@ the future is not about copying existing platforms, it's about building somethin
 
 ## wen launch?
 
-watch for the Jul21 2025, check our ![discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
+watch for the Jul21 2025, check our [discord](https://discord.com/invite/Gn6g3MCsff) for the quickest updates
 
 we're not going to oversell this. it's not magic. rn, it's just a reliable api that generates good images.
 

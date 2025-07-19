@@ -45,11 +45,23 @@ export function loadImg() {
 
   if ($images.length) {
     $images.on('load', handleImage);
+    
+    // Also handle error cases to remove shimmer
+    $images.on('error', function() {
+      removeCover.call(this, cover.SHIMMER);
+    });
   }
 
   // Images loaded from the browser cache do not trigger the 'load' event
   $('article img[loading="lazy"]').each(function () {
     if (this.complete) {
+      removeCover.call(this, cover.SHIMMER);
+    }
+  });
+
+  // Handle all already loaded images regardless of lazy loading attribute
+  $('article img').each(function () {
+    if (this.complete && this.naturalWidth > 0) {
       removeCover.call(this, cover.SHIMMER);
     }
   });

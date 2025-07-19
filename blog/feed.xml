@@ -4,7 +4,7 @@
   <id>https://mjapi.io/blog/</id>
   <title>mjapi blog</title>
   <subtitle>your search for a home-made Midjourney API ends here.</subtitle>
-  <updated>2025-07-19T11:49:40+03:00</updated>
+  <updated>2025-07-19T12:25:09+03:00</updated>
   <author>
     <name>kindest pizza boy in the world</name>
     <uri>https://mjapi.io/blog/</uri>
@@ -20,14 +20,14 @@
 
   
   <entry>
-    <title>like midjourney, but with an api</title>
-    <link href="https://mjapi.io/blog/like-midjourney-but-with-an-api/" rel="alternate" type="text/html" title="like midjourney, but with an api" />
+    <title>reboot: like midjourney, but with an api</title>
+    <link href="https://mjapi.io/blog/reboot-like-midjourney-but-api/" rel="alternate" type="text/html" title="reboot: like midjourney, but with an api" />
     <published>2025-07-17T17:20:00+03:00</published>
   
     <updated>2025-07-17T17:20:00+03:00</updated>
   
-    <id>https://mjapi.io/blog/like-midjourney-but-with-an-api/</id>
-    <content src="https://mjapi.io/blog/like-midjourney-but-with-an-api/" />
+    <id>https://mjapi.io/blog/reboot-like-midjourney-but-api/</id>
+    <content src="https://mjapi.io/blog/reboot-like-midjourney-but-api/" />
     <author>
       <name>kindest</name>
     </author>

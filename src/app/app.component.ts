@@ -103,10 +103,6 @@ export class AppComponent implements OnInit, AfterViewInit{
       {
         question: 'do you offer refunds for the source code?',
         ans: 'nope'
-      },
-      {
-        question: 'do you offer refunds for the source code?',
-        ans: 'nope'
       }
   ]
 

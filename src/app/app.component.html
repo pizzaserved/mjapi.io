@@ -4,7 +4,7 @@
       <div class="row">
         <div class="d-flex align-items-center col-12 col-md-7 col-xl-6">
           <div class="row">
-            <h1 class="landing-header col-12">midjourney api.</h1>
+            <h1 class="landing-header col-12">midjourney™ api.</h1>
             <h1 class="landing-header col-12">simple. no bs.</h1>
             <p class="hero-subtitle col-12">but there's more...</p>
             <div class="col-sm-12">
@@ -16,6 +16,21 @@
           <div class="mjapi-header-img">
             <img src="../assets/icons/hero-img.jpeg" alt="mjapi-hero" class="fade-out">
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mjapi-about container-fluid py-5">
+    <div class="d-flex justify-content-center flex-column">
+      <p class="section-header text-center mb-4">context</p>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+          <p class="text-center mb-4">midjourney™ is a text-to-image ai generation tool accessible via their discord bot (and recently via their website)</p>
+          <p class="text-center mb-4">no official api exists. we built workarounds</p>
+          <p class="text-center trademark-notice"><small>midjourney™ is a trademark of midjourney, inc. we are not endorsed by or affiliated with midjourney, inc.</small></p>
+
+
         </div>
       </div>
     </div>
@@ -35,11 +50,23 @@
     </div> -->
   </section>
   
-  <div id="choices" class="container-landing mt-5 py-5">
+  <!-- <section class="mjapi-context container-fluid py-5 my-5">
+    <div class="d-flex justify-content-center flex-column">
+      <p class="section-header text-center mb-4">context</p>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <p class="text-center">midjourney™ only works through discord. no official api exists. we built workarounds.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <div class="container-landing mt-5 py-5">
 
+    <div id="choices">
     <section class="mjapi-get container-fluid mb-5">
       <div class="d-flex justify-content-center flex-column">
         <p class="section-header text-center">two options</p>
+        <p class="text-center">the original mjapi source code for interfacing with midjourney's discord bot or our own engine</p>
       </div>
     </section>
 
@@ -52,16 +79,19 @@
               <p class="choice-subtitle">run it yourself</p>
             </div>
             <div class="choice-body">
-              <p class="choice-description">python code that automates midjourney™ through discord. includes user management, payment processing, and queue handling.</p>
+              <p class="choice-description">get the python source code that used to power the original mjapi.io backend for interfacing with midjourney™. for devs who want to run their own instance</p>
               <div class="choice-features">
                 <div class="feature-item">
-                  <span>full codebase</span>
+                  <span>complete python codebase</span>
                 </div>
                 <div class="feature-item">
-                  <span>requires technical setup</span>
+                  <span>discord integration</span>
                 </div>
                 <div class="feature-item">
-                  <span>accounts get banned eventually</span>
+                  <span>works with midjourney™ subscriptions</span>
+                </div>
+                <div class="feature-item">
+                  <span>self-hosted solution</span>
                 </div>
                 <div class="feature-item">
                   <span>one-time purchase</span>
@@ -80,44 +110,69 @@
               <p class="choice-subtitle">we run it <span class="beta-badge">beta</span></p>
             </div>
             <div class="choice-body">
-              <p class="choice-description">we run the infrastructure. you make api calls. uses our own models trained on similar data to midjourney™.</p>
+              <p class="choice-description">try our brand new engine. no discord dependencies, native models, and a modern api-first approach. we promise it feels like magic</p>
               <div class="choice-features">
                 <div class="feature-item">
-                  <span>hosted infrastructure</span>
+                  <span>native ai models</span>
                 </div>
                 <div class="feature-item">
-                  <span>different models than midjourney™</span>
+                  <span>no discord required</span>
                 </div>
                 <div class="feature-item">
-                  <span>still in development</span>
+                  <span>api-first design</span>
                 </div>
                 <div class="feature-item">
-                  <span>monthly billing</span>
+                  <span>powerful semantical engine (we're not a "flux wrapper")</span>
+                </div>
+                <div class="feature-item">
+                  <span>modern infrastructure</span>
                 </div>
               </div>
             </div>
             <div class="choice-footer">
-              <button type="button" class="btn btn-primary choice-btn" (click)="navigateToApp()">try service</button>
+              <button type="button" class="btn btn-primary choice-btn" (click)="navigateToApp()">whoa</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
-
-    <section class="mjapi-about container-fluid py-5 my-5">
-      <div class="d-flex justify-content-center flex-column">
-        <p class="section-header text-center mb-4">what is midjourney™?</p>
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-8">
-            <p class="text-center mb-4">midjourney™ is a text-to-image ai generation tool accessible exclusively via their discord bot. while this works for manual image creation, it doesn't provide an official api for automated workflows.</p>
-            <p class="text-center mb-4">we've built solutions for developers who need programmatic access to ai image generation.</p>
-            <p class="text-center trademark-notice"><small>midjourney™ is a trademark of midjourney, inc. we are not endorsed by or affiliated with midjourney, inc.</small></p>
+    <section class="mjapi-details container-fluid py-5 my-5">
+      <div class="d-flex justify-content-center mb-5">
+        <p class="section-header">details</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <div class="row">
+            <div class="col-12 col-md-6 mb-5">
+              <div class="feature-card p-4">
+                <h4 class="mb-3">source code</h4>
+                <p class="mb-4">python code that automates midjourney™ through discord. includes user management, payment processing, and queue handling. you run it yourself.</p>
+                <ul>
+                  <li>full codebase</li>
+                  <li>works with your midjourney™ subscription</li>
+                  <li>requires technical setup</li>
+                  <li>accounts get banned eventually</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-5">
+              <div class="feature-card p-4">
+                <h4 class="mb-3">hosted service</h4>
+                <p class="mb-4">we run the infrastructure. you make api calls. uses our own models trained on similar data to midjourney™.</p>
+                <ul>
+                  <li>no discord setup</li>
+                  <li>different models than midjourney™</li>
+                  <li>monthly billing</li>
+                  <li>still in development</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+  </div>
 
 
 
@@ -134,7 +189,7 @@
                   <h4>{{question.question}}</h4>
                   <span class="faq-toggle">+</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" [style.maxHeight.px]="0">
                   <p>{{question.ans}}</p>
                 </div>
               </div>
@@ -161,16 +216,16 @@
       <!-- <p class="git-header">Get in touch</p> -->
       <!-- <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/blog">Blog</a> &nbsp; <a href="https://medium.com/@xucian/mjapi-io-your-gateway-to-midjourney-api-b455f8067f5a">Medium</a> &nbsp; <a href="https://dev.to/xucian/mjapiio-your-gateway-to-midjourney-api-4icn">Dev.to</a> &nbsp; <a href="https://xucian.hashnode.dev/mjapiio-your-gateway-to-midjourney-api">Hashnode</a></div> -->
       <!-- <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/blog">Blog</a></div> -->
-      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/reboot-like-midjourney-but-api">Blog</a> &nbsp; <a href="https://og.mjapi.io">old website</a></div>
-      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="https://discord.com/invite/Gn6g3MCsff">Discord</a> &nbsp; <a href="mailto:hi@mjapi.io">hi@mjapi.io</a></div>
-      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/terms.html">Terms of Use</a> &nbsp; <a href="/privacy.html">Privacy Policy</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/reboot-like-midjourney-but-api">blog</a> &nbsp; <a href="https://og.mjapi.io">old website</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="https://discord.com/invite/Gn6g3MCsff">discord</a> &nbsp; <a href="mailto:hi@mjapi.io">hi@mjapi.io</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/terms.html">terms of use</a> &nbsp; <a href="/privacy.html">privacy policy</a></div>
     </div>
     <!-- <div class="copyright d-flex justify-content-center">
       <p>2024 mjapi.io. All Rights Reserved</p>
     </div> -->
     <!--SEO guy suggested adding these too. Need to check whether this is really necessary-->
     <div class="other-searches d-flex justify-content-center">
-      <p>Other searches for midjourney include midjourner, midjourn, midgerny, midjournez, mid journey al, middlejourney ai, midhurney, midjarny, midjourn ey, midjourne y, midjourneyia, midjurni, mishourney, mitjurny, modjournet</p>
+      <p>other searches for midjourney include midjourner, midjourn, midgerny, midjournez, mid journey al, middlejourney ai, midhurney, midjarny, midjourn ey, midjourne y, midjourneyia, midjurni, mishourney, mitjurny, modjournet</p>
     </div>
   </section>
 </div>

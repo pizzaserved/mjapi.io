@@ -85,24 +85,28 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   questionsList = [
       {
-        question: 'which should i choose?',
-        ans: 'source code if you want to run it yourself and don\'t mind technical setup. hosted service if you want us to handle the infrastructure.'
+        question: 'which should I choose?',
+        ans: 'source code if you want to run it yourself and don\'t mind technical setup. hosted service if you want us to handle the infrastructure -- and try something magical :)'
       },
       {
-        question: 'does the source code still work?',
-        ans: 'yes, but midjourney™ bans accounts that use automation. expect to replace accounts periodically.'
+        question: 'does the original source code still work?',
+        ans: 'yes, but midjourney™ bans accounts that use automation. expect to replace accounts periodically'
       },
       {
         question: 'how is the hosted service different from midjourney™?',
-        ans: 'it uses different ai models. output quality and style will be similar but not identical to midjourney™.'
+        ans: 'it uses different ai models. output quality and style will be similar but not identical to midjourney™'
       },
       {
         question: 'when will the hosted service be ready?',
-        ans: 'it\'s in beta now. check app.mjapi.io for current status.'
+        ans: 'it\'s live right now! check app.mjapi.io'
       },
       {
-        question: 'do you offer refunds?',
-        ans: 'yes for source code purchases. email hi@mjapi.io within 7 days.'
+        question: 'do you offer refunds for the source code?',
+        ans: 'nope'
+      },
+      {
+        question: 'do you offer refunds for the source code?',
+        ans: 'nope'
       }
   ]
 

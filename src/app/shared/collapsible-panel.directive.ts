@@ -11,16 +11,21 @@ export class CollapsiblePanelDirective {
     
   }
   
-  @HostListener('click') click(eventData: Event){
-    var panel = this.elementRef.nativeElement.closest('.panel-container')
-    //console.log(this.isOpened, panel, this.elementRef);
-    if(!this.isOpened){
-      this.renderer.addClass(panel,'open');
-      this.renderer.addClass(this.elementRef.nativeElement,'open');
+  @HostListener('click') click(eventData: Event) {
+    const faqItem = this.elementRef.nativeElement.closest('.faq-item');
+    const faqAnswer = faqItem.querySelector('.faq-answer');
+    const faqToggle = this.elementRef.nativeElement.querySelector('.faq-toggle');
+    
+    if (!this.isOpened) {
+      this.renderer.addClass(faqItem, 'open');
+      this.renderer.setStyle(faqAnswer, 'max-height', `${faqAnswer.scrollHeight}px`);
+      this.renderer.setProperty(faqToggle, 'textContent', '−');
     } else {
-      this.renderer.removeClass(panel,'open');
-      this.renderer.removeClass(this.elementRef.nativeElement,'open');
+      this.renderer.removeClass(faqItem, 'open');
+      this.renderer.setStyle(faqAnswer, 'max-height', '0');
+      this.renderer.setProperty(faqToggle, 'textContent', '+');
     }
+    
     this.isOpened = !this.isOpened;
   }
 

@@ -85,36 +85,24 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   questionsList = [
       {
-        question: 'which option should i choose?',
-        ans: 'choose the source code if you want complete control, self-hosting, and don\'t mind managing infrastructure. choose our new ai platform if you want a managed service with high reliability and no discord dependencies.'
+        question: 'which should i choose?',
+        ans: 'source code if you want to run it yourself and don\'t mind technical setup. hosted service if you want us to handle the infrastructure.'
       },
       {
-        question: 'is the source code still maintained?',
-        ans: 'yes! we continue to maintain and update the original source code. while we\'ve moved to our own platform, the original code still works perfectly for individual use and smaller scale applications.'
+        question: 'does the source code still work?',
+        ans: 'yes, but midjourney™ bans accounts that use automation. expect to replace accounts periodically.'
       },
       {
-        question: 'does the source code work with current midjourney?',
-        ans: 'absolutely. the source code is kept up-to-date with midjourney\'s latest features and changes. you\'ll need your own midjourney subscription and discord account to use it.'
+        question: 'how is the hosted service different from midjourney™?',
+        ans: 'it uses different ai models. output quality and style will be similar but not identical to midjourney™.'
       },
       {
-        question: 'what makes your new ai platform different?',
-        ans: 'our new platform eliminates discord dependencies entirely. it runs on native ai models with 99.9% uptime, predictable costs, and a modern api-first design built for production use.'
+        question: 'when will the hosted service be ready?',
+        ans: 'it\'s in beta now. check app.mjapi.io for current status.'
       },
       {
-        question: 'is the new platform compatible with midjourney prompts?',
-        ans: 'yes! our platform understands midjourney-style prompts including aspect ratios (--ar), style parameters, and other familiar syntax. the goal is seamless migration.'
-      },
-      {
-        question: 'when will the new platform be available?',
-        ans: 'the new platform is currently in beta. check app.mjapi.io for the latest updates, or join our discord for early access announcements.'
-      },
-      {
-        question: 'can i get support for either option?',
-        ans: 'yes! we provide support for both the source code and the new platform. reach out via discord or email hi@mjapi.io whenever you need help.'
-      },
-      {
-        question: 'what happens to existing mjapi.io users?',
-        ans: 'all existing functionality will be preserved. current users can continue using the service while we transition to the new platform. we\'ll provide migration paths and support throughout the process.'
+        question: 'do you offer refunds?',
+        ans: 'yes for source code purchases. email hi@mjapi.io within 7 days.'
       }
   ]
 

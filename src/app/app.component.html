@@ -4,10 +4,11 @@
       <div class="row">
         <div class="d-flex align-items-center col-12 col-md-7 col-xl-6">
           <div class="row">
-            <h1 class="landing-header col-12">midjourney api<br/>solutions</h1>
-            <p class="hero-subtitle col-12">two paths forward: get the original source code or try our new ai platform</p>
+            <h1 class="landing-header col-12">midjourney api.</h1>
+            <h1 class="landing-header col-12">simple. no bs.</h1>
+            <p class="hero-subtitle col-12">but there's more...</p>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary" (click)="scrollToElement('choices')">explore options</button>
+              <button type="button" class="btn btn-primary" (click)="scrollToElement('choices')">see</button>
             </div>
           </div>
         </div>
@@ -20,7 +21,7 @@
     </div>
   </section>
 
-  <source-banner></source-banner>
+  <!-- <source-banner></source-banner> -->
 
   <section class="mjapi-slider row mb-5">
     <div class="col-12 ">
@@ -34,137 +35,109 @@
     </div> -->
   </section>
   
-  <div id="choices" class="container-landing mt-5">
+  <div id="choices" class="container-landing mt-5 py-5">
 
-    <section class="mjapi-get container-fluid">
+    <section class="mjapi-get container-fluid mb-5">
       <div class="d-flex justify-content-center flex-column">
-        <p class="section-header text-center">choose your path</p>
-        <p class="text-center">whether you need the original midjourney api source code or want to try our new ai platform, we've got you covered.</p>
+        <p class="section-header text-center">two options</p>
       </div>
     </section>
 
-    <section class="mjapi-choices container-fluid">
+    <section class="mjapi-choices container-fluid py-5">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-5 choice-card m-3">
+        <div class="col-12 col-md-5 choice-card m-4">
           <div class="choice-content">
-            <h3 class="choice-title">original source code</h3>
-            <p class="choice-description">get the python source code that powers the original mjapi.io backend for interfacing with midjourney. perfect for developers who want to run their own instance.</p>
-            <ul class="choice-features">
-              <li>complete python codebase</li>
-              <li>discord integration</li>
-              <li>works with midjourney subscriptions</li>
-              <li>self-hosted solution</li>
-              <li>one-time purchase</li>
-            </ul>
-            <button type="button" class="btn btn-primary choice-btn" (click)="navigateToGumroad()">download source code</button>
-          </div>
-        </div>
-        <div class="col-12 col-md-5 choice-card m-3">
-          <div class="choice-content">
-            <h3 class="choice-title">new ai platform <span class="beta-badge">beta</span></h3>
-            <p class="choice-description">try our brand new ai image generation platform. no discord dependencies, native models, and a modern api-first approach.</p>
-            <ul class="choice-features">
-              <li>native ai models</li>
-              <li>no discord required</li>
-              <li>api-first design</li>
-              <li>99.9% uptime</li>
-              <li>modern infrastructure</li>
-            </ul>
-            <button type="button" class="btn btn-primary choice-btn" (click)="navigateToApp()">try beta platform</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mjapi-app-promo container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10">
-          <div class="app-promo-card">
-            <div class="row align-items-center">
-              <div class="col-12 col-md-6">
-                <h3 class="app-promo-title">try our new ai platform</h3>
-                <p class="app-promo-description">experience the future of ai image generation with our new platform. built from the ground up with native models, modern infrastructure, and enterprise-grade reliability.</p>
-                <ul class="app-promo-features">
-                  <li>✅ no discord dependencies</li>
-                  <li>✅ 99.9% uptime guarantee</li>
-                  <li>✅ native ai models</li>
-                  <li>✅ midjourney-compatible prompts</li>
-                  <li>✅ modern rest api</li>
-                  <li>✅ enterprise-ready infrastructure</li>
-                </ul>
-                <button type="button" class="btn btn-primary btn-lg" (click)="navigateToApp()">try beta platform →</button>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="app-promo-visual">
-                  <p class="text-center"><em>coming soon: advanced features like vibe image prompting, background removal, photo restoration, and more!</em></p>
+            <div class="choice-header">
+              <h3 class="choice-title">source code</h3>
+              <p class="choice-subtitle">run it yourself</p>
+            </div>
+            <div class="choice-body">
+              <p class="choice-description">python code that automates midjourney™ through discord. includes user management, payment processing, and queue handling.</p>
+              <div class="choice-features">
+                <div class="feature-item">
+                  <span>full codebase</span>
+                </div>
+                <div class="feature-item">
+                  <span>requires technical setup</span>
+                </div>
+                <div class="feature-item">
+                  <span>accounts get banned eventually</span>
+                </div>
+                <div class="feature-item">
+                  <span>one-time purchase</span>
                 </div>
               </div>
             </div>
+            <div class="choice-footer">
+              <button type="button" class="btn btn-primary choice-btn" (click)="navigateToGumroad()">get</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-5 choice-card m-4">
+          <div class="choice-content">
+            <div class="choice-header">
+              <h3 class="choice-title">hosted service</h3>
+              <p class="choice-subtitle">we run it <span class="beta-badge">beta</span></p>
+            </div>
+            <div class="choice-body">
+              <p class="choice-description">we run the infrastructure. you make api calls. uses our own models trained on similar data to midjourney™.</p>
+              <div class="choice-features">
+                <div class="feature-item">
+                  <span>hosted infrastructure</span>
+                </div>
+                <div class="feature-item">
+                  <span>different models than midjourney™</span>
+                </div>
+                <div class="feature-item">
+                  <span>still in development</span>
+                </div>
+                <div class="feature-item">
+                  <span>monthly billing</span>
+                </div>
+              </div>
+            </div>
+            <div class="choice-footer">
+              <button type="button" class="btn btn-primary choice-btn" (click)="navigateToApp()">try service</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mjapi-about container-fluid">
+
+
+    <section class="mjapi-about container-fluid py-5 my-5">
       <div class="d-flex justify-content-center flex-column">
-        <p class="section-header text-center">about midjourney api</p>
+        <p class="section-header text-center mb-4">what is midjourney™?</p>
         <div class="row justify-content-center">
           <div class="col-12 col-md-8">
-            <p>midjourney™ is a revolutionary text-to-image ai generation tool accessible exclusively via discord. while perfect for manual generations, integrating it into automated pipelines has been impossible due to the lack of an official api.</p>
-            <p>that's where mjapi.io comes in. we've created solutions for developers who need programmatic access to ai image generation, whether through our original source code or our new standalone platform.</p>
+            <p class="text-center mb-4">midjourney™ is a text-to-image ai generation tool accessible exclusively via their discord bot. while this works for manual image creation, it doesn't provide an official api for automated workflows.</p>
+            <p class="text-center mb-4">we've built solutions for developers who need programmatic access to ai image generation.</p>
+            <p class="text-center trademark-notice"><small>midjourney™ is a trademark of midjourney, inc. we are not endorsed by or affiliated with midjourney, inc.</small></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mjapi-comparison container-fluid">
-      <div class="d-flex justify-content-center">
-        <p class="section-header">why choose mjapi.io?</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10">
-          <div class="row">
-            <div class="col-12 col-md-6 mb-4">
-              <div class="feature-card">
-                <h4>for developers who want control</h4>
-                <p>our original source code gives you complete control over your midjourney api integration. run it on your own infrastructure, customize it to your needs, and maintain full ownership of your implementation.</p>
-                <ul>
-                  <li>complete python source code</li>
-                  <li>no monthly fees or subscriptions</li>
-                  <li>works with your midjourney account</li>
-                  <li>self-hosted and private</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 mb-4">
-              <div class="feature-card">
-                <h4>for teams who want reliability</h4>
-                <p>our new ai platform eliminates discord dependencies and provides a modern, reliable api service. built from the ground up for production use with enterprise-grade infrastructure.</p>
-                <ul>
-                  <li>99.9% uptime guarantee</li>
-                  <li>native ai models</li>
-                  <li>modern rest api</li>
-                  <li>predictable pricing</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="mjapi-faq mt-5 mb-5 container-fluid panel-container col-12 col-md-9 ">
-      <div class="d-flex justify-content-start">
-        <p class="section-header">faq</p>
-      </div>
-      <div class="container-fluid container-faq-body">
-        <div class="row panel-container" *ngFor="let question of questionsList; let i = index;">
-          <div class="col-12">
-            <div class="question" collapsiblePanel>
-              <button class="btn btn-link collapse-button"><h3 class="number">Q{{i+1}}. {{question.question}}</h3></button>
+
+    <section class="mjapi-faq py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="faq-header text-center mb-5">
+              <p class="section-header">faq</p>
             </div>
-            <div class="answer">
-              <p>{{question.ans}}</p>
+            <div class="faq-list">
+              <div class="faq-item" *ngFor="let question of questionsList; let i = index;">
+                <div class="faq-question" collapsiblePanel>
+                  <h4>{{question.question}}</h4>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>{{question.ans}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -484,3 +484,216 @@ input[type='checkbox']:disabled + span{
         }
     }
 }
+
+// New beautiful choice cards
+.choice-card {
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 24px;
+    overflow: hidden;
+    
+    &:hover {
+        transform: translateY(-4px);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .choice-content {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .choice-header {
+        margin-bottom: 1.5rem;
+        
+        .choice-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .choice-subtitle {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .beta-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .choice-body {
+        flex: 1;
+        
+        .choice-description {
+            color: #d4d4d4;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .choice-features {
+            .feature-item {
+                margin-bottom: 0.8rem;
+                color: #ffffff;
+                transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+                padding-left: 1rem;
+                position: relative;
+                
+                &:before {
+                    content: '•';
+                    position: absolute;
+                    left: 0;
+                    color: #667eea;
+                }
+                
+                &:hover {
+                    transform: translateX(2px);
+                    color: #f0f0f0;
+                }
+            }
+        }
+    }
+
+    .choice-footer {
+        margin-top: 1.5rem;
+        
+        .choice-btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            
+            &:hover {
+                background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+                transform: translateY(-1px);
+                box-shadow: 0 6px 12px rgba(102, 126, 234, 0.25);
+            }
+        }
+    }
+}
+
+// Clean FAQ styling
+.mjapi-faq {
+    background: transparent;
+    
+    .faq-header {
+        .section-header {
+            font-size: var(--sm-section-title-size) !important;
+        }
+    }
+    
+    .faq-list {
+        .faq-item {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.06);
+                border-color: rgba(255, 255, 255, 0.12);
+                transform: translateY(-2px);
+            }
+            
+            .faq-question {
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.2s ease;
+                
+                h4 {
+                    margin: 0;
+                    color: #ffffff;
+                    font-weight: 500;
+                    font-size: 1.1rem;
+                }
+                
+                .faq-toggle {
+                    font-size: 1.5rem;
+                    color: #a0a0a0;
+                    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+                    user-select: none;
+                }
+                
+                &.open .faq-toggle {
+                    transform: rotate(45deg);
+                    color: #667eea;
+                }
+                
+                &.open + .faq-answer {
+                    max-height: 200px;
+                }
+                
+                &:hover .faq-toggle {
+                    color: #667eea;
+                    transform: scale(1.05);
+                }
+            }
+            
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                
+                p {
+                    margin: 0;
+                    padding: 0 1.5rem 1.5rem;
+                    color: #d4d4d4;
+                    line-height: 1.6;
+                }
+                
+                &.open {
+                    max-height: 200px;
+                }
+            }
+        }
+    }
+}
+
+// Remove background interference for cleaner look
+.mjapi-choices,
+.mjapi-about,
+.mjapi-faq {
+    position: relative;
+    z-index: 2;
+}
+
+// Smoother hero subtitle
+.hero-subtitle {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+// Trademark notice styling
+.trademark-notice {
+    color: #888 !important;
+    font-style: italic;
+    opacity: 0.8;
+}

@@ -6,6 +6,7 @@ import { Card } from './card/card.component';
 import { Subscription, fromEvent } from 'rxjs';
 import { User, UserService } from './shared/user.service';
 import { CookieConsentService } from './shared/cookie-consent.service';
+import { ConstantsService } from './shared/constants.service';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
 import scrollReveal from './shared/scrollReveal';
 
@@ -84,44 +85,36 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   questionsList = [
       {
-        question: 'Do I need a Midjourney sub?',
-        ans: 'No, only SelfServe accounts need to provide a MJ-enabled discord token'
+        question: 'which option should i choose?',
+        ans: 'choose the source code if you want complete control, self-hosting, and don\'t mind managing infrastructure. choose our new ai platform if you want a managed service with high reliability and no discord dependencies.'
       },
       {
-        question: 'Fairy account limits?',
-        ans: 'Because resources are shared for this account type, we think it\'s only fair to put a \'reasonable use\' cap per day per account. Currently, it\'s between 30-70 jobs per 24H, and jobs that never started don\'t count. Another limit, though obvious, is occasionally getting slower jobs due to increased overall load from other users. We\'re happy to see high usage, and this prompts us to add more horsepower to the backend, so on average everyone will have an decent experience'
+        question: 'is the source code still maintained?',
+        ans: 'yes! we continue to maintain and update the original source code. while we\'ve moved to our own platform, the original code still works perfectly for individual use and smaller scale applications.'
       },
       {
-        question: 'Available payment methods?',
-        ans: 'We support Stripe (all packages), PayPal (except subs) and BTC/Lightning (pay any amount)'
+        question: 'does the source code work with current midjourney?',
+        ans: 'absolutely. the source code is kept up-to-date with midjourney\'s latest features and changes. you\'ll need your own midjourney subscription and discord account to use it.'
       },
       {
-        question: 'What are Perma-credits?',
-        ans: 'Simple: instead of per-day, you pay per-job. They\'re only consumed if you don\'t have an active per-day plan. Pretty cool, huh?'
+        question: 'what makes your new ai platform different?',
+        ans: 'our new platform eliminates discord dependencies entirely. it runs on native ai models with 99.9% uptime, predictable costs, and a modern api-first design built for production use.'
       },
       {
-        question: 'Why GET and not POST?',
-        ans: 'We went full minimalistic here, the minimum effort for the desired result. It\'s really convenient to copy-paste the request directly in Chrome and see the result -- no Postman, curl etc. HTTPS makes sure the URL path/query etc. are encrypted, so nothing to be worried about. We might also mirror the current API via POST requests, if enough people ask for it'
+        question: 'is the new platform compatible with midjourney prompts?',
+        ans: 'yes! our platform understands midjourney-style prompts including aspect ratios (--ar), style parameters, and other familiar syntax. the goal is seamless migration.'
       },
       {
-        question: 'How do I cancel my sub?',
-        ans: 'To cancel a Stripe sub, simply email us. If the email\'s subject matches \'please cancel my sub\' exactly, it\'ll be automatically cancelled. Otherwise, we\'ll do it manually in 7-14 days. No worries, any extra charges will be refunded. Note that this doesn\'t return your initial payment, and you\'ll continue benefiting from the full existing sub. This merely cancels the auto-renewal, and it\'s how subs work in general (we\'re not reinventing the wheel here)'
+        question: 'when will the new platform be available?',
+        ans: 'the new platform is currently in beta. check app.mjapi.io for the latest updates, or join our discord for early access announcements.'
       },
       {
-        question: 'Can I get a refund?',
-        ans: 'Sure, shoot at hi@mjapi.io. This only works for Stripe one-time-payments (for subs see \'How do I cancel my sub?\'). If the email\'s subject matches \'please refund my previous payment\' exactly, and you\'ve paid less than 7 days ago, it\'s done automatically. In case that doesn\'t happen, simply shoot us a follow-up email.'
+        question: 'can i get support for either option?',
+        ans: 'yes! we provide support for both the source code and the new platform. reach out via discord or email hi@mjapi.io whenever you need help.'
       },
       {
-        question: 'What if Midjourney gets their own API?',
-        ans: 'mjapi.io started as a solution we\'ve built for ourselves, and several projects rely on it. We\'ll be too lazy to refactor all our front-ends. Instead, we\'ll keep using mjapi.io and just adapt our back-end, if needed. This means you won\'t notice a thing. 👍'
-      },
-      {
-        question: 'Why is SelfServe more expensive?',
-        ans: 'For safety reasons, SelfServe accounts require a dedicated runner instance on our backend. This also means your prompts will get executed faster, since there\'s no queue (unlike Fairy accounts)'
-      },
-      {
-        question: 'How long should the prompt be?',
-        ans: 'At the moment, we limit prompts to 1000 chars for Fairy and 3000 for SelfServe, but before thinking about reaching those lengths, please read: https://mid-journey.ai/midjourney-prompt-length/'
+        question: 'what happens to existing mjapi.io users?',
+        ans: 'all existing functionality will be preserved. current users can continue using the service while we transition to the new platform. we\'ll provide migration paths and support throughout the process.'
       }
   ]
 
@@ -235,7 +228,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   halfPart = Math.floor(this.squareUrls.length / 2);
 
-  constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2, private el: ElementRef){}
+  constructor(private cookieConsentService: CookieConsentService, private sanitizer: DomSanitizer, private cardService: CardService, private userService: UserService, private renderer: Renderer2, private el: ElementRef, private constants: ConstantsService){}
 
   ngOnInit(): void {
     this.userService.autoLogin()
@@ -376,6 +369,14 @@ export class AppComponent implements OnInit, AfterViewInit{
       // else
       //   this.radioAccountType = 'fairy';
     }
+  }
+
+  navigateToGumroad() {
+    window.open(this.constants.GUMROAD_URL, '_blank');
+  }
+
+  navigateToApp() {
+    window.open('https://app.mjapi.io', '_blank');
   }
 
   ngOnDestroy() {

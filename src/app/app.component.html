@@ -4,9 +4,10 @@
       <div class="row">
         <div class="d-flex align-items-center col-12 col-md-7 col-xl-6">
           <div class="row">
-            <h1 class="landing-header col-12">Midjourney API.<br/> Simple.<br/> No BS.</h1>
+            <h1 class="landing-header col-12">midjourney api<br/>solutions</h1>
+            <p class="hero-subtitle col-12">two paths forward: get the original source code or try our new ai platform</p>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary" (click)="scrollToElement('login')">Discover</button>
+              <button type="button" class="btn btn-primary" (click)="scrollToElement('choices')">explore options</button>
             </div>
           </div>
         </div>
@@ -33,307 +34,118 @@
     </div> -->
   </section>
   
-  <div id="login" class="container-landing mt-5">
+  <div id="choices" class="container-landing mt-5">
 
     <section class="mjapi-get container-fluid">
       <div class="d-flex justify-content-center flex-column">
-        <p class="section-header text-center">What is MidJourney™?</p>
-          MidJourney™ is a revolutionary text-to-image AI generation tool. You can use it exclusively via their official Discord bot. This would be fine for a few manual generations, but if you want to include it in an automated pipeline, you'll soon find that it's impossible, as there's no official API. 
-          <p>MJAPI to the rescue! Our unofficial API is the solution to all your problems.</p> 
+        <p class="section-header text-center">choose your path</p>
+        <p class="text-center">whether you need the original midjourney api source code or want to try our new ai platform, we've got you covered.</p>
       </div>
     </section>
 
-    <section class="mjapi-register container-fluid">
-      <register-login-form></register-login-form>
-    </section>
-
-    <section class="mjapi-hiw container-fluid">
-      <div class="d-flex justify-content-center ">
-        <p class="section-header">How it works</p>
-      </div>
-      <div class="d-flex justify-content-center">
-        <p class="smaller-darker-text" *ngIf="accountType === 'fairy'">(Fairy)</p>
-        <p class="smaller-darker-text" *ngIf="accountType === 'selfserve'">(Self Serve)</p>
-      </div>
-      <!-- <div *ngFor="let step of steps; let i = index">
-        <div class="row" *ngIf="i % 3 == 0"> 
-          <div *ngFor="let s of steps.slice(i, i+3); let idx = index" class="col-sm-12 col-md-4 step-container">
-             <div class="container-step" *ngIf="s.mode== accountType || s.mode == 'fairy'">
-              <div class="{{s.id}}-icon d-flex justify-content-center"></div>
-              <p class="d-flex justify-content-center flex-wrap text-center" [innerHtml]="s.text"></p>
-            </div> -->
-            <steps [stepsArray]="steps" [accType]="accountType"></steps>
-          <!-- </div>
-        </div>
-      </div> -->
-    </section>
-
-    <section class="mjapi-payment container-fluid">
-      <div class="d-flex justify-content-center">
-        <p class="section-header">Payment</p>
-      </div>
-      <div class="row" [formGroup]="switchForm">
-        <div class="switch-container">
-
-          <span #switchFirstLabel class="switch-first-label switch-label">Fairy</span>
-          <div class="switch d-flex" (click)="onSwitchClickedNearPayment()">
-            <label class="switch">
-              <!--Added scroll to so that the user can compare them without the content jumping around (because of the elements above it changing size)-->
-                <input type="checkbox" #accType name="accType" formControlName="accType">
-                <span class="slider round"></span>
-            </label>
+    <section class="mjapi-choices container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-5 choice-card m-3">
+          <div class="choice-content">
+            <h3 class="choice-title">original source code</h3>
+            <p class="choice-description">get the python source code that powers the original mjapi.io backend for interfacing with midjourney. perfect for developers who want to run their own instance.</p>
+            <ul class="choice-features">
+              <li>complete python codebase</li>
+              <li>discord integration</li>
+              <li>works with midjourney subscriptions</li>
+              <li>self-hosted solution</li>
+              <li>one-time purchase</li>
+            </ul>
+            <button type="button" class="btn btn-primary choice-btn" (click)="navigateToGumroad()">download source code</button>
           </div>
-          <span #switchSecondLabel class="switch-first-label switch-label">Self Served</span>
+        </div>
+        <div class="col-12 col-md-5 choice-card m-3">
+          <div class="choice-content">
+            <h3 class="choice-title">new ai platform <span class="beta-badge">beta</span></h3>
+            <p class="choice-description">try our brand new ai image generation platform. no discord dependencies, native models, and a modern api-first approach.</p>
+            <ul class="choice-features">
+              <li>native ai models</li>
+              <li>no discord required</li>
+              <li>api-first design</li>
+              <li>99.9% uptime</li>
+              <li>modern infrastructure</li>
+            </ul>
+            <button type="button" class="btn btn-primary choice-btn" (click)="navigateToApp()">try beta platform</button>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="container-payment d-flex justify-content-center row">
-          <div class="col-12 col-md-6 col-lg-3 container-fluid" *ngFor="let item of cardList">
-            <div class="mb-5" *ngIf="accountType == item.accountType">
-              <card [card]="item" [disabled]="!isLoggedIn"></card>
-            </div>
-          </div>
-          <p class="text-center mb-5">or</p>
-          <div class="container-fluid justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of btcCardList">
-              <div class="mb-5" *ngIf="accountType == item.accountType">
-                <card [card]="item" ></card>
+    </section>
+
+    <section class="mjapi-app-promo container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <div class="app-promo-card">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-6">
+                <h3 class="app-promo-title">try our new ai platform</h3>
+                <p class="app-promo-description">experience the future of ai image generation with our new platform. built from the ground up with native models, modern infrastructure, and enterprise-grade reliability.</p>
+                <ul class="app-promo-features">
+                  <li>✅ no discord dependencies</li>
+                  <li>✅ 99.9% uptime guarantee</li>
+                  <li>✅ native ai models</li>
+                  <li>✅ midjourney-compatible prompts</li>
+                  <li>✅ modern rest api</li>
+                  <li>✅ enterprise-ready infrastructure</li>
+                </ul>
+                <button type="button" class="btn btn-primary btn-lg" (click)="navigateToApp()">try beta platform →</button>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="app-promo-visual">
+                  <p class="text-center"><em>coming soon: advanced features like vibe image prompting, background removal, photo restoration, and more!</em></p>
+                </div>
               </div>
             </div>
           </div>
-          <p class="text-center mb-5">or</p>
-          <!-- <div class="container-fluid justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 container-fluid" *ngFor="let item of sourceCardList">
-              <div class="mb-5" *ngIf="accountType == item.accountType">
-                <card [card]="item" ></card>
-              </div>
-            </div>
-          </div> -->
-          <div class="container-fluid justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 container-fluid">
-              <source-code-card></source-code-card>
-            </div> 
-          </div>
         </div>
       </div>
     </section>
 
-    <!--TODO uncomment and add info-->
-    <section class="mjapi-get container-fluid">
+    <section class="mjapi-about container-fluid">
       <div class="d-flex justify-content-center flex-column">
-        <p class="section-header text-center">What do you get?</p>
-        <div class="d-flex flex-column">
-          <div class="common-benefits mt-4">
-            <!-- <div class="heading text-center">
-              <p class="bold">All accounts</p>
-            </div> -->
-            <div class="body row">
-              <!-- <ul> -->
-                <div *ngFor="let item of benefitsList" class="col-12 col-md-4 get-body">
-                  <div class="bold d-flex align-items-center {{item.icon}}-benefit">{{item.title}}</div> {{item.content}}
-                </div>
-              <!-- </ul> -->
-            </div>
-          </div>
-          
-          <div class="accounts-benefits d-flex row justify-content-around mb-4 mt-4">
-            <div class="benefits col-12 col-md-5 m-2">
-              <input type="radio" name="radioAccountType" id="fairy-radio" (click)="selectRadio('fairy-radio')" [(ngModel)]="radioAccountType" value="fairy">
-              <div class="heading text-center">
-                <p class="bold">Fairy</p>
-              </div>
-              <div class="body">
-                <!-- <ul> -->
-                  <div *ngFor="let item of benefitsFairy" class="mb-4"> <div class="bold col-12 mb-1">{{item.title}}</div> {{item.content}}</div>
-                <!-- </ul> -->
-              </div>
-            </div>
-            <div class="benefits col-12 col-md-5 m-2">
-              <input type="radio" name="radioAccountType" id="ss-radio" (click)="selectRadio('ss-radio')" [(ngModel)]="radioAccountType" value="ss">
-              <div class="heading text-center">
-                <p class="bold">SelfServed</p>
-              </div>
-              <div class="body">
-                <!-- <ul> -->
-                  <div *ngFor="let item of benefitsSelfserved" class="mb-4"><div class="bold col-12 mb-1">{{item.title}}</div> {{item.content}}</div>
-                <!-- </ul> -->
-              </div>
-            </div>
+        <p class="section-header text-center">about midjourney api</p>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <p>midjourney™ is a revolutionary text-to-image ai generation tool accessible exclusively via discord. while perfect for manual generations, integrating it into automated pipelines has been impossible due to the lack of an official api.</p>
+            <p>that's where mjapi.io comes in. we've created solutions for developers who need programmatic access to ai image generation, whether through our original source code or our new standalone platform.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mjapi-usage container-fluid">
+    <section class="mjapi-comparison container-fluid">
       <div class="d-flex justify-content-center">
-        <p class="section-header">API Usage</p>
+        <p class="section-header">why choose mjapi.io?</p>
       </div>
-      <div class="api-container" id="apis">
-        <div #api class="panel-container api api-1">
-          <div class="api-header" id="heading-add-job">
-            <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> addjob</span>
-            </button>
-          </div>
-          <div id="collapseAddJob" class="api-body-container">
-            <div class="api-body">
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Request examples</b>
-                </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+              <div class="feature-card">
+                <h4>for developers who want control</h4>
+                <p>our original source code gives you complete control over your midjourney api integration. run it on your own infrastructure, customize it to your needs, and maintain full ownership of your implementation.</p>
                 <ul>
-                  <li>Get 1 image, auto-upscaled: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>prompt=big strawberry --ar 16:9</i></span></li>
-                  <li>Get 4 images, then make adjustments: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>type=grid</i>&<i>prompt=big strawberry --ar 16:9</i></span></li>
-                  <li>Adjust a previous job's result: <span class="example-code">https://api.mjapi.io/addjob?<i>key=YOURKEY</i>&<i>parent_id=123213</i>&<i>pick=U3</i></span></li>
+                  <li>complete python source code</li>
+                  <li>no monthly fees or subscriptions</li>
+                  <li>works with your midjourney account</li>
+                  <li>self-hosted and private</li>
                 </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Fields</b>
-                </div>
-                <ul>
-                  <li><b>key</b> (required): your API Key</li>
-                  <li><b>prompt</b> (required if <b>type</b> is not specified or type='oneshot_upscaled'): your prompt, but with any special characters encoded to form a proper URL (for ex., use <i>%20</i> for spaces). You're likely already using a library,
-                    so escaping the URL is already be handled for you. Most browsers also replace spaces correctly in the URL bar, so you can test it easily.</li>
-                  <li><b>type</b> (optional):
-                    <ul>
-                      <li><b>oneshot_upscaled</b> (default if <b>pick</b> is not given): Randomly chooses one image from the 4 possible variations and upscales it, returning a single image. This is the quickest way of generating an image without bothering
-                        with variations and such. This is the functionality we've initially built mjapi.io for.</li>
-                      <li><b>grid</b>: Generates 4 images, on which you can follow-up with another request to pick a adjustment.</li>
-                      <li><b>followup</b> (default if <b>pick</b> is given): Adjust the result of an existing job. No need to specify it, as it's implied when you pass the <b>pick</b> parameter.</li>
-                    </ul>
-                  </li>
-                  <li><b>pick</b>: The adjustment to carry out on a previous job. Create variations (V1, V2, V3, V4), upscale (U1, U2, U3, U4) or make any other special adjustment such as 'Zoom Out 2x' (valid values are returned in the original response as
-                    <b>followup_menu</b>). This assumes no <b>type</b> is passed or <b>type=followup</b>.</li>
-                  <li><b>parent_id</b> (required if <b>pick</b> is given): the job id returned from a previous, completed, job. And before you ask, yes, you can follow-up on follow-ups. 👌</li>
-                </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Response</b>
-                </div>
-                <pre class="example-code">{{apiAddJobSampleResponse | json}}</pre>
-                <div>
-                  <b>Notable response fields</b>
-                  <ul>
-                    <li><b>id (int)</b>: the job's id, that you can later use in other requests</li>
-                    <li><b>type (enum str)</b>: oneshot_upscale, grid, followup</li>
-                    <li><b>progress (int)</b>: -1 = pending; 0-99 = in progress; 100 = done. Here, it's usually -1, as the job didn't already start</li>
-                    <li><b>result_url (str)</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results</li>
-                    <li><b>state (enum str) </b>: new, active, done, canceled, failed. Here, it's usually new or cancelled</li>
-                    <li><b>account_type (enum str) </b>: fairy, selfserve</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mb-3">
-                <b>Try it now</b>
-              </div>
-              <try-form [jobType]="'add'"></try-form>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Rate limiting</b>
-                </div>
-                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div #api class="panel-container api api-2">
-          <div class="api-header" id="heading-get-job">
-            <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> getjob</span>
-            </button>
-          </div>
-          <div id="collapseGetJob" class="api-body-container">
-            <div class="api-body">
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Request example</b>
-                </div>
+            <div class="col-12 col-md-6 mb-4">
+              <div class="feature-card">
+                <h4>for teams who want reliability</h4>
+                <p>our new ai platform eliminates discord dependencies and provides a modern, reliable api service. built from the ground up for production use with enterprise-grade infrastructure.</p>
                 <ul>
-                  <li>Get a job's status <span class="example-code">https://api.mjapi.io/getjob?<i>job_id=5614325</i></span></li>
+                  <li>99.9% uptime guarantee</li>
+                  <li>native ai models</li>
+                  <li>modern rest api</li>
+                  <li>predictable pricing</li>
                 </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Fields</b>
-                </div>
-                <ul>
-                  <li><b>job_id</b>: the job ID you've got from <b>addjob</b></li>
-                </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Response</b>
-                </div>
-
-                <pre class="example-code">{{apiGetJobSampleResponse | json}}</pre>
-                <div>
-                  <b>Notable response fields</b>
-                  <ul>
-                    <li><b>progress (int)</b>: -1 = pending; 0-99 = in progress; 100 = done</li>
-                    <li><b>type (enum str)</b>: oneshot_upscale, grid, followup</li>
-                    <li><b>state (enum str) </b>: new, active, done, canceled, failed</li>
-                    <li><b>result_url (str)</b>: available at any time after job transitions to 'in progress'. Useful for both partial and final results</li>
-                    <li><b>result_msg_id (int)</b>: we don't talk about result_msg_id around here</li>
-                    <li><b>followup_menu (str[]) </b>: list of avaialable actions for initiating a follow-up job. Possible values: U1, U2, U3, U4, V1, V2, V3, V4, Vary (Strong), Vary (Subtle), Upscale (2x), Upscale (4x), Zoom Out 2x, Zoom Out 1.5x, ⬅, ➡,
-                      ⬆, ⬇.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mb-3">
-                <b>Try it now</b>
-              </div>
-              <try-form [jobType]="'get'"></try-form>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Rate limiting</b>
-                </div>
-                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div #api class="panel-container api api-3">
-          <div class="api-header" id="heading-cancel-job">
-            <button class="btn btn-link collapse-button" collapsiblePanel>
-              <span class="light-text">GET</span> <span class="bold-text"> canceljob</span>
-            </button>
-          </div>
-          <div id="collapseCancelJob" class="api-body-container">
-            <div class="api-body">
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Request examples</b>
-                </div>
-                <ul>
-                  <li>Cancel a job: <span class="example-code">https://api.mjapi.io/canceljob?<i>key=YOURKEY</i>&<i>job_id=44321</i></span></li>
-                </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Fields</b>
-                </div>
-                <ul>
-                  <li><b>key</b> (required): your API Key</li>
-                  <li><b>job_id</b> (required): a job added via <b>addjob</b>.</li>
-                </ul>
-              </div>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Response</b>
-                </div>
-                <pre class="example-code">{{apiCancelJobSampleResponse | json}}</pre>
-              </div>
-              <div class="mb-3">
-                <b>Try it now</b>
-              </div>
-              <try-form [jobType]="'cancel'"></try-form>
-              <div class="mb-5">
-                <div class="mb-3">
-                  <b>Rate limiting</b>
-                </div>
-                <p>There's a limit of 10 requests per 10sec. That's still a lot for 99% of users</p>
               </div>
             </div>
           </div>
@@ -343,7 +155,7 @@
 
     <section class="mjapi-faq mt-5 mb-5 container-fluid panel-container col-12 col-md-9 ">
       <div class="d-flex justify-content-start">
-        <p class="section-header">FAQ</p>
+        <p class="section-header">faq</p>
       </div>
       <div class="container-fluid container-faq-body">
         <div class="row panel-container" *ngFor="let question of questionsList; let i = index;">
@@ -376,13 +188,13 @@
       <!-- <p class="git-header">Get in touch</p> -->
       <!-- <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/blog">Blog</a> &nbsp; <a href="https://medium.com/@xucian/mjapi-io-your-gateway-to-midjourney-api-b455f8067f5a">Medium</a> &nbsp; <a href="https://dev.to/xucian/mjapiio-your-gateway-to-midjourney-api-4icn">Dev.to</a> &nbsp; <a href="https://xucian.hashnode.dev/mjapiio-your-gateway-to-midjourney-api">Hashnode</a></div> -->
       <!-- <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/blog">Blog</a></div> -->
-      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/reboot-like-midjourney-but-api">Blog</a></div>
+      <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/reboot-like-midjourney-but-api">Blog</a> &nbsp; <a href="https://og.mjapi.io">old website</a></div>
       <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="https://discord.com/invite/Gn6g3MCsff">Discord</a> &nbsp; <a href="mailto:hi@mjapi.io">hi@mjapi.io</a></div>
       <div class="col-sm-12 col-md-4 text-md-center text-start"><a href="/terms.html">Terms of Use</a> &nbsp; <a href="/privacy.html">Privacy Policy</a></div>
     </div>
-    <div class="copyright d-flex justify-content-center">
+    <!-- <div class="copyright d-flex justify-content-center">
       <p>2024 mjapi.io. All Rights Reserved</p>
-    </div>
+    </div> -->
     <!--SEO guy suggested adding these too. Need to check whether this is really necessary-->
     <div class="other-searches d-flex justify-content-center">
       <p>Other searches for midjourney include midjourner, midjourn, midgerny, midjournez, mid journey al, middlejourney ai, midhurney, midjarny, midjourn ey, midjourne y, midjourneyia, midjurni, mishourney, mitjurny, modjournet</p>

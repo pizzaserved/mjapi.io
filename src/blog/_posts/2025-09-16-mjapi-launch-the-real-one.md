@@ -1,5 +1,5 @@
 ---
-title: 'mjapi launch: the real one'
+title: 'brave new launch'
 author: kindest
 date: 2025-09-16 20:00:00 +0200
 categories: [Blogging]
@@ -7,8 +7,13 @@ tags: [mjapi,launch,video generation,image generation,api,ai,build in public]
 render_with_liquid: false
 image:
   path: /assets/img/2025-09-16-mjapi-launch-the-real-one/mjapi-launch-seo.jpg
-  alt: mjapi real launch - image and video generation with api
+  alt: brave new launch
 ---
+[DRAFT: I'm editing this while you're reading lol, go away]
+
+[DRAFT: I'm editing this while you're reading lol, go away]
+
+[DRAFT: I'm editing this while you're reading lol, go away]
 
 > from text... straight to mind-blowing images and videos
 > 
@@ -26,7 +31,7 @@ image:
 </audio>
 </div>
 
-hi, I'm Lucian, and this is mjapi - an image and video generator that reads your mind
+hi, and this is mjapi - an image and video generator that reads your mind
 
 we've "launched" a few times already, but this one? this one's for real
 
@@ -75,6 +80,12 @@ or get style from an existing image:
 > _portrait of a woman holding a cup of tea --sref [style-reference-url]_
 >
 > ![woman with tea styled](/assets/img/2025-09-16-mjapi-launch-the-real-one/woman-tea-styled.jpg)
+
+and yes, you can write prompts in any language. they're translated to english internally:
+
+> _un chat noir élégant dans un jardin japonais_
+>
+> ![elegant black cat in japanese garden](/assets/img/2025-09-16-mjapi-launch-the-real-one/chat-noir-jardin.jpg)
 
 ## the video thing
 

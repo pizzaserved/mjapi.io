@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://mjapi.io/assets</loc>
-    <lastmod>2025-09-18T16:51:29+00:00</lastmod>
+    <lastmod>2025-09-18T16:59:01+00:00</lastmod>
   </url>
   <url>
     <loc>http://mjapi.io/blog</loc>
-    <lastmod>2025-09-18T16:51:30+00:00</lastmod>
+    <lastmod>2025-09-18T16:59:01+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://mjapi.io/brave-new-launch</loc>
+    <lastmod>2025-09-18T16:59:02+00:00</lastmod>
   </url>
   <url>
     <loc>http://mjapi.io/gateway-to-a-midjourney-api</loc>
-    <lastmod>2025-09-18T16:51:30+00:00</lastmod>
+    <lastmod>2025-09-18T16:59:02+00:00</lastmod>
   </url>
   <url>
     <loc>http://mjapi.io/midjourney-api-source-code</loc>
-    <lastmod>2025-09-18T16:51:30+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://mjapi.io/mjapi-launch-the-real-one</loc>
-    <lastmod>2025-09-18T16:51:30+00:00</lastmod>
+    <lastmod>2025-09-18T16:59:02+00:00</lastmod>
   </url>
   <url>
     <loc>http://mjapi.io/reboot-like-midjourney-but-api</loc>
-    <lastmod>2025-09-18T16:51:30+00:00</lastmod>
+    <lastmod>2025-09-18T16:59:02+00:00</lastmod>
   </url>
 </urlset>

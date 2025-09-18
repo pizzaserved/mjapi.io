@@ -1,6 +1,23 @@
 [
   
   {
+    "title": "brave new launch",
+    "url": "/blog/mjapi-launch-the-real-one/",
+    "categories": "Blogging",
+    "tags": "mjapi, launch, video generation, image generation, api, ai, build in public",
+    "date": "2025-09-16 21:00:00 +0300",
+    
+
+
+
+
+
+    
+    "snippet": "[DRAFT: I’m editing this while you’re reading lol, go away][DRAFT: I’m editing this while you’re reading lol, go away][DRAFT: I’m editing this while you’re reading lol, go away]  from text… straigh...",
+    "content": "[DRAFT: I’m editing this while you’re reading lol, go away][DRAFT: I’m editing this while you’re reading lol, go away][DRAFT: I’m editing this while you’re reading lol, go away]  from text… straight to mind-blowing images and videos  without overthinking prompts  mjapi.io (for real this time)🎵 play our soundtrack while reading this        your browser doesn't support audio (but mjapi still works)hi, and this is mjapi - an image and video generator that reads your mindwe’ve “launched” a few times already, but this one? this one’s for realthe thing that happenedremember when I talked about getting traction a few weeks ago? well, things escalatedturns out when you build something people actually want, they tell their friends. who knew?what mjapi does nowlaunch video      it does text to image, text to video, image to video. but let me show you what that actually means:  majestic old tree in a fantastic setting full of life  then upscale it, vary it, zoom out, pan up, or turn it into a video. all from the same starting point.need a logo?  logo for cat food “doggo walko” –svg  want clean line art?  beautiful tiger line art, monochrome, simple lines  or get style from an existing image:  portrait of a woman holding a cup of tea –sref [style-reference-url]  and yes, you can write prompts in any language. they’re translated to english internally:  un chat noir élégant dans un jardin japonais  the video thingthis is big. text to video, image to video - it just works  dog fetches a frisbee –mp4 –1080p –2    we’re using multiple models including Google’s nanobanana and ByteDance’s seedance-1-pro. the results speak for themselves.all the parametershere’s what you can control if the UI isn’t enough. and this list will obviously grow over time.aspect ratios, style references, model selection, output formats - it’s all there.what changed since july  video generation: complete implementation with multiple cutting-edge models  audio player: because waiting for generations should be pleasant  image picking: select and focus on specific results with smooth animations  style references (–sref): reference specific visual styles in your prompts  mobile experience: comprehensive UI improvements, responsive everything  progress tracking: real-time generation updates so you know what’s happening  credit system overhaul: new pricing tiers (Novice, Acolyte, Mage, Archmage) with transparent costs  generation history: see everything you’ve created on your homepage  api access: proper API keys and documentation for developers  new models: added Google Imagen-4-fast for cheap, high-quality generation  image upload: reference your own images with frontend preprocessing  infrastructure scaling: 3 celery workers, parallel processing, Redis cachingthe platform evolved from basic image generation to a comprehensive creative AI platform.try it  app.mjapi.io - no account needed to start  mobile app coming soonthe build in public partI’ve been building this in public, sharing the ups and downs. early users are shaping this project through feedback.for that, I’m giving lifetime 10% off to the first 100 users. because early adopters deserve something special.what’s nextwe’re not trying to be midjourney. we’re trying to be something better for developers and creators who want:  reliable apis that just work  video generation alongside images  reasonable pricing without surprise costs  a platform that evolves based on actual user needsthis is the foundation. what we build on top of it depends on what you need.follow the progress: @xucian_hang out: discord serverbuild: app.mjapi.io"
+  },
+  
+  {
     "title": "reboot: like midjourney, but with an api",
     "url": "/blog/reboot-like-midjourney-but-api/",
     "categories": "Blogging",

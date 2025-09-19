@@ -16,7 +16,7 @@ timezone: Europe/Bucharest
 
 title: mjapi blog # the main title
 
-tagline: former midjourney api, now something better  # it will display as the sub-title
+tagline: an image and video generator that reads and blows your mind  # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   your search for a home-made Midjourney API ends here.
@@ -191,6 +191,11 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
+
+include:
+  - "*.mp4"
+  - "*.webm"
+  - "*.mov"
 
 exclude:
   - "*.gem"

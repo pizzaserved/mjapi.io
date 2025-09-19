@@ -31,20 +31,47 @@ tail_includes:
       {% endif %}
 
       {% if page.image %}
-        {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
-        {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-        {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
+        {% if page.image.video %}
+          <!-- Video preview -->
+          <div class="mt-3 mb-3">
+            {% if page.image.video contains "vimeo.com" %}
+              {% assign video_id = page.image.video | split: "/" | last %}
+              <iframe src="https://player.vimeo.com/video/{{ video_id }}" width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
+            {% elsif page.image.video contains "youtube.com" or page.image.video contains "youtu.be" %}
+              {% if page.image.video contains "youtu.be" %}
+                {% assign video_id = page.image.video | split: "/" | last %}
+              {% else %}
+                {% assign video_id = page.image.video | split: "v=" | last | split: "&" | first %}
+              {% endif %}
+              <iframe width="800" height="450" src="https://www.youtube.com/embed/{{ video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
+            {% else %}
+              <!-- Direct video link -->
+              <video controls style="width: 100%; max-width: 800px;" poster="{{ page.image.path | default: page.image }}">
+                <source src="{{ page.image.video }}" type="video/mp4">
+                Your browser doesn't support video.
+              </video>
+            {% endif %}
+            {%- if page.image.alt -%}
+              <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+            {%- endif -%}
+          </div>
+        {% else %}
+          <!-- Image preview -->
+          {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
+          {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
+          {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
-        {% if page.image.lqip %}
-          {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
+          {% if page.image.lqip %}
+            {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
+          {% endif %}
+
+          <div class="mt-3 mb-3">
+            <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
+            {%- if page.image.alt -%}
+              <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+            {%- endif -%}
+          </div>
         {% endif %}
-
-        <div class="mt-3 mb-3">
-          <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
-          {%- if page.image.alt -%}
-            <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-          {%- endif -%}
-        </div>
       {% endif %}
 
       <div class="d-flex justify-content-between">

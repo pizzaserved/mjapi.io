@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run blog:build && ng serve",
+    "dev": "concurrently \"npm run blog:dev\" \"ng serve\" --names \"blog,app\" --prefix-colors \"cyan,magenta\"",
+    "blog:dev": "cd src/blog && JEKYLL_ENV=development bundle exec jekyll serve --watch --livereload --port 4000 --config _config.yml,_config_dev.yml",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -41,6 +43,7 @@
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
     "@types/scrollreveal": "^0.0.11",
+    "concurrently": "^9.2.1",
     "gh-pages": "^6.0.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

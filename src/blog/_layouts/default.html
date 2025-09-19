@@ -17,6 +17,12 @@ layout: compress
   {% include head.html %}
 
   <body>
+    {% unless jekyll.environment == "production" %}
+    <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: #ff4444; color: white; padding: 8px; text-align: center; font-size: 14px; font-family: monospace;">
+      ⚠️ DEV MODE: For LIVE RELOAD use <a href="http://localhost:4000/blog/" style="color: #fff; text-decoration: underline;">localhost:4000/blog/</a>
+    </div>
+    <div style="height: 40px;"></div>
+    {% endunless %}
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">

@@ -9,6 +9,7 @@ import { CookieConsentService } from './shared/cookie-consent.service';
 import { ConstantsService } from './shared/constants.service';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
 import scrollReveal from './shared/scrollReveal';
+import { isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',

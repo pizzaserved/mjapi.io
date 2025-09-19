@@ -70,7 +70,7 @@ build_blog() {
     log_info "Building Jekyll blog..."
     
     cd "$PROJECT_ROOT/$BLOG_DIR"
-    bundle exec jekyll build
+    JEKYLL_ENV=production bundle exec jekyll build
     cd "$PROJECT_ROOT"
     
     log_info "Blog built successfully → $BLOG_DIR/_site"

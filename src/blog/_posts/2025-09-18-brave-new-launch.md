@@ -160,10 +160,18 @@ aspect ratios, style references, model selection, output formats -- it's all the
 - **image picking**: select and focus on specific results with smooth animations
 - **mobile experience**: comprehensive UI improvements, responsive everything
 - **some infrastructure scaling**: added more celery workers, parallel processing of each of the 4 slots, redis caching
+- probably some other important stuff I can't remember rn
 
 mjapi evolved from just standard image gen to a comprehensive prompt-based creative tool
 
+and, as I was saying, you can listen to some cool chill original soundtracks while creating. just scroll to the bottom of the page and you'll see mjapo logo turning into a vinyl:  
+> ![vinyl](/assets/img/2025-09-18-brave-new-launch/logo-vinyl-music-player.png)  
 
+yeah, totally unnecessary, but given that I "designed" the logo without even thinking about its resemblance to a vinyl, when I realized this I HAD to have it. and here's the cute player:
+
+> ![music-player](/assets/img/2025-09-18-brave-new-launch/music-player.png)
+
+and yeah, if you're seeing those 2 icons there, you already know what happens next.. you'll get the album on apple music and spotify. because, why the heck not? it's just 15 bucks with [cd baby](https://cdbaby.com/)
 ## tagline change!
 > former midjourney api, now something better  
 ->  

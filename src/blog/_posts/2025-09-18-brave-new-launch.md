@@ -164,7 +164,7 @@ aspect ratios, style references, model selection, output formats -- it's all the
 
 mjapi evolved from just standard image gen to a comprehensive prompt-based creative tool
 
-and, as I was saying, you can listen to some cool chill original soundtracks while creating. just scroll to the bottom of the page and you'll see mjapo logo turning into a vinyl:  
+and, as I was saying, you can listen to some cool chill original soundtracks while creating. just scroll to the bottom of the page and you'll see mjapi logo turning into a vinyl:  
 > ![vinyl](/assets/img/2025-09-18-brave-new-launch/logo-vinyl-music-player.png)  
 
 yeah, totally unnecessary, but given that I "designed" the logo without even thinking about its resemblance to a vinyl, when I realized this I HAD to have it. and here's the cute player:
@@ -185,7 +185,7 @@ and yeah, if you're seeing those 2 icons there, you already know what happens ne
 ## the build in public part
 
 I've been [building this in public](https://x.com/xucian_/status/1966536975374045309), sharing the ups and downs and iterating on your feedback. so you, as an early adopter, deserve something special:  
-hHere's a lifetime 10% off code: **SOEARLY10**  
+here's a lifetime 10% off code: **SOEARLY10**  
 it's valid until oct1 '25 for 100 users  
 
 btw, here's my users per country:  

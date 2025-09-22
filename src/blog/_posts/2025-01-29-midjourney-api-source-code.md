@@ -61,7 +61,7 @@ you can get the source code now on [gumroad](https://exploder.gumroad.com/l/mjap
 
 this pack is the culmination of months of dev and real-world testing.
 
-fun fact: the most frustrating part was keeping the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for this piece too, i'm definitely using it in all of my upcoming projects. 
+fun fact: the most frustrating part was fighting the fake email signups and creating a robust email/ip filtering system, hope you'll find some use for this piece too, i'm definitely using it in all of my upcoming projects. 
 
 stay tuned!
 

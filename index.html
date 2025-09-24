@@ -33,9 +33,20 @@
   <meta name="twitter:image" content="https://mjapi.io/assets/img/seo_screenshotv4.png">
   <meta name="twitter:url" content="https://mjapi.io">
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YNEE5CFG4R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  <!--To be added in its own component, maybe-->
-  <!-- Google tag (gtag.js) (Google Ads) -->
+    // Updated as per https://www.tinstar.co.uk/studio-blog/some-cookies-are-misusing-the-recommended-samesite-attribute-how-to-fix
+    gtag('config', 'G-YNEE5CFG4R', {
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
+
+  <!-- Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11185988260">
   </script>
   <script>
@@ -51,7 +62,8 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   </script>
-  <!-- Event snippet for Page view conversion page
+
+  <!-- Google Ads: Event snippet for Page view conversion page
   In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
   <script>
     function gtag_report_conversion(url) {
@@ -67,7 +79,6 @@
       return false;
     }
   </script>
-
 
   <!--To be added in its own component, maybe-->
   <!--Schema markup-->

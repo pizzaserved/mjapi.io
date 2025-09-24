@@ -13,6 +13,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    min-height: var(--fader-height);
     
     -webkit-box-shadow: 0 0 29px -34px rgba(219, 172, 230, 0.62); 
     box-shadow: 0 0 29px -34px rgba(219, 172, 230, 0.62);

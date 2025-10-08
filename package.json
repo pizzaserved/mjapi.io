@@ -1,6 +1,6 @@
 {
   "name": "mjapi",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "scripts": {
     "ng": "ng",
     "start": "npm run blog:build && ng serve",

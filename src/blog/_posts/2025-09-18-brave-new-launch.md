@@ -2,7 +2,7 @@
 title: 'brave new launch'
 author: kindest
 date: 2025-09-16 20:00:00 +0200
-categories: [Blogging]
+categories: [blogging]
 tags: [mjapi,launch,video generation,image generation,api,ai,build in public]
 render_with_liquid: false
 image:

@@ -2,7 +2,7 @@
 title: 'reboot: like midjourney, but with an api'
 author: kindest
 date: 2025-07-17 16:20:00 +0200
-categories: [Blogging]
+categories: [blogging]
 tags: [mjapi,api,image generation,open source,ai,automation,midjourney alternative]
 render_with_liquid: false
 image:

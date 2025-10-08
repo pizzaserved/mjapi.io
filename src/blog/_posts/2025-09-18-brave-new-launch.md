@@ -6,7 +6,6 @@ categories: [Blogging]
 tags: [mjapi,launch,video generation,image generation,api,ai,build in public]
 render_with_liquid: false
 image:
-  path: /assets/img/2025-09-18-brave-new-launch/mjapi-launch-seo.jpg
   video: https://player.vimeo.com/video/1119939932
   alt: brave new launch
 ---

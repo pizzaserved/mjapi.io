@@ -5,6 +5,9 @@ date: 2025-01-29 14:30:00 +0200
 categories: [blogging]
 tags: [midjourney,python,api,source code,backend,automation]
 render_with_liquid: false
+image:
+  path: /assets/img/2025-01-29-midjourney-api-source-code/seo.jpg
+  alt: midjourney api source code
 ---
 
 excited to announce that the original python source code powering [mjapi.io](https://mjapi.io)'s backend is now available! this release marks a significant pivot in our whole approach to selling access to image gen models.

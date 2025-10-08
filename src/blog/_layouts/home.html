@@ -45,23 +45,65 @@ refactor: true
     <article class="card-wrapper card">
       <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
         {% assign card_body_col = '12' %}
+        {% assign src = null %}
 
         {% if post.image %}
-          {% assign src = post.image.path | default: post.image %}
+          {% if post.image.video %}
+            {%- comment -%} Handle video thumbnail {%- endcomment -%}
+            {% if post.image.video contains "vimeo.com" %}
+              {% assign video_id = post.image.video | split: "/" | last %}
+              {% assign src = "https://vumbnail.com/" | append: video_id | append: ".jpg" %}
+            {% elsif post.image.video contains "youtube.com" or post.image.video contains "youtu.be" %}
+              {% if post.image.video contains "youtu.be" %}
+                {% assign video_id = post.image.video | split: "/" | last %}
+              {% else %}
+                {% assign video_id = post.image.video | split: "v=" | last | split: "&" | first %}
+              {% endif %}
+              {% assign src = "https://img.youtube.com/vi/" | append: video_id | append: "/maxresdefault.jpg" %}
+            {% endif %}
+
+            {%- comment -%} If no video thumbnail available and no path, use site default {%- endcomment -%}
+            {% unless src %}
+              {% assign src = post.image.path %}
+            {% endunless %}
+          {% else %}
+            {%- comment -%} Handle regular image thumbnail {%- endcomment -%}
+            {% assign src = post.image.path | default: post.image %}
+          {% endif %}
+        {% endif %}
+
+        {%- comment -%} Fallback to site-wide social preview image if no src found {%- endcomment -%}
+        {% assign is_fallback = false %}
+        {% unless src and src != '' %}
+          {% assign src = site.social_preview_image %}
+          {% assign is_fallback = true %}
+        {% endunless %}
+
+        {%- comment -%} Show thumbnail if we have a src {%- endcomment -%}
+        {% if src and src != '' %}
+          {%- comment -%} Make relative URLs absolute (but not for site-wide fallback) {%- endcomment -%}
           {% unless src contains '//' %}
-            {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
+            {% if is_fallback %}
+              {%- comment -%} Site-wide image: use as-is (already relative to site root) {%- endcomment -%}
+            {% else %}
+              {%- comment -%} Post-specific image: prepend post.img_path {%- endcomment -%}
+              {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
+            {% endif %}
           {% endunless %}
 
-          {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+          {% if post.image.alt %}
+            {% assign alt = post.image.alt | xml_escape %}
+          {% else %}
+            {% assign alt = site.social_preview_image_alt | default: 'Preview Image' %}
+          {% endif %}
 
           {% assign lqip = null %}
-
           {% if post.image.lqip %}
             {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
           {% endif %}
 
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }} style="object-fit: cover; width: 100%; height: 100%;">
           </div>
 
           {% assign card_body_col = '7' %}

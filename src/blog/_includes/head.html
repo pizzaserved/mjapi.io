@@ -16,37 +16,78 @@
   <!-- Setup Open Graph image -->
 
   {% if page.image %}
-    {% assign src = page.image.path | default: page.image %}
+    {% if page.image.path and page.image.path != '' %}
+      {% assign src = page.image.path %}
 
-    {% unless src contains '://' %}
+      {% unless src contains '://' %}
+        {%- capture img_url -%}
+          {% include img-url.html src=src img_path=page.img_path absolute=true %}
+        {%- endcapture -%}
+
+        {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
+        {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
+
+        {% assign seo_tags = seo_tags | replace: old_url, new_url %}
+      {% endunless %}
+
+    {% elsif page.image contains '://' %}
+      {% assign src = page.image %}
+
+      {% unless src contains '://' %}
+        {%- capture img_url -%}
+          {% include img-url.html src=src img_path=page.img_path absolute=true %}
+        {%- endcapture -%}
+
+        {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
+        {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
+
+        {% assign seo_tags = seo_tags | replace: old_url, new_url %}
+      {% endunless %}
+    {% endif %}
+
+  {% endif %}
+
+  {% unless page.image.path and page.image.path != '' %}
+    {% if site.social_preview_image %}
       {%- capture img_url -%}
-        {% include img-url.html src=src img_path=page.img_path absolute=true %}
+        {% include img-url.html src=site.social_preview_image absolute=true %}
       {%- endcapture -%}
 
-      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
-      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
+      {%- comment -%} Determine alt text: use page.image.alt if exists, otherwise site default {%- endcomment -%}
+      {% if page.image.alt %}
+        {% assign img_alt = page.image.alt %}
+      {% else %}
+        {% assign img_alt = site.social_preview_image_alt %}
+      {% endif %}
 
-      {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %}
+      {%- capture og_image -%}
+<meta property="og:image" content="{{ img_url }}" />
+<meta property="og:image:alt" content="{{ img_alt }}" />
+      {%- endcapture -%}
 
-  {% elsif site.social_preview_image %}
-    {%- capture img_url -%}
-      {% include img-url.html src=site.social_preview_image absolute=true %}
-    {%- endcapture -%}
+      {%- capture twitter_image -%}
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="{{ img_url }}" />
+<meta name="twitter:image:alt" content="{{ img_alt }}" />
+      {%- endcapture -%}
 
-    {%- capture og_image -%}
-      <meta property="og:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+      {%- comment -%} Inject OG image right before og:type {%- endcomment -%}
+      {% assign old_og_type = '<meta property="og:type"' %}
+      {% assign new_og_with_type = og_image | append: '
+' | append: old_og_type %}
+      {% assign seo_tags = seo_tags | replace: old_og_type, new_og_with_type %}
 
-    {%- capture twitter_image -%}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+      {%- comment -%} Inject Twitter image tags {%- endcomment -%}
+      {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
+      {% assign seo_tags = seo_tags | replace: old_meta_clip, twitter_image %}
 
-    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image | append: twitter_image %}
-    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
-  {% endif %}
+      {%- comment -%} Inject JSON-LD image object {%- endcomment -%}
+      {%- capture json_image -%},"image":{"alt":"{{ img_alt | escape }}","url":"{{ img_url }}","@type":"imageObject"}{%- endcapture -%}
+      {% assign old_json = ',"mainEntityOfPage":' %}
+      {% assign new_json = json_image | append: ',"mainEntityOfPage":' %}
+      {% assign seo_tags = seo_tags | replace: old_json, new_json %}
+    {% endif %}
+  {% endunless %}
 
   {{ seo_tags }}
 

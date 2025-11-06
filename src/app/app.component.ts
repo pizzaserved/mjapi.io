@@ -99,7 +99,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       },
       {
         question: 'when will the hosted service be ready?',
-        ans: 'it\'s live right now! check app.mjapi.io'
+        ans: 'it\'s live right now! check maginary.ai'
       },
       {
         question: 'do you offer refunds for the source code?',
@@ -365,7 +365,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   navigateToApp() {
-    window.open('https://app.mjapi.io', '_blank');
+    window.open('https://maginary.ai', '_blank');
   }
 
   ngOnDestroy() {

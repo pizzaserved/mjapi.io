@@ -140,7 +140,7 @@ then the video ▶ button and describe it:
 
 ## main parameters
 
-![maginary parameters](/assets/img/2025-09-18-brave-new-launch/mjapi-reboot-launch4-params-15sep25-photopea-bw.png)
+![maginary parameters](/assets/img/2025-09-18-brave-new-launch/mjapi-reboot-launch4-params-15sep25-photopea-bw--updated-jan22-2026.png)
 
 here's what you can control if the UI isn't enough. and this list will obviously grow over time.
 

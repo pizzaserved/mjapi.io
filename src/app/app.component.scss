@@ -286,6 +286,20 @@
             color: rgba(245, 245, 245, 0.24) !important;
         }
     }
+    .featured-on {
+        margin-top: 1rem;
+
+        p {
+            color: rgba(245, 245, 245, 0.6);
+            font-size: 0.85rem;
+        }
+
+        a {
+            color: rgba(245, 245, 245, 0.8);
+            text-decoration: underline;
+        }
+    }
+
     .other-searches {
         margin-top: 1rem;
 

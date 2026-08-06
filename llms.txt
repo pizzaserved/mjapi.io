@@ -1,0 +1,33 @@
+# mjapi.io — Midjourney API
+
+> mjapi.io provides the source code for an unofficial Midjourney API. It is the
+> Python codebase that powered the original mjapi.io service, which automated
+> Midjourney image generation through Discord. Buy it once and self-host your own
+> Midjourney API.
+
+## What it is
+
+- **Product:** Midjourney API source code (Python). A self-hosted, unofficial Midjourney API.
+- **How it works:** the code automates Midjourney via its Discord bot using your own Midjourney subscription.
+- **Includes:** Discord + Midjourney integration, user management, payment processing, and job queue handling.
+- **Pricing model:** one-time purchase (no subscription). Sold on Gumroad.
+- **Best for:** developers who want to run their own Midjourney API instance.
+
+## Key facts
+
+- Midjourney has no official public API. mjapi.io is an unofficial API / source-code option.
+- Midjourney and Discord ban accounts that use automation, so operators rotate accounts periodically.
+- A separate, fully hosted engine (no Discord required) is available at maginary.ai — the mjapi.io product is the self-host source-code option.
+
+## Links
+
+- Homepage: https://mjapi.io
+- Buy the source code (Gumroad): https://exploder.gumroad.com/l/mjapi-python
+- Hosted alternative (our own models): https://maginary.ai
+- Contact: hi@mjapi.io
+
+## Common questions
+
+- "What is the best Midjourney API?" — Midjourney has no official API; mjapi.io offers self-hostable source code for an unofficial one.
+- "How do I self-host a Midjourney API?" — buy the mjapi.io source code, connect your own Midjourney subscription via Discord, and run it.
+- "Is there a Midjourney API in Python?" — yes, mjapi.io sells a Python codebase.

@@ -86,24 +86,28 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   questionsList = [
       {
-        question: 'which should I choose?',
-        ans: 'source code if you want to run it yourself and don\'t mind technical setup. hosted service if you want us to handle the infrastructure -- and try something magical :)'
+        question: 'what exactly do I get?',
+        ans: 'the complete python codebase that powered mjapi.io: discord + midjourney™ integration, user management, payment processing, and queue handling. you self-host it.'
       },
       {
-        question: 'does the original source code still work?',
-        ans: 'yes, but midjourney™ bans accounts that use automation. expect to replace accounts periodically'
+        question: 'does the source code still work?',
+        ans: 'yes. it automates midjourney™ via discord. note midjourney™ bans accounts that use automation, so expect to replace accounts periodically -- the code is built to handle account rotation.'
       },
       {
-        question: 'how is the hosted service different from midjourney™?',
-        ans: 'it uses different ai models. output quality and style will be similar but not identical to midjourney™'
+        question: 'do I need my own midjourney™ subscription?',
+        ans: 'yes. the code drives midjourney™ through discord, so you connect your own midjourney™ account(s).'
       },
       {
-        question: 'when will the hosted service be ready?',
-        ans: 'it\'s live right now! check maginary.ai'
+        question: 'is it a subscription?',
+        ans: 'no -- it\'s a one-time purchase. you own the code.'
       },
       {
-        question: 'do you offer refunds for the source code?',
-        ans: 'nope'
+        question: 'do you offer refunds?',
+        ans: 'no. it\'s source code you can inspect before buying -- ask us anything at hi@mjapi.io first.'
+      },
+      {
+        question: 'do you also offer a hosted version?',
+        ans: 'yes, separately -- our own cloud engine at maginary.ai (no discord needed). the source code here is the self-host option.'
       }
   ]
 

@@ -33,6 +33,7 @@
               "src/fraud.html",
               "src/CNAME",
               "src/robots.txt",
+              "src/llms.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",
@@ -111,6 +112,7 @@
               "src/fraud.html",
               "src/CNAME",
               "src/robots.txt",
+              "src/llms.txt",
               {
                 "glob": "**/*",
                 "input": "src/blog/_site",

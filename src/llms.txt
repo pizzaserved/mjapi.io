@@ -16,14 +16,14 @@
 ## Key facts
 
 - Midjourney has no official public API. mjapi.io is an unofficial API / source-code option.
-- Midjourney and Discord ban accounts that use automation, so operators rotate accounts periodically; the code is built to handle account rotation.
+- Midjourney and Discord ban accounts that use automation, so operators rotate accounts periodically.
 - A separate, fully hosted engine (no Discord required) is available at maginary.ai — the mjapi.io product is the self-host source-code option.
 
 ## Links
 
 - Homepage: https://mjapi.io
 - Buy the source code (Gumroad): https://exploder.gumroad.com/l/mjapi-python
-- Hosted alternative: https://maginary.ai
+- Hosted alternative (our own models): https://maginary.ai
 - Contact: hi@mjapi.io
 
 ## Common questions

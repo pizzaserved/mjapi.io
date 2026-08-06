@@ -91,7 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       },
       {
         question: 'does the source code still work?',
-        ans: 'yes. it automates midjourney™ via discord. note midjourney™ bans accounts that use automation, so expect to replace accounts periodically -- the code is built to handle account rotation.'
+        ans: 'yes. it automates midjourney™ via discord. note midjourney™ bans accounts that use automation, so expect to replace accounts periodically.'
       },
       {
         question: 'do I need my own midjourney™ subscription?',
@@ -103,11 +103,11 @@ export class AppComponent implements OnInit, AfterViewInit{
       },
       {
         question: 'do you offer refunds?',
-        ans: 'no. it\'s source code you can inspect before buying -- ask us anything at hi@mjapi.io first.'
+        ans: 'no. it\'s source code -- ask us anything at hi@mjapi.io first.'
       },
       {
         question: 'do you also offer a hosted version?',
-        ans: 'yes, separately -- our own cloud engine at maginary.ai (no discord needed). the source code here is the self-host option.'
+        ans: 'yes, separately -- our own cloud engine at maginary.ai (no discord needed, but it uses native models to simulate midjourney\'s quality, quite well we\'d add). the source code here is the self-host option.'
       }
   ]
 
